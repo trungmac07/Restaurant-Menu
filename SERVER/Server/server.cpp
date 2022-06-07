@@ -84,7 +84,7 @@ int main()
 		std::cout << host << ": " << std::string(buffer, 0, bytesReceived) << "\n";
 
 		// Echo message back to client
-		char message[10] = "may im";
+		const char message[7] = "may im";
 		send(clientSocket, message, sizeof(message) + 1, 0);
 
 	}
