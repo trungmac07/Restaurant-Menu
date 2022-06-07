@@ -50,23 +50,17 @@ int main()
 	std::string input;
 	do
 	{
+		ZeroMemory(buffer, 4096);
+		int bytesReceived = recv(sock, buffer, 4096, 0);
+		if (bytesReceived > 0)
+			std::cout << "SERVER: " << std::string(buffer, 0, bytesReceived) << "\n";
 		std::cout << "> ";
 		getline(std::cin, input);
-
 		if (input.size() > 0)
 		{
 			// Send the text
 			int sendResult = send(sock, input.c_str(), input.size() + 1, 0);
-			if (sendResult != SOCKET_ERROR)
-			{
-				// Wait for response
-				ZeroMemory(buffer, 4096);
-				int bytesReceived = recv(sock, buffer, 4096, 0);
-				if (bytesReceived > 0)
-					std::cout << "SERVER: " << std::string(buffer, 0, bytesReceived) << "\n";
-			}
 		}
-
 	} while (input.size() > 0);
 
 
