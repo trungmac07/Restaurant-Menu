@@ -1,10 +1,13 @@
 #include <iostream>
+
 #include <WS2tcpip.h>
 #include <string>
 
 #define PORT 6969
+
 #pragma comment (lib, "ws2_32.lib")
 
+//-lwsock32
 int main()
 {
 	// Initialze winsock
@@ -41,18 +44,22 @@ int main()
 	FD_ZERO(&master);
 	FD_SET(listening, &master);
 
-	while (true) {
+	while (1) 
+	{
 		fd_set copy = master;
 		int count = select(0, &copy, nullptr, nullptr, nullptr);
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < count; i++) 
+		{
 			SOCKET sock = copy.fd_array[i];
-			if (sock == listening) {
+			if (sock == listening) 
+			{
 				SOCKET client = accept(listening, nullptr, nullptr);
 				FD_SET(client, &master);
 				std::string welcomeMSG = "Hi";
 				send(client, welcomeMSG.c_str(), sizeof(welcomeMSG) + 1, 0);
 			}
-			else {
+			else 
+			{
 				char buffer[4096];
 				
 				ZeroMemory(buffer, 4096);
@@ -61,7 +68,7 @@ int main()
 				int bytesReceived = recv(sock, buffer, 4096, 0);
 				if (bytesReceived == SOCKET_ERROR)
 				{
-					std::cerr << "Error in receiving" << "\n";
+					FD_CLR(sock, &master);
 					break;
 				}
 
@@ -71,10 +78,7 @@ int main()
 					FD_CLR(sock, &master);
 				}
 				else {
-					for (int i = 0; i < copy.fd_count; i++) {
-						if(copy.fd_array[i] != sock && copy.fd_array[i] != listening)
-							send(copy.fd_array[i], buffer, bytesReceived, 0);
-					}
+					std::cout << buffer << "\n";
 				}
 			}
 		}
