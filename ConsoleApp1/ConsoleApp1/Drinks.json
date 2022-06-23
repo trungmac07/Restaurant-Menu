@@ -1,0 +1,18 @@
+﻿[
+  {
+    "name": "Sprite",
+    "price": 12000
+  },
+  {
+    "name": "Pepsi",
+    "price": 20000
+  },
+  {
+    "name": "Coca cola",
+    "prce": 20000
+  },
+  {
+    "name": "Mirinda",
+    "price": 18000
+  }
+]
