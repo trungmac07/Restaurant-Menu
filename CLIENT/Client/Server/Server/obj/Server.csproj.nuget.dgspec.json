@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\WpfApp1\\WpfApp1\\WpfApp1.csproj": {}
+    "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\CLIENT\\Client\\Server\\Server\\Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\WpfApp1\\WpfApp1\\WpfApp1.csproj": {
+    "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\CLIENT\\Client\\Server\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\WpfApp1\\WpfApp1\\WpfApp1.csproj",
-        "projectName": "WpfApp1",
-        "projectPath": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\WpfApp1\\WpfApp1\\WpfApp1.csproj",
+        "projectUniqueName": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\CLIENT\\Client\\Server\\Server\\Server.csproj",
+        "projectName": "Server",
+        "projectPath": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\CLIENT\\Client\\Server\\Server\\Server.csproj",
         "packagesPath": "C:\\Users\\PhamDangSonHa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\WpfApp1\\WpfApp1\\obj\\",
+        "outputPath": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\CLIENT\\Client\\Server\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PhamDangSonHa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows7.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0-windows7.0": {
-            "targetAlias": "net6.0-windows",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -37,8 +37,8 @@
         }
       },
       "frameworks": {
-        "net6.0-windows7.0": {
-          "targetAlias": "net6.0-windows",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",
@@ -52,9 +52,6 @@
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WPF": {
-              "privateAssets": "none"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"

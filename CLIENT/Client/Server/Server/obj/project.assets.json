@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\WpfApp1\\ConsoleApp1\\ConsoleApp1.csproj",
-      "projectName": "ConsoleApp1",
-      "projectPath": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\WpfApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\CLIENT\\Client\\Server\\Server\\Server.csproj",
+      "projectName": "Server",
+      "projectPath": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\CLIENT\\Client\\Server\\Server\\Server.csproj",
       "packagesPath": "C:\\Users\\PhamDangSonHa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\WpfApp1\\ConsoleApp1\\obj\\",
+      "outputPath": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\CLIENT\\Client\\Server\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PhamDangSonHa\\AppData\\Roaming\\NuGet\\NuGet.Config",
