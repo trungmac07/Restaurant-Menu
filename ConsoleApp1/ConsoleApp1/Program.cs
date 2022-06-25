@@ -35,8 +35,70 @@ namespace SERVER
 
         }
 
+        static void exportOrderToDatabase(ORDER order)
+        {
+            File.AppendAllText("../../../ORDERS.json", JsonConvert.SerializeObject(order));
+        }
+        static void getOrderFromDatabase(ref List<ORDER> orderList)
+        {
+            var jsonText = File.ReadAllText("../../../ORDERS.json");
+            orderList = JsonConvert.DeserializeObject<List<ORDER>>(jsonText);
+        }
+        static void sendOrderToClient(StreamWriter sw, List<ORDER> orderList, string userName)
+        {
+            if (orderList == null)
+                return;
+            foreach (var item in orderList)
+            {
+                if (item.clientName == userName)
+                {
+                    sw.WriteLine(item.dateTime);
+                    sw.WriteLine(item.dishOrder.Count);
+                    foreach (var dishItem in item.dishOrder)
+                    {
+                        sw.WriteLine(dishItem.dish.name);
+                        sw.WriteLine(dishItem.dish.price);
+                        sw.WriteLine(dishItem.numberOfDishes);
+                        sw.WriteLine(dishItem.totalMoney);
+                    }
+                    sw.WriteLine(item.totalMoney);
+                }
+            }
+            sw.Flush();
+        }
+
         static void Main(string[] args)
         {
+            var order = new ORDER
+            {
+                clientName = "Nguyen Cao Khoi",
+                dateTime = new DateTime(2022, 3, 29),
+                dishOrder = new List<DISH_ORDER>
+                {
+                    new DISH_ORDER
+                    {
+                        dish = new DISH
+                        {
+                            name = "Chicken Pho",
+                            price = 120000
+                        },
+                        numberOfDishes = 5,
+                        totalMoney = 5 * 120000
+                    },
+                    new DISH_ORDER
+                    {
+                        dish = new DISH
+                        {
+                            name = "Vegan Noodles",
+                            price = 200000
+                        },
+                        numberOfDishes = 2,
+                        totalMoney = 2 * 200000
+                    }
+                },
+                totalMoney = 5 * 120000 + 2 * 200000
+            };
+
             const int serverPort = 6969;
             TcpListener listener = new TcpListener(System.Net.IPAddress.Any, serverPort);    
             listener.Start();
@@ -52,8 +114,12 @@ namespace SERVER
                 {
                     sw.WriteLine("----------   MENU  ----------");
                     List<FOOD> menuList = new List<FOOD>();
+                    List<ORDER> orderList = new List<ORDER>();
                     getMenuFromDatabase("../../../SOUP.json", ref menuList);
                     sendMenuToClient(sw, menuList);
+                    //exportOrderToDatabase(order);
+                    getOrderFromDatabase(ref orderList);
+                    sendOrderToClient(sw, orderList, "Nguyen Cao Khoi");
                 }
                 catch (Exception e)
                 {
