@@ -8,10 +8,13 @@ namespace SERVER
 {
     class Program
     {
-        static void getMenuFromDatabase(string filePath, StreamWriter sw, ref List<Menu> menuList)
+        static void getMenuFromDatabase(string filePath, ref List<FOOD> menuList)
         {
             var jsonText = File.ReadAllText(filePath);
-            menuList = JsonConvert.DeserializeObject<List<Menu>>(jsonText);
+            menuList = JsonConvert.DeserializeObject<List<FOOD>>(jsonText);
+        }
+        static void sendMenuToClient(StreamWriter sw, List<FOOD> menuList)
+        {
             if (menuList == null)
             {
                 sw.WriteLine(0);
@@ -20,9 +23,18 @@ namespace SERVER
             sw.WriteLine(menuList.Count);
             foreach (var menuItem in menuList)
             {
-                sw.WriteLine(menuItem.name + "             " + menuItem.price);
+                sw.WriteLine(menuItem.name);
+                sw.WriteLine(menuItem.foodList.Count);
+                foreach (var item in menuItem.foodList)
+                {
+                    sw.WriteLine(item.name);
+                    sw.WriteLine(item.price);
+                }
             }
+            sw.Flush();
+
         }
+
         static void Main(string[] args)
         {
             const int serverPort = 6969;
@@ -39,28 +51,9 @@ namespace SERVER
                 try
                 {
                     sw.WriteLine("----------   MENU  ----------");
-                    List<Menu> menuList = new List<Menu>();
-                    getMenuFromDatabase("../../../Foods.json", sw,ref menuList);
-                    sw.WriteLine("----- Your order: ");
-                    sw.WriteLine("----- Food name: ");
-                    sw.Flush();
-                    var foodName = sr.ReadLine();
-                    Console.WriteLine("Food name: " + foodName);
-                    sw.WriteLine("----- How many?: ");
-                    sw.Flush();
-                    var number = Int32.Parse(sr.ReadLine());
-                    Console.WriteLine("Food number: " + number);
-                    sw.WriteLine("-----------------------------");
-                    sw.WriteLine("----- Your order is: " + number + " of " + foodName);
-                    sw.Flush();
-                    int totalMoney = 0;
-                    foreach(Menu menuItem in menuList)
-                    {
-                        if (menuItem.name == foodName)
-                            totalMoney = number * menuItem.price;
-                    }
-                    sw.WriteLine("----- Total money: " + totalMoney);
-                    sw.Flush();
+                    List<FOOD> menuList = new List<FOOD>();
+                    getMenuFromDatabase("../../../SOUP.json", ref menuList);
+                    sendMenuToClient(sw, menuList);
                 }
                 catch (Exception e)
                 {
@@ -70,11 +63,33 @@ namespace SERVER
             }
         }
     }
-
-    [Serializable]
-    class Menu
+    public class DISH
     {
         public string name { get; set; }
         public int price { get; set; }
+    }
+    public class DISH_ORDER
+    {
+        public DISH dish { get; set; }
+        public int numberOfDishes { get; set; }
+        public int totalMoney { get; set; }
+
+    }
+
+    [Serializable]
+    class FOOD
+    {
+        public string name { get; set; }
+        public List<DISH> foodList { get; set; }
+    }
+
+    [Serializable]
+    class ORDER
+    {
+        public string clientName { get; set; }
+        public DateTime dateTime { get; set; }
+        public List<DISH_ORDER> dishOrder { get; set; }
+        public int totalMoney { get; set; }
+        
     }
 }

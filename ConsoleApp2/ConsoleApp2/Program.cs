@@ -26,28 +26,19 @@ namespace ConsoleApp2
                 var numberOfFood = Int32.Parse(sr.ReadLine());
                 for (int i = 0; i < numberOfFood; i++)
                 {
+                    Console.WriteLine();
                     response = sr.ReadLine();
                     Console.WriteLine(response);
+                    Console.WriteLine("----------");
+                    var numberOfDish = Int32.Parse(sr.ReadLine());
+                    for (int j = 0; j < numberOfDish; j++)
+                    {
+                        response = sr.ReadLine();
+                        Console.WriteLine(response);
+                        response = sr.ReadLine();
+                        Console.WriteLine(response);
+                    }
                 }
-                
-                Console.WriteLine(sr.ReadLine());
-                //Read and Write food name 
-                Console.Write(sr.ReadLine());
-                string message = Console.ReadLine();
-                sw.WriteLine(message);
-                sw.Flush();
-                // Read and Write number of food
-                Console.Write(sr.ReadLine());
-                message = Console.ReadLine();
-                sw.WriteLine(message);
-                sw.Flush();
-                // Reading order
-                Console.WriteLine(sr.ReadLine());
-                Console.WriteLine(sr.ReadLine());
-                Console.WriteLine(sr.ReadLine());
-
-                stream.Close();
-                client.Close();
                 Console.ReadKey();
             }
             catch (Exception ex)
