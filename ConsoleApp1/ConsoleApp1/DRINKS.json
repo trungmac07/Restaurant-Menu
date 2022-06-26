@@ -1,0 +1,106 @@
+﻿[
+  {
+    "name": "Juice",
+    "foodList": [
+      {
+        "name": "Orange Juice",
+        "price": 120000
+      },
+      {
+        "name": "Grape Juice",
+        "price": 200000
+      },
+      {
+        "name": "Apple Juice",
+        "price": 200000
+      },
+      {
+        "name": "Strawberry Juice",
+        "price": 180000
+      },
+      {
+        "name": "Guava Juice",
+        "price": 120000
+      },
+      {
+        "name": "Blueberry Juice",
+        "price": 200000
+      },
+      {
+        "name": "Lemon Juice",
+        "price": 200000
+      },
+      {
+        "name": "Watermelon Juice",
+        "price": 180000
+      },
+      {
+        "name": "Pineapple Juice",
+        "price": 180000
+      }
+    ]
+  },
+  {
+    "name": "Soft Drink",
+    "foodList": [
+      {
+        "name": "Cocacola",
+        "price": 120000
+      },
+      {
+        "name": "Pepsi",
+        "price": 200000
+      },
+      {
+        "name": "Mirida",
+        "price": 200000
+      },
+      {
+        "name": "7-up",
+        "price": 180000
+      },
+      {
+        "name": "Sting",
+        "price": 120000
+      },
+      {
+        "name": "Fanta",
+        "price": 200000
+      },
+      {
+        "name": "Lavie",
+        "price": 200000
+      }
+    ]
+  },
+  {
+    "name": "Smoothie",
+    "foodList": [
+      {
+        "name": "Strawberry",
+        "price": 120000
+      },
+      {
+        "name": "Avocado",
+        "price": 200000
+      },
+      {
+        "name": "Banana",
+        "price": 200000
+      },
+      {
+        "name": "Tomato And Carrot",
+        "price": 180000
+      },
+      {
+        "name": "Centella",
+        "price": 120000
+      },
+      {
+        "name": "Mango",
+        "price": 200000
+      }
+    ]
+  }
+]
+

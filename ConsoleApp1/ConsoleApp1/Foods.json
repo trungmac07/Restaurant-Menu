@@ -1,0 +1,18 @@
+﻿[
+  {
+    "name": "Egg fried rice",
+    "price": 120000
+  },
+  {
+    "name": "Fried noodle",
+    "price": 200000
+  },
+  {
+    "name": "Pizza",
+    "price": 200000
+  },
+  {
+    "name": "Sandwich",
+    "price": 180000
+  }
+]
