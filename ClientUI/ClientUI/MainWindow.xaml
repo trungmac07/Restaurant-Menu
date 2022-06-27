@@ -38,6 +38,13 @@
         </StackPanel>
 
         <DockPanel Name="menuArea" Margin="220,50,0,0">
+
+            <Image Source="C:\Users\Trung\Desktop\Image\2.jpg" Stretch="Fill" DockPanel.Dock="Top" Height="550" Width="1060" ></Image>
+            <TextBlock  Name="dishDescription" Text="Dish description" Height="120" Width="1060"></TextBlock>
+
+
+
+
             <!--<DockPanel.Background>
                 <ImageBrush ImageSource="C:/Users/Trung/Desktop/5-01-01-01.png" />
             </DockPanel.Background>
@@ -56,11 +63,11 @@
                 <Label Name ="content3Label" Margin="85,220,0,30" Content="Content 3" FontSize="57" FontFamily="SVN-Bali Script"></Label>
              
             </StackPanel>!-->
+            
+            
         </DockPanel>
 
-        <TextBlock  Name="dishDescription" Text="Dish description" Height="117" Width="1057" Margin="222,603,2,0">
-
-        </TextBlock>
+      
 
         <Grid Width="220" HorizontalAlignment="Left" Background="Pink">
             <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">

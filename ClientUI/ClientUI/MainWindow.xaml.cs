@@ -360,7 +360,6 @@ namespace ClientUI
         }
         private void drawMenu()
         {
-            dishDescription.Visibility = Visibility.Collapsed;
             menuArea.Children.Clear();
             int mode = 2;
             chooseMenuLayout(mode);
