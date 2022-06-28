@@ -3,6 +3,8 @@ using System.Net.Sockets;
 using System.Text;
 using System.IO;
 using Newtonsoft.Json;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace SERVER
 {
@@ -66,6 +68,15 @@ namespace SERVER
             sw.Flush();
         }
 
+        public static byte[] ImageToByteArray(Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return ms.ToArray();
+            }
+        }
+
         static void Main(string[] args)
         {
             var order = new ORDER
@@ -109,46 +120,24 @@ namespace SERVER
                 NetworkStream stream = client.GetStream();
                 StreamReader sr = new StreamReader(client.GetStream());
                 StreamWriter sw = new StreamWriter(client.GetStream());
-               
-           
                 try
                 {
-                    byte[] a = File.ReadAllBytes("C:/Users/Trung/Desktop/1.jpg"); //Images Bytes
-                    //sw.WriteLine("----------   MENU  ----------");
+                    Image img = Image.FromFile("C:/Users/NC/Downloads/SOCKET-PROJECT-main/ConsoleApp1/ConsoleApp1/a.jpg");
+                    byte[] a = ImageToByteArray(img);
                     List<FOOD> menuList = new List<FOOD>();
                     List<ORDER> orderList = new List<ORDER>();
                     getMenuFromDatabase("../../../SOUP.json", ref menuList);
-                    //sendMenuToClient(sw, menuList);         comment lai cho de^~ sua? anh?
-                    
-                    int len = (int)a.Length;           
-                  
-                   
-                    //byte[] sender = BitConverter.GetBytes(len);
+                    //sendMenuToClient(sw, menuList);         
+                    int len = a.Length;           
                     sw.WriteLine(len); //send size of image for client to create a buffer
                     sw.Flush();
                     Console.WriteLine(a.Length);  
-                    //stream.Position = 0;
                     stream.Write(a,0,a.Length);  //send bytes
-                   
-
-                    byte[] g = File.ReadAllBytes("E:/Code/Project/Socket-Project/SOCKET-PROJECT/ClientUI/ClientUI/bin/Debug/net6.0-windows/a.jpg");
-
-                    bool check = false;
-
-                    for(int i = 0; i < g.Length; i++)
-                    {
-                        if (g[i] != a[i])
-                        {
-                            Console.WriteLine("{0}...{1}", g[i], a[i]);
-                            check = true;
-                        }
-                    }
-                    if (check == false)
-                        Console.WriteLine("ALL CORRECT");
-                    Console.WriteLine("{0}    {1}", g.Length, a.Length);                    
+                    stream.Flush();
                     //exportOrderToDatabase(order);
-                    getOrderFromDatabase(ref orderList);
-                    sendOrderToClient(sw, orderList, "Nguyen Cao Khoi");
+                    //getOrderFromDatabase(ref orderList);
+                    //sendOrderToClient(sw, orderList, "Nguyen Cao Khoi");
+
                 }
                 catch (Exception e)
                 {
