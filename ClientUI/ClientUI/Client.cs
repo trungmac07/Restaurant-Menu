@@ -53,41 +53,47 @@ namespace Client
         public List<string> recvMenu()
         {
             List<string> menuList = new List<string>();
-            var response = sr.ReadLine();
-            Console.WriteLine(response);
-            var numberOfFood = Int32.Parse(sr.ReadLine());
+            string response;
+            var x = sr.ReadLine();
+            
+            var numberOfFood = Int32.Parse(x);
             for (int i = 0; i < numberOfFood; i++)
             {
                 response = sr.ReadLine();
                 //nhan ten....gia
                 menuList.Add(response);
-                Console.WriteLine(response);
             }
+           
             return menuList;
         }
 
-        void recvByte()
+        public void recvByte()
         {
-            byte[] buffer = new byte[69000];
-            stream.Read(buffer, 0, buffer.Length);
-            int recv = 0;
-            foreach (byte b in buffer)
-            {
-                if (b != 0)
-                {
-                    recv++;
-                }
-            }
-            string msg_recv = Encoding.UTF8.GetString(buffer, 0, recv);
-            Console.WriteLine(msg_recv);
-        }
-        void sendString()
-        {
-            string str = Console.ReadLine();
-            sw.WriteLine(str);
-            sw.Flush();
+
+
+            int n = Int32.Parse(sr.ReadLine());               //Reveice size of image
+
+            MessageBox.Show(n.ToString());
+
+            byte[] buffer = new byte[n];                    
+
+            MessageBox.Show(stream.Read(buffer).ToString());   //receive & show number of bytes received (Lost ~1000 bytes)
+            
+            File.Delete("C:/Users/Trung/Desktop/c.jpg");       //Delete old file
+            File.WriteAllBytes("C:/Users/Trung/Desktop/c.jpg", buffer); //Create file
+            //int recv = buffer.Length;
+            /*string msg_recv = Encoding.ASCII.GetString(buffer, 0, recv);
+            Console.WriteLine(msg_recv);*/
+
         }
 
+        public void createPic(byte[] picByte)
+        {
+
+            
+            
+        }
+        
     }
 }
 

@@ -42,9 +42,6 @@
             <Image Source="C:\Users\Trung\Desktop\Image\2.jpg" Stretch="Fill" DockPanel.Dock="Top" Height="550" Width="1060" ></Image>
             <TextBlock  Name="dishDescription" Text="Dish description" Height="120" Width="1060"></TextBlock>
 
-
-
-
             <!--<DockPanel.Background>
                 <ImageBrush ImageSource="C:/Users/Trung/Desktop/5-01-01-01.png" />
             </DockPanel.Background>

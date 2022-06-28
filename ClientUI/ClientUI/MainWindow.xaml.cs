@@ -22,8 +22,14 @@ namespace ClientUI
         Client.Client client = new Client.Client();
         public MainWindow()
         {
-            InitializeComponent();
-            drawMenu();
+            client.recvByte();
+            InitializeComponent();  //Vay thi chay bth
+
+            
+           /* InitializeComponent();  //Vay thi chay sai
+            client.recvByte();*/
+
+            //drawMenu(); //comment lai cho de^~ sua?
         }
 
         private void ButtonFechar_Click(object sender, RoutedEventArgs e)
@@ -66,7 +72,12 @@ namespace ClientUI
         private void chooseDishes(object sender, RoutedEventArgs e)
         {
             TextBlock a = sender as TextBlock;
-            MessageBox.Show(a.Tag.ToString());
+            //MessageBox.Show(a.Tag.ToString());
+            client.recvByte();
+         
+            /*ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("./a.jpg"));
+            menuArea.Background = imageBrush;*/
         }
 
         private Thickness chooseThickness(int mode, int x)
@@ -140,7 +151,7 @@ namespace ClientUI
             ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("C:/Users/Trung/Desktop/Image/1.png"));
             menuArea.Background = imageBrush;
-            List<string> a = client.recvMenu();
+            
             var c = 0;
             var i = 1;
             for (; i <= 3; ++i)
@@ -157,6 +168,8 @@ namespace ClientUI
             {
                 if (child is StackPanel)
                 {
+                    List<string> a = client.recvMenu();
+                    c = 0;
                     ++i;
                     var label = new Label();
                     label.Name = "content" + i + "Label";
@@ -188,7 +201,7 @@ namespace ClientUI
             ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("C:/Users/Trung/Desktop/Image/2.jpg"));
             menuArea.Background = imageBrush;
-            List<string> a = client.recvMenu();
+           
             var c = 0;
             var i = 1;
             for (; i <= 3; ++i)
@@ -205,6 +218,7 @@ namespace ClientUI
             {
                 if (child is StackPanel)
                 {
+                    c = 0;
                     ++i;
                     var label = new Label();
                     label.Name = "content" + i + "Label";
@@ -214,8 +228,9 @@ namespace ClientUI
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
-                    for (int j = 0; j < 6; ++j)
-                    {
+                    List<string> a = client.recvMenu();
+                    for (int j = 0; j < a.Count; ++j)
+                    {   
                         var textBlock = new TextBlock();
                         textBlock.Text = a[c++];
                         textBlock.MouseDown += chooseDishes;
