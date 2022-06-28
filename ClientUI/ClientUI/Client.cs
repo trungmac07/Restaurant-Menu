@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
+using System.Drawing;
 namespace Client
 {
     class Client
@@ -69,31 +70,15 @@ namespace Client
 
         public void recvByte()
         {
-
-
             int n = Int32.Parse(sr.ReadLine());               //Reveice size of image
-
             MessageBox.Show(n.ToString());
-
-            byte[] buffer = new byte[n];                    
-
-            MessageBox.Show(stream.Read(buffer).ToString());   //receive & show number of bytes received (Lost ~1000 bytes)
-            
-            File.Delete("C:/Users/Trung/Desktop/c.jpg");       //Delete old file
-            File.WriteAllBytes("C:/Users/Trung/Desktop/c.jpg", buffer); //Create file
-            //int recv = buffer.Length;
-            /*string msg_recv = Encoding.ASCII.GetString(buffer, 0, recv);
-            Console.WriteLine(msg_recv);*/
+            byte[] buffer = new byte[n];
+            stream.Read(buffer, 0, n);
+            var Nstream = new MemoryStream(buffer);
+            System.Drawing.Image img = new Bitmap(Nstream);
+            img.Save(@"C:/Users/NC/Downloads/SOCKET-PROJECT-main/ClientUI/ClientUI/a.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
 
         }
-
-        public void createPic(byte[] picByte)
-        {
-
-            
-            
-        }
-        
     }
 }
 
