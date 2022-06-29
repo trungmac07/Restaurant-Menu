@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 using Newtonsoft.Json;
 using System.Drawing;
 namespace Client
@@ -38,7 +39,6 @@ namespace Client
         {
             stream.Close();
             client.Close();
-            Console.ReadKey();
         }
 
         void recvString()
@@ -53,6 +53,7 @@ namespace Client
         }
         public List<string> recvMenu()
         {
+            
             List<string> menuList = new List<string>();
             string response;
             var x = sr.ReadLine();
@@ -73,11 +74,28 @@ namespace Client
             int n = Int32.Parse(sr.ReadLine());               //Reveice size of image
             MessageBox.Show(n.ToString());
             byte[] buffer = new byte[n];
-            stream.Read(buffer, 0, n);
-            var Nstream = new MemoryStream(buffer);
-            System.Drawing.Image img = new Bitmap(Nstream);
-            img.Save(@"C:/Users/NC/Downloads/SOCKET-PROJECT-main/ClientUI/ClientUI/a.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
 
+            for(int i=0;i<n;++i)
+            {
+                stream.Read(buffer, i, 1).ToString();
+                if(i == 0)
+                    Console.WriteLine("{0}---{1}", 0, buffer[0]);
+            }
+            
+
+            var Nstream = new MemoryStream(buffer,0,buffer.Length);
+
+            try
+            {
+                System.Drawing.Image img = new Bitmap(Nstream);
+                img.Save(@"C:\Users\Trung\Desktop\q.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+           
         }
     }
 }

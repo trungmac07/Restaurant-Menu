@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net.Sockets;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,22 +16,27 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 
+
 namespace ClientUI
 {
     
     public partial class MainWindow : Window
     {
-        Client.Client client = new Client.Client();
+        Client.Client client ;
         public MainWindow()
         {
-            client.recvByte();
+            
             InitializeComponent();  //Vay thi chay bth
 
-            
-           /* InitializeComponent();  //Vay thi chay sai
-            client.recvByte();*/
+            client = new Client.Client();
+            //drawMenu();
+            client.recvByte();
 
-            //drawMenu(); //comment lai cho de^~ sua?
+            
+            /* InitializeComponent();  //Vay thi chay sai
+             client.recvByte();*/
+
+            //comment lai cho de^~ sua?
         }
 
         private void ButtonFechar_Click(object sender, RoutedEventArgs e)
