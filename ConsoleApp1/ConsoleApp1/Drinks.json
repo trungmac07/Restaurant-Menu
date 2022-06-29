@@ -1,7 +1,44 @@
 ﻿[
   {
-    "name": "Sprite",
-    "price": 12000
+    "name": "Juice",
+    "foodList": [
+      {
+        "name": "Orange Juice",
+        "price": 120000
+      },
+      {
+        "name": "Grape Juice",
+        "price": 200000
+      },
+      {
+        "name": "Apple Juice",
+        "price": 200000
+      },
+      {
+        "name": "Strawberry Juice",
+        "price": 180000
+      },
+      {
+        "name": "Guava Juice",
+        "price": 120000
+      },
+      {
+        "name": "Blueberry Juice",
+        "price": 200000
+      },
+      {
+        "name": "Lemon Juice",
+        "price": 200000
+      },
+      {
+        "name": "Watermelon Juice",
+        "price": 180000
+      },
+      {
+        "name": "Pineapple Juice",
+        "price": 180000
+      }
+    ]
   },
   {
     "name": "Soft Drink",
