@@ -1,12 +1,29 @@
 ﻿using System;
-using System.Net.Sockets;
-using System.Text;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Net.Sockets;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using Newtonsoft.Json;
+using System.Drawing;
+using System.Drawing.Imaging;
 
-namespace SERVER
+namespace Server
 {
-    class Program
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
     {
         static void getMenuFromDatabase(string filePath, ref List<FOOD> menuList)
         {
@@ -18,19 +35,22 @@ namespace SERVER
             if (menuList == null)
             {
                 sw.WriteLine(0);
+                sw.Flush();
                 return;
             }
-            
+
             foreach (var menuItem in menuList)
             {
                 //sw.WriteLine(menuItem.name);
                 sw.WriteLine(menuItem.foodList.Count);
+                sw.Flush();
                 foreach (var item in menuItem.foodList)
                 {
                     sw.WriteLine(item.name + "...." + item.price);
+                    sw.Flush();
                 }
             }
-            sw.Flush();
+            //sw.Flush();
 
         }
 
@@ -66,7 +86,38 @@ namespace SERVER
             sw.Flush();
         }
 
-        static void Main(string[] args)
+        public static byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, ImageFormat.Jpeg);
+                return ms.ToArray();
+            }
+        }
+
+        public static void sendPic(StreamWriter sw, NetworkStream stream)
+        {
+            System.Drawing.Image img = System.Drawing.Image.FromFile(@"C:\Users\Trung\Desktop\1.jpg");
+            byte[] a = ImageToByteArray(img);
+
+            int len = a.Length;
+            sw.WriteLine(len); //send size of image for client to create a buffer
+            sw.Flush();
+            Console.WriteLine(a.Length);
+            Console.WriteLine(len);
+            for (int i = 0; i < len; i++)
+            {
+                stream.Write(a, i, 1);  //send bytes
+                stream.Flush();
+            }
+
+            /*List<FOOD> menuList = new List<FOOD>();
+            List<ORDER> orderList = new List<ORDER>();
+            getMenuFromDatabase("../../../SOUP.json", ref menuList);
+            sendMenuToClient(sw, menuList);*/
+        }
+
+        public async void Run(object sender, RoutedEventArgs e)
         {
             var order = new ORDER
             {
@@ -99,8 +150,10 @@ namespace SERVER
             };
 
             const int serverPort = 6969;
-            TcpListener listener = new TcpListener(System.Net.IPAddress.Any, serverPort);    
+            TcpListener listener = new TcpListener(System.Net.IPAddress.Any, serverPort);
             listener.Start();
+
+
             while (true)
             {
                 Console.WriteLine("Waiting for a connection.");
@@ -109,53 +162,27 @@ namespace SERVER
                 NetworkStream stream = client.GetStream();
                 StreamReader sr = new StreamReader(client.GetStream());
                 StreamWriter sw = new StreamWriter(client.GetStream());
-               
-           
                 try
                 {
-                    byte[] a = File.ReadAllBytes("C:/Users/Trung/Desktop/1.jpg"); //Images Bytes
-                    //sw.WriteLine("----------   MENU  ----------");
-                    List<FOOD> menuList = new List<FOOD>();
-                    List<ORDER> orderList = new List<ORDER>();
-                    getMenuFromDatabase("../../../SOUP.json", ref menuList);
-                    //sendMenuToClient(sw, menuList);         comment lai cho de^~ sua? anh?
-                    
-                    int len = (int)a.Length;           
-                  
-                   
-                    //byte[] sender = BitConverter.GetBytes(len);
-                    sw.WriteLine(len); //send size of image for client to create a buffer
-                    sw.Flush();
-                    Console.WriteLine(a.Length);  
-                    //stream.Position = 0;
-                    stream.Write(a,0,a.Length);  //send bytes
-                   
 
-                    byte[] g = File.ReadAllBytes("E:/Code/Project/Socket-Project/SOCKET-PROJECT/ClientUI/ClientUI/bin/Debug/net6.0-windows/a.jpg");
-
-                    bool check = false;
-
-                    for(int i = 0; i < g.Length; i++)
-                    {
-                        if (g[i] != a[i])
-                        {
-                            Console.WriteLine("{0}...{1}", g[i], a[i]);
-                            check = true;
-                        }
-                    }
-                    if (check == false)
-                        Console.WriteLine("ALL CORRECT");
-                    Console.WriteLine("{0}    {1}", g.Length, a.Length);                    
+                    sendPic(sw, stream);
                     //exportOrderToDatabase(order);
-                    getOrderFromDatabase(ref orderList);
-                    sendOrderToClient(sw, orderList, "Nguyen Cao Khoi");
+                    //getOrderFromDatabase(ref orderList);
+                    //sendOrderToClient(sw, orderList, "Nguyen Cao Khoi");
+
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
                     Console.WriteLine("Something went wrong.");
-                    sw.WriteLine(e.ToString());
+                    sw.WriteLine(ex.ToString());
+                    sw.Flush();
                 }
+
             }
+        }
+        public MainWindow()
+        {
+            InitializeComponent();
         }
     }
     public class DISH
@@ -185,6 +212,6 @@ namespace SERVER
         public DateTime dateTime { get; set; }
         public List<DISH_ORDER> dishOrder { get; set; }
         public int totalMoney { get; set; }
-        
+
     }
 }

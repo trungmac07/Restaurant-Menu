@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {}
+    "E:\\Code\\Project\\Socket-Project\\SOCKET-PROJECT\\ClientUI\\ClientUI\\ClientUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {
+    "E:\\Code\\Project\\Socket-Project\\SOCKET-PROJECT\\ClientUI\\ClientUI\\ClientUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
-        "projectName": "ConsoleApp1",
-        "projectPath": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
-        "packagesPath": "C:\\Users\\PhamDangSonHa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\ConsoleApp1\\ConsoleApp1\\obj\\",
+        "projectUniqueName": "E:\\Code\\Project\\Socket-Project\\SOCKET-PROJECT\\ClientUI\\ClientUI\\ClientUI.csproj",
+        "projectName": "ClientUI",
+        "projectPath": "E:\\Code\\Project\\Socket-Project\\SOCKET-PROJECT\\ClientUI\\ClientUI\\ClientUI.csproj",
+        "packagesPath": "C:\\Users\\Trung\\.nuget\\packages\\",
+        "outputPath": "E:\\Code\\Project\\Socket-Project\\SOCKET-PROJECT\\ClientUI\\ClientUI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PhamDangSonHa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net6.0-windows7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
             "projectReferences": {}
           }
         },
@@ -37,12 +37,24 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
           "dependencies": {
+            "MaterialDesignColors": {
+              "target": "Package",
+              "version": "[2.0.6, )"
+            },
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[6.0.0, )"
             }
           },
           "imports": [
@@ -58,6 +70,9 @@
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"

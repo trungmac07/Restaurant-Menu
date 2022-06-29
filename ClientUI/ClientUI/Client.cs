@@ -13,7 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 using Newtonsoft.Json;
+using System.Drawing;
 namespace Client
 {
     class Client
@@ -37,7 +39,6 @@ namespace Client
         {
             stream.Close();
             client.Close();
-            Console.ReadKey();
         }
 
         void recvString()
@@ -52,6 +53,7 @@ namespace Client
         }
         public List<string> recvMenu()
         {
+            
             List<string> menuList = new List<string>();
             string response;
             var x = sr.ReadLine();
@@ -69,31 +71,32 @@ namespace Client
 
         public void recvByte()
         {
-
-
             int n = Int32.Parse(sr.ReadLine());               //Reveice size of image
-
             MessageBox.Show(n.ToString());
+            byte[] buffer = new byte[n];
 
-            byte[] buffer = new byte[n];                    
-
-            MessageBox.Show(stream.Read(buffer).ToString());   //receive & show number of bytes received (Lost ~1000 bytes)
+            for(int i=0;i<n;++i)
+            {
+                stream.Read(buffer, i, 1).ToString();
+                if(i == 0)
+                    Console.WriteLine("{0}---{1}", 0, buffer[0]);
+            }
             
-            File.Delete("C:/Users/Trung/Desktop/c.jpg");       //Delete old file
-            File.WriteAllBytes("C:/Users/Trung/Desktop/c.jpg", buffer); //Create file
-            //int recv = buffer.Length;
-            /*string msg_recv = Encoding.ASCII.GetString(buffer, 0, recv);
-            Console.WriteLine(msg_recv);*/
 
+            var Nstream = new MemoryStream(buffer,0,buffer.Length);
+
+            try
+            {
+                System.Drawing.Image img = new Bitmap(Nstream);
+                img.Save(@"C:\Users\Trung\Desktop\q.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+           
         }
-
-        public void createPic(byte[] picByte)
-        {
-
-            
-            
-        }
-        
     }
 }
 
