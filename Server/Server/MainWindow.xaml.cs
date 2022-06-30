@@ -18,6 +18,7 @@ using Newtonsoft.Json;
 using System.Drawing;
 using System.Drawing.Imaging;
 
+
 namespace Server
 {
     /// <summary>
@@ -97,7 +98,7 @@ namespace Server
 
         public static void sendPic(StreamWriter sw, NetworkStream stream)
         {
-            System.Drawing.Image img = System.Drawing.Image.FromFile(@"C:\Users\Trung\Desktop\1.jpg");
+            System.Drawing.Image img = System.Drawing.Image.FromFile("./Image/Background/2.jpg");
             byte[] a = ImageToByteArray(img);
 
             int len = a.Length;
@@ -105,11 +106,9 @@ namespace Server
             sw.Flush();
             Console.WriteLine(a.Length);
             Console.WriteLine(len);
-            for (int i = 0; i < len; i++)
-            {
-                stream.Write(a, i, 1);  //send bytes
-                stream.Flush();
-            }
+            
+            stream.Write(a, 0, len);  //send bytes
+            stream.Flush();    
 
             /*List<FOOD> menuList = new List<FOOD>();
             List<ORDER> orderList = new List<ORDER>();
@@ -117,7 +116,7 @@ namespace Server
             sendMenuToClient(sw, menuList);*/
         }
 
-        public async void Run(object sender, RoutedEventArgs e)
+        public void Run(object sender, RoutedEventArgs e)
         {
             var order = new ORDER
             {

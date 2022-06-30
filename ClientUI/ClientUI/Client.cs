@@ -53,50 +53,61 @@ namespace Client
         }
         public List<string> recvMenu()
         {
-            
             List<string> menuList = new List<string>();
             string response;
-            var x = sr.ReadLine();
-            
-            var numberOfFood = Int32.Parse(x);
+            var numberOfFood = Int32.Parse(sr.ReadLine());
             for (int i = 0; i < numberOfFood; i++)
             {
                 response = sr.ReadLine();
                 //nhan ten....gia
                 menuList.Add(response);
             }
-           
             return menuList;
         }
 
-        public void recvByte()
+        public void recvPic()
         {
-            int n = Int32.Parse(sr.ReadLine());               //Reveice size of image
-            MessageBox.Show(n.ToString());
+            int n = Int32.Parse(sr.ReadLine());         //Reveice size of image
+            
             byte[] buffer = new byte[n];
 
-            for(int i=0;i<n;++i)
-            {
-                stream.Read(buffer, i, 1).ToString();
-                if(i == 0)
-                    Console.WriteLine("{0}---{1}", 0, buffer[0]);
-            }
+            stream.Read(buffer, 0, n);
             
+            var Nstream = new MemoryStream(buffer,0,n);
 
-            var Nstream = new MemoryStream(buffer,0,buffer.Length);
-
+            //File.WriteAllBytes("./image.jpg", buffer);
             try
             {
                 System.Drawing.Image img = new Bitmap(Nstream);
-                img.Save(@"C:\Users\Trung\Desktop\q.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                img.Save(@".\image.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
             
-           
+
         }
+
+
+        public List<string> recvList()
+        {
+            List <string> list = new List<string>();
+
+            
+            return list;
+        }
+
+        public void add(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void remove(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
 

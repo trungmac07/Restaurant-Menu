@@ -16,7 +16,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 
-
 namespace ClientUI
 {
     
@@ -27,12 +26,11 @@ namespace ClientUI
         {
             
             InitializeComponent();  //Vay thi chay bth
-
             client = new Client.Client();
-            //drawMenu();
-            client.recvByte();
-
             
+            //client.recvPic();
+
+            drawMenu();
             /* InitializeComponent();  //Vay thi chay sai
              client.recvByte();*/
 
@@ -50,25 +48,7 @@ namespace ClientUI
                 DragMove();
         }
 
-        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int index = ListViewMenu.SelectedIndex;
-            MoveCursorMenu(index);
-
-            switch (index)
-            {
-                case 0:
-
-
-                    break;
-                case 1:
-
-
-                    break;
-                default:
-                    break;
-            }
-        }
+        
 
         private void MoveCursorMenu(int index)
         {
@@ -80,7 +60,7 @@ namespace ClientUI
         {
             TextBlock a = sender as TextBlock;
             //MessageBox.Show(a.Tag.ToString());
-            client.recvByte();
+            client.recvPic();
          
             /*ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("./a.jpg"));
@@ -155,8 +135,12 @@ namespace ClientUI
 
         private void mainCourseMenu()
         {
+            //Receive image
+            client.recvPic();
+          
             ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("C:/Users/Trung/Desktop/Image/1.png"));
+            Uri link = new Uri(@".\image.jpg",UriKind.Relative);
+            imageBrush.ImageSource = new BitmapImage(link);
             menuArea.Background = imageBrush;
             
             var c = 0;
@@ -175,7 +159,7 @@ namespace ClientUI
             {
                 if (child is StackPanel)
                 {
-                    List<string> a = client.recvMenu();
+                    /*List<string> a = client.recvMenu();
                     c = 0;
                     ++i;
                     var label = new Label();
@@ -198,15 +182,17 @@ namespace ClientUI
                         textBlock.FontFamily = new FontFamily("Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
                         (child as StackPanel).Children.Add(textBlock);
-                    }
+                    }*/
                 }
 
             }
         }
         private void soupMenu()
         {
+            //Receive image
+            client.recvPic();
             ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("C:/Users/Trung/Desktop/Image/2.jpg"));
+            imageBrush.ImageSource = new BitmapImage(new Uri("./image.jpg"));
             menuArea.Background = imageBrush;
            
             var c = 0;
@@ -255,10 +241,15 @@ namespace ClientUI
         }
         private void dessertMenu()
         {
+            //Receive image
+            client.recvPic();
             ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("C:/Users/Trung/Desktop/Image/3.jpg"));
+            imageBrush.ImageSource = new BitmapImage(new Uri("./image.jpg"));
             menuArea.Background = imageBrush;
+
+            //Reveive List of menu
             List<string> a = client.recvMenu();
+
             var c = 0;
             var i = 1;
             for (; i <= 3; ++i)
@@ -303,10 +294,15 @@ namespace ClientUI
         }
         private void drinkMenu()
         {
+            //Receive image
+            client.recvPic();
             ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("C:/Users/Trung/Desktop/Image/4.png"));
+            imageBrush.ImageSource = new BitmapImage(new Uri("./image.jpg"));
             menuArea.Background = imageBrush;
+
+            //Reveive List of menu
             List<string> a = client.recvMenu();
+
             var c = 0;
             var i = 1;
             for (; i <= 3; ++i)
@@ -354,7 +350,7 @@ namespace ClientUI
         {
             switch (x)
             {
-                case 0:
+                case -1:
                     {
                         break;
                     }
@@ -383,10 +379,97 @@ namespace ClientUI
         private void drawMenu()
         {
             menuArea.Children.Clear();
-            int mode = 2;
-            chooseMenuLayout(mode);
+            int mode = 1;
+            chooseMenuLayout(1);
 
         }
 
+        private void selectMenu(object sender, RoutedEventArgs e)
+        {
+
+            int index = 1+listViewMenu.SelectedIndex; 
+            MoveCursorMenu(index-1);
+            MessageBox.Show(index.ToString());
+            if(index == 0)
+            {
+                //send Welcome
+            }
+            else if (index == 5)
+            {
+                //send List
+            }
+            else
+            {
+                //send menu(index)
+                chooseMenuLayout(index);
+            }
+
+        }
+
+        private void showMyList()
+        {
+            //Receive image
+            client.recvPic();
+            ImageBrush imageBrush = new ImageBrush();
+            imageBrush.ImageSource = new BitmapImage(new Uri("C:/Users/Trung/Desktop/Image/4.png"));
+            menuArea.Background = imageBrush;
+
+            //Receive List
+            List<string> a = client.recvList();
+
+            var c = 0;
+            var i = 0;
+            
+            var stackPanel = new StackPanel();
+            stackPanel.Name = "myListStack";
+            menuArea.Children.Add(stackPanel);
+            
+        
+            foreach (object child in menuArea.Children)
+            {
+                if (child is StackPanel)
+                {
+                    for (int j = 0; j < a.Count; ++j)
+                    {
+                        DockPanel dockPanel = new DockPanel();
+
+                       
+                        var textBlock = new TextBlock();
+                        textBlock.Text = a[++c];
+                        textBlock.Tag = "dish" + i.ToString();
+                        textBlock.Margin = new Thickness(40, 7, 0, 0);
+                        textBlock.Width = 400;
+                        textBlock.Height = 50;
+                        textBlock.FontSize = 18;
+                        textBlock.Cursor = Cursors.Hand;
+                        textBlock.FontFamily = new FontFamily("Comic Sans MS");
+                        textBlock.Style = (Style)Resources["changeColor"];
+                        DockPanel.SetDock(textBlock, Dock.Left);
+
+                        Button buttonPlus = new Button();
+                        buttonPlus.Tag = "";
+                        buttonPlus.Click += client.add;
+
+                        var numberDish = new TextBlock();
+                        //numberDish.Text = numberOfDish;
+
+                        Button buttonMinus = new Button();
+                        buttonMinus.Tag = "";
+                        buttonPlus.Click += client.remove;
+
+                        dockPanel.Children.Add(textBlock);
+                        dockPanel.Children.Add(buttonPlus);
+                        dockPanel.Children.Add(buttonMinus);
+                       
+                        (child as StackPanel).Children.Add(dockPanel);
+
+                    }
+                }
+
+            }
+
+
+
+        }
     }
 }

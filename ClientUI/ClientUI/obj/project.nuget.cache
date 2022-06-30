@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "3MMT/ZytpbZSdu6mv+I9pFsoa8obhqZ9H+3jIybGzmWOKlbyOlvx92xbDGy/67/L7jEwSOPBpImiLFM0nMLGZg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PhamDangSonHa\\source\\repos\\SOCKET-PROJECT\\ClientUI\\ClientUI\\ClientUI.csproj",
+  "projectFilePath": "E:\\Code\\Project\\Socket-Project\\SOCKET-PROJECT\\ClientUI\\ClientUI\\ClientUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Trung\\.nuget\\packages\\materialdesigncolors\\2.0.6\\materialdesigncolors.2.0.6.nupkg.sha512",
     "C:\\Users\\Trung\\.nuget\\packages\\materialdesignthemes\\4.5.0\\materialdesignthemes.4.5.0.nupkg.sha512",
