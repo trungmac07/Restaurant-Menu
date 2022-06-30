@@ -33,5 +33,5 @@
 
 #
 x64
-DEBUG
 .vs
+obj\Debug\
