@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Net.Sockets;
 using System.Windows.Controls;
@@ -26,6 +26,7 @@ namespace Server
     /// </summary>
     public partial class MainWindow : Window
     {
+        public bool isStart;
         static void getMenuFromDatabase(string filePath, ref List<FOOD> menuList)
         {
             var jsonText = File.ReadAllText(filePath);
@@ -106,9 +107,9 @@ namespace Server
             sw.Flush();
             Console.WriteLine(a.Length);
             Console.WriteLine(len);
-            
+
             stream.Write(a, 0, len);  //send bytes
-            stream.Flush();    
+            stream.Flush();
 
             /*List<FOOD> menuList = new List<FOOD>();
             List<ORDER> orderList = new List<ORDER>();
@@ -116,7 +117,7 @@ namespace Server
             sendMenuToClient(sw, menuList);*/
         }
 
-        public void Run(object sender, RoutedEventArgs e)
+        public static void ServerInit()
         {
             var order = new ORDER
             {
@@ -152,7 +153,6 @@ namespace Server
             TcpListener listener = new TcpListener(System.Net.IPAddress.Any, serverPort);
             listener.Start();
 
-
             while (true)
             {
                 Console.WriteLine("Waiting for a connection.");
@@ -179,9 +179,24 @@ namespace Server
 
             }
         }
+        public void Run(object sender, RoutedEventArgs e)
+        {
+            if (isStart == false)
+            {
+                Thread mainThread = new Thread(ServerInit);
+                mainThread.Start();
+                isStart = true;
+            }
+            else
+            {
+                MessageBox.Show("Server has started, stop pressing the button bro ???? ");
+            }
+        } 
         public MainWindow()
         {
+            isStart = false;
             InitializeComponent();
+            
         }
     }
     public class DISH
