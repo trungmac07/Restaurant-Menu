@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Code\\Project\\Socket-Project\\SOCKET-PROJECT\\Server\\Server\\Server.csproj": {}
+    "C:\\Users\\PhamDangSonHa\\OneDrive - VNU-HCMUS\\Documents\\GitHub\\SOCKET PROJECT\\Server\\Server\\Server.csproj": {}
   },
   "projects": {
-    "E:\\Code\\Project\\Socket-Project\\SOCKET-PROJECT\\Server\\Server\\Server.csproj": {
+    "C:\\Users\\PhamDangSonHa\\OneDrive - VNU-HCMUS\\Documents\\GitHub\\SOCKET PROJECT\\Server\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Code\\Project\\Socket-Project\\SOCKET-PROJECT\\Server\\Server\\Server.csproj",
+        "projectUniqueName": "C:\\Users\\PhamDangSonHa\\OneDrive - VNU-HCMUS\\Documents\\GitHub\\SOCKET PROJECT\\Server\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "E:\\Code\\Project\\Socket-Project\\SOCKET-PROJECT\\Server\\Server\\Server.csproj",
-        "packagesPath": "C:\\Users\\Trung\\.nuget\\packages\\",
-        "outputPath": "E:\\Code\\Project\\Socket-Project\\SOCKET-PROJECT\\Server\\Server\\obj\\",
+        "projectPath": "C:\\Users\\PhamDangSonHa\\OneDrive - VNU-HCMUS\\Documents\\GitHub\\SOCKET PROJECT\\Server\\Server\\Server.csproj",
+        "packagesPath": "C:\\Users\\PhamDangSonHa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PhamDangSonHa\\OneDrive - VNU-HCMUS\\Documents\\GitHub\\SOCKET PROJECT\\Server\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PhamDangSonHa\\AppData\\Roaming\\NuGet\\NuGet.Config",

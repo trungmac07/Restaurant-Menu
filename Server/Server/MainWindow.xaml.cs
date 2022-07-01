@@ -97,19 +97,47 @@ namespace Server
             }
         }
 
-        public static void sendPic(StreamWriter sw, NetworkStream stream)
+        public static void sendPic(StreamWriter sw, NetworkStream stream, string request)
         {
-            System.Drawing.Image img = System.Drawing.Image.FromFile("./Image/Background/2.jpg");
-            byte[] a = ImageToByteArray(img);
+            if (request[2] == '0')
+            {
+                //Backround
+                System.Drawing.Image img = System.Drawing.Image.FromFile("./Image/Background/" + request[0] + ".jpg");
+                byte[] a = ImageToByteArray(img);
 
-            int len = a.Length;
-            sw.WriteLine(len); //send size of image for client to create a buffer
-            sw.Flush();
-            Console.WriteLine(a.Length);
-            Console.WriteLine(len);
+                int len = a.Length;
+                sw.WriteLine(len); //send size of image for client to create a buffer
+                sw.Flush();
+                Console.WriteLine(a.Length);
+                Console.WriteLine(len);
 
-            stream.Write(a, 0, len);  //send bytes
-            stream.Flush();
+                stream.Write(a, 0, len);  //send bytes
+                stream.Flush();
+            }
+            else
+            {
+                //Food
+                System.Drawing.Image img;
+                if (request.Length == 3)
+                {
+                    img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + ".jpg");
+                }
+                else
+                {
+                    img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + request[3] + ".jpg");
+                }
+                    
+                byte[] a = ImageToByteArray(img);
+
+                int len = a.Length;
+                sw.WriteLine(len); //send size of image for client to create a buffer
+                sw.Flush();
+                Console.WriteLine(a.Length);
+                Console.WriteLine(len);
+
+                stream.Write(a, 0, len);  //send bytes
+                stream.Flush();
+            }
 
             /*List<FOOD> menuList = new List<FOOD>();
             List<ORDER> orderList = new List<ORDER>();
@@ -164,7 +192,7 @@ namespace Server
                 try
                 {
 
-                    sendPic(sw, stream);
+                    recvRequest(sr);
                     //exportOrderToDatabase(order);
                     //getOrderFromDatabase(ref orderList);
                     //sendOrderToClient(sw, orderList, "Nguyen Cao Khoi");
@@ -178,6 +206,13 @@ namespace Server
                 }
 
             }
+        }
+        public static void recvRequest(StreamReader sr)
+        {
+            string request = "";
+            request = sr.ReadLine();
+
+            //Khoi nhan cai request r gui anh trong ham nay luon nhe ng ae
         }
         public void Run(object sender, RoutedEventArgs e)
         {

@@ -21,3 +21,26 @@ E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-win
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.pdb
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.genruntimeconfig.cache
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\ref\Server.dll
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\bin\Debug\net6.0-windows\Server.exe
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\bin\Debug\net6.0-windows\Server.deps.json
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\bin\Debug\net6.0-windows\Server.runtimeconfig.json
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\bin\Debug\net6.0-windows\Server.dll
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\bin\Debug\net6.0-windows\Server.pdb
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.csproj.AssemblyReference.cache
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\Server_MarkupCompile.cache
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\Server_MarkupCompile.lref
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.g.resources
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.AssemblyInfoInputs.cache
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.AssemblyInfo.cs
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.csproj.CoreCompileInputs.cache
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.csproj.CopyComplete
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.dll
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\refint\Server.dll
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.pdb
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.genruntimeconfig.cache
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Server\Server\obj\Debug\net6.0-windows\ref\Server.dll
