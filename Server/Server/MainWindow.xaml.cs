@@ -104,7 +104,7 @@ namespace Server
                 //Backround
                 System.Drawing.Image img = System.Drawing.Image.FromFile("./Image/Background/" + request[0] + ".jpg");
                 byte[] a = ImageToByteArray(img);
-                MessageBox.Show(a.Length.ToString());
+                Console.WriteLine(a.Length);
                 int len = a.Length;
                 sw.WriteLine(len); //send size of image for client to create a buffer
                 sw.Flush();

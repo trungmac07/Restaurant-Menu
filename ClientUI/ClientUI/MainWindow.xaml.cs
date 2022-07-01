@@ -191,10 +191,12 @@ namespace ClientUI
         {
             //Receive image
             client.recvPic();
+
             ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("./image.jpg"));
+            Uri link = new Uri(@".\image.jpg", UriKind.Relative);
+            imageBrush.ImageSource = new BitmapImage(link);
             menuArea.Background = imageBrush;
-           
+
             var c = 0;
             var i = 1;
             for (; i <= 3; ++i)
@@ -211,7 +213,7 @@ namespace ClientUI
             {
                 if (child is StackPanel)
                 {
-                    c = 0;
+                    /*c = 0;
                     ++i;
                     var label = new Label();
                     label.Name = "content" + i + "Label";
@@ -234,7 +236,7 @@ namespace ClientUI
                         textBlock.FontFamily = new FontFamily("Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
                         (child as StackPanel).Children.Add(textBlock);
-                    }
+                    }*/
                 }
 
             }
@@ -243,12 +245,15 @@ namespace ClientUI
         {
             //Receive image
             client.recvPic();
+
             ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("./image.jpg"));
+            Uri link = new Uri(@".\image.jpg", UriKind.Relative);
+            imageBrush.ImageSource = new BitmapImage(link);
             menuArea.Background = imageBrush;
+     
 
             //Reveive List of menu
-            List<string> a = client.recvMenu();
+            //List<string> a = client.recvMenu();
 
             var c = 0;
             var i = 1;
@@ -266,7 +271,7 @@ namespace ClientUI
             {
                 if (child is StackPanel)
                 {
-                    ++i;
+                    /*++i;
                     var label = new Label();
                     label.Name = "content" + i + "Label";
                     label.HorizontalAlignment = HorizontalAlignment.Left;
@@ -287,7 +292,7 @@ namespace ClientUI
                         textBlock.FontFamily = new FontFamily("Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
                         (child as StackPanel).Children.Add(textBlock);
-                    }
+                    }*/
                 }
 
             }
@@ -296,12 +301,14 @@ namespace ClientUI
         {
             //Receive image
             client.recvPic();
+
             ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("./image.jpg"));
+            Uri link = new Uri(@".\image.jpg", UriKind.Relative);
+            imageBrush.ImageSource = new BitmapImage(link);
             menuArea.Background = imageBrush;
 
             //Reveive List of menu
-            List<string> a = client.recvMenu();
+            //List<string> a = client.recvMenu();
 
             var c = 0;
             var i = 1;
@@ -320,7 +327,7 @@ namespace ClientUI
                 if (child is StackPanel)
                 {
 
-                    var label = new Label();
+                    /*var label = new Label();
                     label.Name = "content" + ++i + "Label";
                     label.HorizontalAlignment = HorizontalAlignment.Left;
                     label.Content = "Content " + i;
@@ -340,7 +347,7 @@ namespace ClientUI
                         textBlock.FontFamily = new FontFamily("Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
                         (child as StackPanel).Children.Add(textBlock);
-                    }
+                    }*/
                 }
 
             }
@@ -386,7 +393,7 @@ namespace ClientUI
 
         private void selectMenu(object sender, RoutedEventArgs e)
         {
-
+            menuArea.Children.Clear();
             int index = 1+listViewMenu.SelectedIndex; 
             MoveCursorMenu(index-1);
             MessageBox.Show(index.ToString());
