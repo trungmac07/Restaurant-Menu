@@ -186,9 +186,10 @@ namespace Server
                 Thread mainThread = new Thread(ServerInit);
                 mainThread.Start();
                 isStart = true;
+                
             }
             else
-            {
+            { 
                 MessageBox.Show("Server has started, stop pressing the button bro ???? ");
             }
         } 
