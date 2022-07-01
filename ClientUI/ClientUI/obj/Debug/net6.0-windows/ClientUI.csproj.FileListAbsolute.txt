@@ -24,3 +24,29 @@ E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\obj\Debug\net6.0
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.pdb
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.genruntimeconfig.cache
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ref\ClientUI.dll
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\ClientUI.exe
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\ClientUI.deps.json
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\ClientUI.runtimeconfig.json
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\ClientUI.dll
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\ClientUI.pdb
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\MaterialDesignColors.dll
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.csproj.AssemblyReference.cache
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI_MarkupCompile.cache
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI_MarkupCompile.lref
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\App.baml
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.g.resources
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.AssemblyInfoInputs.cache
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.AssemblyInfo.cs
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.csproj.CoreCompileInputs.cache
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.csproj.CopyComplete
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.dll
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\refint\ClientUI.dll
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.pdb
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.genruntimeconfig.cache
+C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ref\ClientUI.dll

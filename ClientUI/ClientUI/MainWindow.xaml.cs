@@ -30,7 +30,7 @@ namespace ClientUI
             
             //client.recvPic();
 
-            drawMenu();
+           
             /* InitializeComponent();  //Vay thi chay sai
              client.recvByte();*/
 
@@ -401,6 +401,7 @@ namespace ClientUI
             else
             {
                 //send menu(index)
+                client.sendRequest(index, 0);
                 chooseMenuLayout(index);
             }
 

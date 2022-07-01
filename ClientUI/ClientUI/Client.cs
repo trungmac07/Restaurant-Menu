@@ -107,7 +107,10 @@ namespace Client
         {
 
         }
-
+        public void sendRequest(int index, int foodchoice)
+        {
+            sw.WriteLine(index.ToString() + " " + foodchoice.ToString());
+        }
     }
 }
 
