@@ -67,12 +67,13 @@ namespace Client
 
         public void recvPic()
         {
+            MessageBox.Show("Trung");
             int n = Int32.Parse(sr.ReadLine());         //Reveice size of image
-            
+            MessageBox.Show("Ha");
             byte[] buffer = new byte[n];
 
             stream.Read(buffer, 0, n);
-            
+            MessageBox.Show("Khoi");
             var Nstream = new MemoryStream(buffer,0,n);
 
             //File.WriteAllBytes("./image.jpg", buffer);
@@ -110,6 +111,7 @@ namespace Client
         public void sendRequest(int index, int foodchoice)
         {
             sw.WriteLine(index.ToString() + " " + foodchoice.ToString());
+            sw.Flush();
         }
     }
 }

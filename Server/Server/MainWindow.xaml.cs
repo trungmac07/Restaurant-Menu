@@ -104,7 +104,7 @@ namespace Server
                 //Backround
                 System.Drawing.Image img = System.Drawing.Image.FromFile("./Image/Background/" + request[0] + ".jpg");
                 byte[] a = ImageToByteArray(img);
-
+                MessageBox.Show(a.Length.ToString());
                 int len = a.Length;
                 sw.WriteLine(len); //send size of image for client to create a buffer
                 sw.Flush();
@@ -192,7 +192,7 @@ namespace Server
                 try
                 {
 
-                    recvRequest(sr);
+                    recvRequest(sr, sw, stream);
                     //exportOrderToDatabase(order);
                     //getOrderFromDatabase(ref orderList);
                     //sendOrderToClient(sw, orderList, "Nguyen Cao Khoi");
@@ -207,12 +207,11 @@ namespace Server
 
             }
         }
-        public static void recvRequest(StreamReader sr)
+        public static void recvRequest(StreamReader sr, StreamWriter sw, NetworkStream stream)
         {
             string request = "";
             request = sr.ReadLine();
-
-            //Khoi nhan cai request r gui anh trong ham nay luon nhe ng ae
+            sendPic(sw, stream, request);
         }
         public void Run(object sender, RoutedEventArgs e)
         {
