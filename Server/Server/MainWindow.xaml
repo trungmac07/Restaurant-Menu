@@ -12,7 +12,7 @@
             <ImageBrush ImageSource=".\Image\server.jpg" />
         </ScrollViewer.Background>
         <StackPanel Name ="menuArea">
-           
+            <Button Name ="startButton"  Content="RUN SERVER" FontSize="45" Click="Run" Height="300" Width="500"></Button>
             <Border Width="570" HorizontalAlignment="Left" BorderThickness="2,2,2,2" BorderBrush="Black">
                 <DockPanel>
                     <Button BorderThickness="0,0,0,0" Content="5" FontSize="37" Width="70"></Button>
