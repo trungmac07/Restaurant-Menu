@@ -58,9 +58,14 @@ namespace Client
             var numberOfFood = Int32.Parse(sr.ReadLine());
             for (int i = 0; i < numberOfFood; i++)
             {
-                response = sr.ReadLine();
-                //nhan ten....gia
-                menuList.Add(response);
+                var numberOfDish = Int32.Parse(sr.ReadLine());
+                for (int j = 0; j < numberOfDish; j++)
+                {
+                    response = sr.ReadLine();
+                    //nhan ten....gia
+                    menuList.Add(response);
+                }
+                
             }
             return menuList;
         }

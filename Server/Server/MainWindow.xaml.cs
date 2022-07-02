@@ -40,7 +40,8 @@ namespace Server
                 sw.Flush();
                 return;
             }
-
+            sw.WriteLine(menuList.Count);
+            sw.Flush();
             foreach (var menuItem in menuList)
             {
                 //sw.WriteLine(menuItem.name);
@@ -97,7 +98,7 @@ namespace Server
             }
         }
 
-        public static void sendPic(StreamWriter sw, NetworkStream stream, string request)
+        public static void sendPicAndMenu(StreamWriter sw, NetworkStream stream, string request)
         {
             if (request[2] == '0')
             {
@@ -245,12 +246,12 @@ namespace Server
             string request = "";
             request = sr.ReadLine();
             Console.WriteLine(request);
-            sendPic(sw, stream, request);
+            // Doi sendPic thành này nha 
+            sendPicAndMenu(sw, stream, request);
             
         }
         public void Run(object sender, RoutedEventArgs e)
         {
-            startButton.Visibility = Visibility.Collapsed;
             if (isStart == false)
             {
                 Thread mainThread = new Thread(ServerInit);
