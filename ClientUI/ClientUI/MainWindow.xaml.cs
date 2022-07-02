@@ -193,6 +193,7 @@ namespace ClientUI
         private void soupMenu()
         {
             //Receive image
+            
             client.recvPic();
 
             ImageBrush imageBrush = new ImageBrush();
@@ -397,6 +398,7 @@ namespace ClientUI
         private void selectMenu(object sender, RoutedEventArgs e)
         {
             menuArea.Children.Clear();
+            menuArea.Background = new SolidColorBrush(new Color());
             int index = 1+listViewMenu.SelectedIndex; 
             MoveCursorMenu(index-1);
             MessageBox.Show(index.ToString());

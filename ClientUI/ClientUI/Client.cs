@@ -69,9 +69,9 @@ namespace Client
         {
            
             int n = Int32.Parse(sr.ReadLine());         //Reveice size of image
-  
+            MessageBox.Show(n.ToString());
             byte[] buffer = new byte[n];
-
+            
             stream.Read(buffer, 0, n);
 
             try
