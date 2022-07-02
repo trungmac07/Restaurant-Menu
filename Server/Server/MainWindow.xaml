@@ -5,8 +5,115 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Server"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="RUN SERVER" FontSize="45" Click="Run" Height="300" Width="500"> </Button>
-    </Grid>
+        Title="MainWindow" Height="720" Width="1280">
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ScrollViewer.Background>
+            <ImageBrush ImageSource=".\Image\server.jpg" />
+        </ScrollViewer.Background>
+        <StackPanel Name ="menuArea">
+           
+            <Border Width="570" HorizontalAlignment="Left" BorderThickness="2,2,2,2" BorderBrush="Black">
+                <DockPanel>
+                    <Button BorderThickness="0,0,0,0" Content="5" FontSize="37" Width="70"></Button>
+                    <StackPanel Width ="500" Background="LightBlue" HorizontalAlignment="Left">
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+            
+            <Border Width="570" HorizontalAlignment="Left" BorderThickness="2,2,2,2" BorderBrush="Black">
+                <DockPanel>
+                    <Button BorderThickness="0,0,0,0" Content="5" FontSize="37" Width="70"></Button>
+                    <StackPanel Width ="500" HorizontalAlignment="Left">
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
+            <Border Width="570" HorizontalAlignment="Left" BorderThickness="2,2,2,2" BorderBrush="Black">
+                <DockPanel>
+                    <Button BorderThickness="0,0,0,0" Content="5" FontSize="37" Width="70"></Button>
+                    <StackPanel Width ="500" Background="LightBlue" HorizontalAlignment="Left">
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
+            <Border Width="570" HorizontalAlignment="Left" BorderThickness="2,2,2,2" BorderBrush="Black">
+                <DockPanel>
+                    <Button BorderThickness="0,0,0,0" Content="5" FontSize="37" Width="70"></Button>
+                    <StackPanel Width ="500" HorizontalAlignment="Left">
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
+            <Border Width="570" HorizontalAlignment="Left" BorderThickness="2,2,2,2" BorderBrush="Black">
+                <DockPanel>
+                    <Button BorderThickness="0,0,0,0" Content="5" FontSize="37" Width="70"></Button>
+                    <StackPanel Width ="500" Background="LightBlue" HorizontalAlignment="Left">
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Height="45" Margin="45 0" Text="Com ga" FontSize="25" FontFamily="Arial" />
+                            <Button Background="LawnGreen" Content="V" Width="45" HorizontalAlignment="Right" BorderThickness="0,0,0,0"/>
+                        </DockPanel>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
+
+        </StackPanel>
+    </ScrollViewer>
 </Window>

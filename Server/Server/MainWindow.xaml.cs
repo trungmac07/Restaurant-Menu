@@ -215,6 +215,7 @@ namespace Server
         }
         public void Run(object sender, RoutedEventArgs e)
         {
+            startButton.Visibility = Visibility.Collapsed;
             if (isStart == false)
             {
                 Thread mainThread = new Thread(ServerInit);
