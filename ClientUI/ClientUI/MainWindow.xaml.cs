@@ -138,6 +138,8 @@ namespace ClientUI
             //Receive image
             client.recvPic();
 
+            // Get menu from server
+            List<string> a = client.recvMenu();
 
             ImageBrush imageBrush = new ImageBrush();
             Uri link = new Uri(@".\image.jpg",UriKind.Relative);
@@ -160,10 +162,6 @@ namespace ClientUI
             {
                 if (child is StackPanel)
                 {
-                    // Get menu from server
-                    List<string> a = client.recvMenu();
-
-                    c = 0;
                     ++i;
                     var label = new Label();
                     label.Name = "content" + i + "Label";
@@ -195,6 +193,9 @@ namespace ClientUI
             //Receive image
             client.recvPic();
 
+            // Get menu from server
+            List<string> a = client.recvMenu();
+
             ImageBrush imageBrush = new ImageBrush();
             Uri link = new Uri(@".\image.jpg", UriKind.Relative);
             imageBrush.ImageSource = new BitmapImage(link);
@@ -216,7 +217,6 @@ namespace ClientUI
             {
                 if (child is StackPanel)
                 {
-                    /*c = 0;
                     ++i;
                     var label = new Label();
                     label.Name = "content" + i + "Label";
@@ -226,8 +226,7 @@ namespace ClientUI
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
-                    List<string> a = client.recvMenu();
-                    for (int j = 0; j < a.Count; ++j)
+                    for (int j = 0; j < 6; ++j)
                     {   
                         var textBlock = new TextBlock();
                         textBlock.Text = a[c++];
@@ -239,7 +238,7 @@ namespace ClientUI
                         textBlock.FontFamily = new FontFamily("Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
                         (child as StackPanel).Children.Add(textBlock);
-                    }*/
+                    }
                 }
 
             }
@@ -248,7 +247,10 @@ namespace ClientUI
         {
             //Receive image
             client.recvPic();
-            
+
+            // Get menu from server
+            List<string> a = client.recvMenu();
+
             ImageBrush imageBrush = new ImageBrush();
             Uri link = new Uri(@".\image.jpg", UriKind.Relative);
             imageBrush.ImageSource = new BitmapImage(link);
@@ -274,7 +276,7 @@ namespace ClientUI
             {
                 if (child is StackPanel)
                 {
-                    /*++i;
+                    ++i;
                     var label = new Label();
                     label.Name = "content" + i + "Label";
                     label.HorizontalAlignment = HorizontalAlignment.Left;
@@ -286,7 +288,7 @@ namespace ClientUI
                     for (int j = 0; j < 6; ++j)
                     {
                         var textBlock = new TextBlock();
-                        textBlock.Text = a[++c];
+                        textBlock.Text = a[c++];
                         textBlock.MouseDown += chooseDishes;
                         textBlock.Tag = "dish" + i.ToString();
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
@@ -295,7 +297,7 @@ namespace ClientUI
                         textBlock.FontFamily = new FontFamily("Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
                         (child as StackPanel).Children.Add(textBlock);
-                    }*/
+                    }
                 }
 
             }
@@ -304,6 +306,9 @@ namespace ClientUI
         {
             //Receive image
             client.recvPic();
+
+            // Get menu from server
+            List<string> a = client.recvMenu();
 
             ImageBrush imageBrush = new ImageBrush();
             Uri link = new Uri(@".\image.jpg", UriKind.Relative);
@@ -330,7 +335,7 @@ namespace ClientUI
                 if (child is StackPanel)
                 {
 
-                    /*var label = new Label();
+                    var label = new Label();
                     label.Name = "content" + ++i + "Label";
                     label.HorizontalAlignment = HorizontalAlignment.Left;
                     label.Content = "Content " + i;
@@ -341,7 +346,7 @@ namespace ClientUI
                     for (int j = 0; j < 6; ++j)
                     {
                         var textBlock = new TextBlock();
-                        textBlock.Text = a[++c];
+                        textBlock.Text = a[c++];
                         textBlock.MouseDown += chooseDishes;
                         textBlock.Tag = "dish" + i.ToString();
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
@@ -350,7 +355,7 @@ namespace ClientUI
                         textBlock.FontFamily = new FontFamily("Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
                         (child as StackPanel).Children.Add(textBlock);
-                    }*/
+                    }
                 }
 
             }
