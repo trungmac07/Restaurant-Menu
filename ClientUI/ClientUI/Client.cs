@@ -73,13 +73,21 @@ namespace Client
             byte[] buffer = new byte[n];
 
             stream.Read(buffer, 0, n);
-           
-            var Nstream = new MemoryStream(buffer,0,n);
 
             try
             {
-                System.Drawing.Image img = new Bitmap(Nstream);
-                img.Save(@".\image.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                using (var Nstream = new MemoryStream(buffer, 0, n))
+                {
+                    System.Drawing.Image img = new Bitmap(Nstream);
+                    try
+                    {
+                        if (File.Exists(@".\image.jpg")) File.Delete(@".\image.jpg");
+                    }
+                    catch { }
+                    img.Save(@".\image.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                }
+                
+
             }
             catch (Exception ex)
             {
