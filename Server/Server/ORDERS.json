@@ -1,0 +1,25 @@
+﻿[
+  {
+    "clientName": "Nguyen Cao Khoi",
+    "dateTime": "2022-03-29T00:00:00",
+    "dishOrder": [
+      {
+        "dish": {
+          "name": "Chicken Pho",
+          "price": 120000
+        },
+        "numberOfDishes": 5,
+        "totalMoney": 600000
+      },
+      {
+        "dish": {
+          "name": "Vegan Noodles",
+          "price": 200000
+        },
+        "numberOfDishes": 2,
+        "totalMoney": 400000
+      }
+    ],
+    "totalMoney": 1000000
+  }
+]

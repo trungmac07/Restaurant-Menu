@@ -113,6 +113,33 @@ namespace Server
 
                 stream.Write(a, 0, len);  //send bytes
                 stream.Flush();
+
+                // Send menu list 
+                List<FOOD> menuList = new List<FOOD>();
+                switch (request[0])
+                {
+                    case '1':
+                        {
+                            getMenuFromDatabase("../../../MAIN_DISHES.json", ref menuList);
+                            break;
+                        }
+                    case '2':
+                        {
+                            getMenuFromDatabase("../../../SOUP.json", ref menuList);
+                            break;
+                        }
+                    case '3':
+                        {
+                            getMenuFromDatabase("../../../DESSERT.json", ref menuList);
+                            break;
+                        }
+                    case '4':
+                        {
+                            getMenuFromDatabase("../../../DRINKS.json", ref menuList);
+                            break;
+                        }
+                }
+                sendMenuToClient(sw, menuList);
             }
             else
             {
@@ -191,18 +218,24 @@ namespace Server
                 StreamWriter sw = new StreamWriter(client.GetStream());
                 try
                 {
-
-                    recvRequest(sr, sw, stream);
+                    while (client.Connected)
+                    {
+                        try
+                        {
+                            recvRequest(sr, sw, stream);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Client has disconnected!");
+                        }
+                    }
                     //exportOrderToDatabase(order);
                     //getOrderFromDatabase(ref orderList);
                     //sendOrderToClient(sw, orderList, "Nguyen Cao Khoi");
-
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Something went wrong.");
-                    sw.WriteLine(ex.ToString());
-                    sw.Flush();
                 }
 
             }
@@ -211,7 +244,9 @@ namespace Server
         {
             string request = "";
             request = sr.ReadLine();
+            Console.WriteLine(request);
             sendPic(sw, stream, request);
+            
         }
         public void Run(object sender, RoutedEventArgs e)
         {
@@ -221,7 +256,6 @@ namespace Server
                 Thread mainThread = new Thread(ServerInit);
                 mainThread.Start();
                 isStart = true;
-                
             }
             else
             { 
