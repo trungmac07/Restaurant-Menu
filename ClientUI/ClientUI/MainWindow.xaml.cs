@@ -265,16 +265,18 @@ namespace ClientUI
         {
             //Receive image
             client.recvPic();
-            
+
             ImageBrush imageBrush = new ImageBrush();
             Uri link = new Uri(@".\image.jpg", UriKind.Relative);
-            imageBrush.ImageSource = new BitmapImage(link);
-            ImageBrush imageBrush2 = imageBrush.Clone();
-            menuArea.Background = imageBrush2;
-            Uri link2 = new Uri(@".\hehe.jpg", UriKind.Relative);
-            imageBrush.ImageSource = new BitmapImage(link2);
+            BitmapImage bi = new BitmapImage();
 
-            imageBrush.ImageSource.Freeze();
+            bi.BeginInit();
+            bi.UriSource = link;
+            bi.EndInit();
+
+            imageBrush.ImageSource = bi;
+            menuArea.Background = imageBrush;
+            imageBrush.Freeze();
             //Reveive List of menu
             //List<string> a = client.recvMenu();
 
@@ -309,7 +311,7 @@ namespace ClientUI
                     for (int j = 0; j < numberFood[i-1]; ++j)
                     {
                         var textBlock = new TextBlock();
-                        textBlock.Text = a[++c];
+                        textBlock.Text = a[c++];
                         textBlock.MouseDown += chooseDishes;
                         textBlock.Tag = "dish" + i.ToString();
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
@@ -330,11 +332,15 @@ namespace ClientUI
 
             ImageBrush imageBrush = new ImageBrush();
             Uri link = new Uri(@".\image.jpg", UriKind.Relative);
-            imageBrush.ImageSource = new BitmapImage(link);
-            ImageBrush imageBrush2 = imageBrush.Clone();
-            menuArea.Background = imageBrush2;
-            Uri link2 = new Uri(@".\hehe.jpg", UriKind.Relative);
-            imageBrush.ImageSource = new BitmapImage(link2);
+            BitmapImage bi = new BitmapImage();
+
+            bi.BeginInit();
+            bi.UriSource = link;
+            bi.EndInit();
+
+            imageBrush.ImageSource = bi;
+            menuArea.Background = imageBrush;
+            imageBrush.Freeze();
             //Reveive List of menu
             //List<string> a = client.recvMenu();
 
@@ -369,7 +375,7 @@ namespace ClientUI
                     for (int j = 0; j < numberFood[i-1]; ++j)
                     {
                         var textBlock = new TextBlock();
-                        textBlock.Text = a[++c];
+                        textBlock.Text = a[c++];
                         textBlock.MouseDown += chooseDishes;
                         textBlock.Tag = "dish" + i.ToString();
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
