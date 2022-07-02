@@ -49,7 +49,11 @@ namespace Server
                 sw.Flush();
                 foreach (var item in menuItem.foodList)
                 {
-                    sw.WriteLine(item.name + "...." + item.price);
+                    string s = item.name;
+                    for (int i = 0; i < 30 - item.name.Length - item.price.ToString().Length; i++)
+                        s += '.';
+                    s += item.price;
+                    sw.WriteLine(s);
                     sw.Flush();
                 }
             }

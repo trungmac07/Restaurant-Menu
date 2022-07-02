@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using System.Drawing;
+
+//widTh 340
 namespace Client
 {
     class Client
@@ -65,7 +67,6 @@ namespace Client
                     //nhan ten....gia
                     menuList.Add(response);
                 }
-                
             }
             return menuList;
         }
@@ -88,8 +89,18 @@ namespace Client
                     {
                         if (File.Exists(@".\image.jpg")) File.Delete(@".\image.jpg");
                     }
-                    catch { }
-                    img.Save(@".\image.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    catch { 
+                    }
+                here:;
+                    try
+                    {
+                        img.Save(@".\image.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    }
+                    catch
+                    {
+                        goto here;
+                    }
+                    img.Dispose();
                 }
                 
 

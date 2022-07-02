@@ -138,16 +138,20 @@ namespace ClientUI
             //Receive image
             client.recvPic();
 
-            // Get menu from server
-            List<string> a = client.recvMenu();
-
             ImageBrush imageBrush = new ImageBrush();
-            Uri link = new Uri(@".\image.jpg",UriKind.Relative);
-            imageBrush.ImageSource = new BitmapImage(link);
-            menuArea.Background = imageBrush;
+            Uri link = new Uri(@".\image.jpg", UriKind.Relative);
+            BitmapImage bi = new BitmapImage();
+
+            bi.BeginInit();
+            bi.UriSource = link;
+            bi.EndInit();
             
+            imageBrush.ImageSource = bi;
+            menuArea.Background = imageBrush;
+            // GC.Collect();
+            imageBrush.Freeze();
             var c = 0;
-            var i = 1;
+            var i = 1;  
             for (; i <= 3; ++i)
             {
                 var stackPanel = new StackPanel();
@@ -157,11 +161,15 @@ namespace ClientUI
                 menuArea.Children.Add(stackPanel);
             }
 
+            int[] numberFood = new int[] { 8, 8, 6 };
             i = 0;
+            List<string> a = client.recvMenu();
+
             foreach (object child in menuArea.Children)
             {
                 if (child is StackPanel)
                 {
+                    // Get menu from server
                     ++i;
                     var label = new Label();
                     label.Name = "content" + i + "Label";
@@ -171,7 +179,7 @@ namespace ClientUI
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
-                    for (int j = 0; j < 6; ++j)
+                    for (int j = 0; j < numberFood[i-1]; ++j)
                     {
                         var textBlock = new TextBlock();
                         textBlock.Text = a[c++];
@@ -194,13 +202,18 @@ namespace ClientUI
             
             client.recvPic();
 
-            // Get menu from server
-            List<string> a = client.recvMenu();
-
             ImageBrush imageBrush = new ImageBrush();
             Uri link = new Uri(@".\image.jpg", UriKind.Relative);
-            imageBrush.ImageSource = new BitmapImage(link);
+            BitmapImage bi = new BitmapImage();
+
+            bi.BeginInit();
+            bi.UriSource = link;
+            bi.EndInit();
+
+            imageBrush.ImageSource = bi;
             menuArea.Background = imageBrush;
+            imageBrush.Freeze();
+            //GC.Collect();
 
             var c = 0;
             var i = 1;
@@ -213,11 +226,14 @@ namespace ClientUI
                 menuArea.Children.Add(stackPanel);
             }
 
+            int[] numberFood = new int[] { 6, 8, 8 };
             i = 0;
+            List<string> a = client.recvMenu();
             foreach (object child in menuArea.Children)
             {
                 if (child is StackPanel)
                 {
+              
                     ++i;
                     var label = new Label();
                     label.Name = "content" + i + "Label";
@@ -227,7 +243,8 @@ namespace ClientUI
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
-                    for (int j = 0; j < 6; ++j)
+                    
+                    for (int j = 0; j < numberFood[i-1]; ++j)
                     {   
                         var textBlock = new TextBlock();
                         textBlock.Text = a[c++];
@@ -248,16 +265,16 @@ namespace ClientUI
         {
             //Receive image
             client.recvPic();
-
-            // Get menu from server
-            List<string> a = client.recvMenu();
-
+            
             ImageBrush imageBrush = new ImageBrush();
             Uri link = new Uri(@".\image.jpg", UriKind.Relative);
             imageBrush.ImageSource = new BitmapImage(link);
-            menuArea.Background = imageBrush;
-     
+            ImageBrush imageBrush2 = imageBrush.Clone();
+            menuArea.Background = imageBrush2;
+            Uri link2 = new Uri(@".\hehe.jpg", UriKind.Relative);
+            imageBrush.ImageSource = new BitmapImage(link2);
 
+            imageBrush.ImageSource.Freeze();
             //Reveive List of menu
             //List<string> a = client.recvMenu();
 
@@ -273,6 +290,9 @@ namespace ClientUI
             }
 
             i = 0;
+            int[] numberFood = new int[] { 8, 6, 8 };
+            List<string> a = client.recvMenu();
+
             foreach (object child in menuArea.Children)
             {
                 if (child is StackPanel)
@@ -286,10 +306,10 @@ namespace ClientUI
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
-                    for (int j = 0; j < 6; ++j)
+                    for (int j = 0; j < numberFood[i-1]; ++j)
                     {
                         var textBlock = new TextBlock();
-                        textBlock.Text = a[c++];
+                        textBlock.Text = a[++c];
                         textBlock.MouseDown += chooseDishes;
                         textBlock.Tag = "dish" + i.ToString();
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
@@ -308,14 +328,13 @@ namespace ClientUI
             //Receive image
             client.recvPic();
 
-            // Get menu from server
-            List<string> a = client.recvMenu();
-
             ImageBrush imageBrush = new ImageBrush();
             Uri link = new Uri(@".\image.jpg", UriKind.Relative);
             imageBrush.ImageSource = new BitmapImage(link);
-            menuArea.Background = imageBrush;
-
+            ImageBrush imageBrush2 = imageBrush.Clone();
+            menuArea.Background = imageBrush2;
+            Uri link2 = new Uri(@".\hehe.jpg", UriKind.Relative);
+            imageBrush.ImageSource = new BitmapImage(link2);
             //Reveive List of menu
             //List<string> a = client.recvMenu();
 
@@ -331,6 +350,9 @@ namespace ClientUI
             }
 
             i = 0;
+            int[] numberFood = new int[] { 8, 8, 6 };
+            List<string> a = client.recvMenu();
+
             foreach (object child in menuArea.Children)
             {
                 if (child is StackPanel)
@@ -344,10 +366,10 @@ namespace ClientUI
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
-                    for (int j = 0; j < 6; ++j)
+                    for (int j = 0; j < numberFood[i-1]; ++j)
                     {
                         var textBlock = new TextBlock();
-                        textBlock.Text = a[c++];
+                        textBlock.Text = a[++c];
                         textBlock.MouseDown += chooseDishes;
                         textBlock.Tag = "dish" + i.ToString();
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
@@ -403,10 +425,22 @@ namespace ClientUI
         private void selectMenu(object sender, RoutedEventArgs e)
         {
             menuArea.Children.Clear();
-            menuArea.Background = new SolidColorBrush(new Color());
+
+            ImageBrush imageBrush = new ImageBrush();
+            Uri link = new Uri(@".\hehe.jpg", UriKind.Relative);
+            BitmapImage bi = new BitmapImage();
+
+            bi.BeginInit();
+            bi.UriSource = link;
+            bi.EndInit();
+
+            imageBrush.ImageSource = bi;
+            menuArea.Background = imageBrush;
+            imageBrush.Freeze();
+
             int index = 1+listViewMenu.SelectedIndex; 
             MoveCursorMenu(index-1);
-            MessageBox.Show(index.ToString());
+            
             if(index == 0)
             {
                 //send Welcome
