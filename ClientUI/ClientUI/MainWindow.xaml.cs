@@ -58,14 +58,28 @@ namespace ClientUI
             GridCursor.Margin = new Thickness(0, (100 + (60 * index)), 0, 0);
         }
 
+      
         private void chooseDishes(object sender, RoutedEventArgs e)
         {
-            TextBlock a = sender as TextBlock;
-            //MessageBox.Show(a.Tag.ToString());
+            menuArea.Children.Clear();
+
+            Image dish = new Image();
             BitmapImage bi = new BitmapImage();
-            client.recvPic(ref bi);
+            client.recvPic(ref bi); //receive image
+            dish.Height = 550;
+            dish.Width = 1060;
+            dish.Stretch = Stretch.Fill;
+            dish.Source = bi;
+            DockPanel.SetDock(dish, Dock.Top);
+            TextBlock des = new TextBlock();
+            des.Height = 120;
+            des.Width = 1060;
+            des.Text = client.recvDescription(); //reveice desceripniton;
 
+            menuArea.Children.Add(dish);
+            menuArea.Children.Add(des);
 
+            
             /*ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("./a.jpg"));
             menuArea.Background = imageBrush;*/

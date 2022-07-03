@@ -73,7 +73,11 @@ namespace Client
             }
             return menuList;
         }
-
+        public string recvDescription()
+        {
+            string des = sr.ReadLine();
+            return des;
+        }
         public void recvPic(ref BitmapImage bi)
         {
 
