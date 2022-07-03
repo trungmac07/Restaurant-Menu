@@ -13,6 +13,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
@@ -23,13 +24,13 @@ namespace ClientUI
     public partial class MainWindow : Window
     {
         Client.Client client;
- 
+
         public MainWindow()
         {
 
             InitializeComponent();  //Vay thi chay bth
             client = new Client.Client();
-
+            
             //client.recvPic();
 
 
@@ -58,40 +59,105 @@ namespace ClientUI
             GridCursor.Margin = new Thickness(0, (100 + (60 * index)), 0, 0);
         }
 
-      
+        private Storyboard myStoryboard, desStoryboard;
+        private TextBlock des;
+        private Border border, mother;
         private void chooseDishes(object sender, RoutedEventArgs e)
         {
             
+            menuArea.Children.Clear();
+           
             TextBlock thisTextBlock = sender as TextBlock;
-      
+            
             client.sendRequest(thisTextBlock.Name);
 
-            menuArea.Children.Clear();
-            Image dish = new Image();
-            
+
             BitmapImage bi = new BitmapImage();
             client.recvPic(ref bi); //receive image
-            dish.Height = 550;
-            dish.Width = 1060;
-            dish.Stretch = Stretch.Fill;
-           
-            dish.Source = bi;
-           
-            DockPanel.SetDock(dish, Dock.Top);
-            TextBlock des = new TextBlock();
+
+            //mother border loves her children like your mom <3 ;
+            mother = new Border();
+            mother.Background = new SolidColorBrush(Colors.Pink);
+            mother.Width = 1060;
+            mother.Height = 550;
+            DockPanel.SetDock(mother, Dock.Top);
+
+            //Border Appear Animation
+            border = new Border();
+            border.Name = "dishImage";
+            this.RegisterName(border.Name, border);
+            border.Background = new ImageBrush(bi);
+            border.CornerRadius = new CornerRadius(60);
+            border.BorderThickness = new Thickness(7, 7, 7, 7);
+            border.BorderBrush = Brushes.Black;
+            border.Width = 1060;
+            border.Height = 550;
+
+            var hAnimation = new DoubleAnimation();
+            hAnimation.From = 0;
+            hAnimation.To = 550;
+            hAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.7));
+            var wAnimation = new DoubleAnimation();
+            wAnimation.From = 0;
+            wAnimation.To = 1060;
+            wAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.7));
+
+            myStoryboard = new Storyboard();
+            myStoryboard.Children.Add(hAnimation);
+            myStoryboard.Children.Add(wAnimation);
+            Storyboard.SetTargetName(wAnimation, border.Name);
+            Storyboard.SetTargetName(hAnimation, border.Name);
+            Storyboard.SetTargetProperty(wAnimation, new PropertyPath(Border.WidthProperty));
+            Storyboard.SetTargetProperty(hAnimation, new PropertyPath(Border.HeightProperty));
+            border.Loaded += showDish;
+            DockPanel.SetDock(border, Dock.Top);
+            mother.Child = border;
+            menuArea.Children.Add(mother);
+            
+
+
+            //Description appear animation
+            des = new TextBlock();
+            des.Name = "dishDes";
+            this.RegisterName(des.Name, des);
             des.Height = 120;
             des.Width = 1060;
             des.Text = client.recvDescription(); //reveice desceripniton;
-         
-            menuArea.Children.Add(dish);
-            menuArea.Children.Add(des);
-
+            des.Opacity = 0;
+            des.Background = new SolidColorBrush(Colors.Pink);
+            des.FontSize = 23;
             
+            var oAnimation = new DoubleAnimation();
+            oAnimation.From = 0;
+            oAnimation.To = 1;
+            oAnimation.Duration = new Duration(TimeSpan.FromSeconds(1.4));
+            oAnimation.BeginTime = TimeSpan.FromSeconds(0.7);
+
+            desStoryboard = new Storyboard();
+            desStoryboard.Children.Add(oAnimation);
+            Storyboard.SetTargetName(oAnimation, des.Name);
+            Storyboard.SetTargetProperty(oAnimation, new PropertyPath(Border.OpacityProperty));
+            des.Loaded += showDes;
+            DockPanel.SetDock(des, Dock.Bottom);
+            
+           
+            menuArea.Children.Add(des);
+         
+
             /*ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("./a.jpg"));
             menuArea.Background = imageBrush;*/
         }
-
+        private void showDish(object sender, RoutedEventArgs e)
+        {
+            myStoryboard.Begin(this);
+            this.UnregisterName("dishImage");
+        }
+        private void showDes(object sender, RoutedEventArgs e)
+        {
+            desStoryboard.Begin(this);
+            this.UnregisterName("dishDes");
+        }
         private Thickness chooseThickness(int mode, int x)
         {
             switch (mode)
@@ -164,10 +230,10 @@ namespace ClientUI
             BitmapImage bi = new BitmapImage();
             client.recvPic(ref bi);
 
-         
+
             try
             {
-               
+
                 var imageBrush = new ImageBrush { ImageSource = bi };
                 menuArea.Background = imageBrush;
             }
@@ -178,7 +244,7 @@ namespace ClientUI
             }
 
             // GC.Collect();
-            
+
             var c = 0;
             var i = 1;
             var foodNum = 0;
@@ -190,11 +256,11 @@ namespace ClientUI
                 stackPanel.Height = 670;
                 menuArea.Children.Add(stackPanel);
             }
-            
+
             int[] numberFood = new int[] { 8, 8, 6 };
             i = 0;
             List<string> a = client.recvMenu();
-            
+
             foreach (object child in menuArea.Children)
             {
                 if (child is StackPanel)
@@ -225,7 +291,7 @@ namespace ClientUI
                 }
 
             }
-           
+
         }
         private void soupMenu()
         {
@@ -284,7 +350,7 @@ namespace ClientUI
                         {
                             textBlock.Name = "_2_" + (++foodNum).ToString();
                         }
-                        catch(Exception ex)
+                        catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message);
                         }

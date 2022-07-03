@@ -16,7 +16,9 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
     </Window.Resources>
+
 
     <Grid Background="#FFEEEEEE" MouseDown="Grid_MouseDown">
         <StackPanel VerticalAlignment="Top">
@@ -37,8 +39,23 @@
         </StackPanel>
 
         <DockPanel Name="menuArea" Margin="220,50,0,0">
-
-            <Image Name="image" Source="C:\Users\Trung\Desktop\Image\2.jpg" Stretch="Fill" DockPanel.Dock="Top" Height="550" Width="1060" ></Image>
+            <Border BorderBrush="Black" BorderThickness="10,10,10,10" CornerRadius="70" DockPanel.Dock="Top" Height="550" Width="1060">
+                <Border.Background>
+                    <ImageBrush ImageSource="C:\Users\Trung\Desktop\Image\2.jpg" Stretch="Fill"  ></ImageBrush>
+                </Border.Background>
+                <Border.Triggers>
+                    <EventTrigger RoutedEvent="Border.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation From="0" To="550" Duration="0:0:1" Storyboard.TargetProperty="Height">
+                                </DoubleAnimation>
+                                <DoubleAnimation From="0" To="1060" Duration="0:0:1" Storyboard.TargetProperty="Width">
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Border.Triggers>
+            </Border>
             <TextBlock  Name="dishDescription" Text="Dish description" Height="120" Width="1060"></TextBlock>
 
             <!--<DockPanel.Background>
@@ -59,11 +76,11 @@
                 <Label Name ="content3Label" Margin="85,220,0,30" Content="Content 3" FontSize="57" FontFamily="SVN-Bali Script"></Label>
              
             </StackPanel>!-->
-            
-            
+
+
         </DockPanel>
 
-      
+
 
         <Grid Width="220" HorizontalAlignment="Left" Background="Pink">
             <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
