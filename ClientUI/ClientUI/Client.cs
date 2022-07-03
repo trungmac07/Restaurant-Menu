@@ -60,6 +60,9 @@ namespace Client
             var numberOfFood = Int32.Parse(sr.ReadLine());
             for (int i = 0; i < numberOfFood; i++)
             {
+                // Get content
+                response = sr.ReadLine();
+                menuList.Add(response);
                 var numberOfDish = Int32.Parse(sr.ReadLine());
                 for (int j = 0; j < numberOfDish; j++)
                 {
@@ -98,6 +101,7 @@ namespace Client
                     }
                     catch
                     {
+                        MessageBox.Show("Can't not save image");
                         goto here;
                     }
                     img.Dispose();

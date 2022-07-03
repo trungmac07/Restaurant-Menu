@@ -174,7 +174,7 @@ namespace ClientUI
                     var label = new Label();
                     label.Name = "content" + i + "Label";
                     label.HorizontalAlignment = HorizontalAlignment.Left;
-                    label.Content = "Content " + i;
+                    label.Content = a[c++];
                     label.Margin = chooseThickness(1, i);
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
@@ -238,7 +238,7 @@ namespace ClientUI
                     var label = new Label();
                     label.Name = "content" + i + "Label";
                     label.HorizontalAlignment = HorizontalAlignment.Left;
-                    label.Content = "Content " + i;
+                    label.Content = a[c++];
                     label.Margin = chooseThickness(2, i);
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
@@ -303,7 +303,7 @@ namespace ClientUI
                     var label = new Label();
                     label.Name = "content" + i + "Label";
                     label.HorizontalAlignment = HorizontalAlignment.Left;
-                    label.Content = "Content " + i;
+                    label.Content = a[c++];
                     label.Margin = chooseThickness(3, i);
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
@@ -367,7 +367,7 @@ namespace ClientUI
                     var label = new Label();
                     label.Name = "content" + ++i + "Label";
                     label.HorizontalAlignment = HorizontalAlignment.Left;
-                    label.Content = "Content " + i;
+                    label.Content = a[c++];
                     label.Margin = chooseThickness(4, i);
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
