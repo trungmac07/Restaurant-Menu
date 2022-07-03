@@ -22,6 +22,7 @@ namespace ClientUI
     public partial class MainWindow : Window
     {
         Client.Client client ;
+        string imagePath;
         public MainWindow()
         {
             
@@ -60,7 +61,7 @@ namespace ClientUI
         {
             TextBlock a = sender as TextBlock;
             //MessageBox.Show(a.Tag.ToString());
-            client.recvPic();
+            client.recvPic(ref imagePath);
          
             /*ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("./a.jpg"));
@@ -136,10 +137,10 @@ namespace ClientUI
         private void mainCourseMenu()
         {
             //Receive image
-            client.recvPic();
+            client.recvPic(ref imagePath);
 
             ImageBrush imageBrush = new ImageBrush();
-            Uri link = new Uri(@".\image.jpg", UriKind.Relative);
+            Uri link = new Uri(imagePath, UriKind.Relative);
             BitmapImage bi = new BitmapImage();
 
             bi.BeginInit();
@@ -200,10 +201,10 @@ namespace ClientUI
         {
             //Receive image
             
-            client.recvPic();
+           client.recvPic(ref imagePath);
 
             ImageBrush imageBrush = new ImageBrush();
-            Uri link = new Uri(@".\image.jpg", UriKind.Relative);
+            Uri link = new Uri(imagePath, UriKind.Relative);
             BitmapImage bi = new BitmapImage();
 
             bi.BeginInit();
@@ -264,10 +265,10 @@ namespace ClientUI
         private void dessertMenu()
         {
             //Receive image
-            client.recvPic();
+           client.recvPic(ref imagePath);
 
             ImageBrush imageBrush = new ImageBrush();
-            Uri link = new Uri(@".\image.jpg", UriKind.Relative);
+            Uri link = new Uri(imagePath, UriKind.Relative);
             BitmapImage bi = new BitmapImage();
 
             bi.BeginInit();
@@ -328,10 +329,10 @@ namespace ClientUI
         private void drinkMenu()
         {
             //Receive image
-            client.recvPic();
+           client.recvPic(ref imagePath);
 
             ImageBrush imageBrush = new ImageBrush();
-            Uri link = new Uri(@".\image.jpg", UriKind.Relative);
+            Uri link = new Uri(imagePath, UriKind.Relative);
             BitmapImage bi = new BitmapImage();
 
             bi.BeginInit();
@@ -467,7 +468,7 @@ namespace ClientUI
         private void showMyList()
         {
             //Receive image
-            client.recvPic();
+           client.recvPic(ref imagePath);
             ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("C:/Users/Trung/Desktop/Image/4.png"));
             menuArea.Background = imageBrush;

@@ -74,7 +74,7 @@ namespace Client
             return menuList;
         }
 
-        public void recvPic()
+        public void recvPic(ref string imagePath)
         {
            
             int n = Int32.Parse(sr.ReadLine());         //Reveice size of image
@@ -90,19 +90,19 @@ namespace Client
                     System.Drawing.Image img = new Bitmap(Nstream);
                     try
                     {
-                        if (File.Exists(@".\image.jpg")) File.Delete(@".\image.jpg");
-                    }
-                    catch { 
-                    }
-                here:;
-                    try
-                    {
+                        if (File.Exists(@".\image.jpg") == true)
+                            File.Delete(@".\image.jpg");
                         img.Save(@".\image.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        imagePath = @".\image.jpg";
                     }
-                    catch
+                    catch 
                     {
-                        MessageBox.Show("Can't not save image");
-                        goto here;
+                        if (File.Exists(@".\image2.jpg") == true)
+                            File.Delete(@".\image2.jpg");
+                        var sourceImage = new Bitmap(@".\image.jpg");
+                        sourceImage.Dispose();
+                        img.Save(@".\image2.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        imagePath = @".\image2.jpg";
                     }
                     img.Dispose();
                 }
