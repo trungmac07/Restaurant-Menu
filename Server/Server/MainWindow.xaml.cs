@@ -136,14 +136,17 @@ namespace Server
                 if (request.Length == 3)
                 {
                     //img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + ".jpg");
-                    path = "./Image/Food/" + request[0] + "." + request[2] + ".jpg";
+                    path = "./Image/Food/" + request[0] + "/" + request[0] + "." + request[2] + ".jpg";
                 }
                 else
                 {
                     //img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + request[3] + ".jpg");
-                    path = "./Image/Food/" + request[0] + "." + request[2] + request[3] + ".jpg";
+                    path = "./Image/Food/" + request[0] + "/" + request[0] + "." + request[2] + request[3] + ".jpg";
                 }
+                Console.WriteLine(path);
                 sendImageToClient(sw, stream, path);
+                sw.WriteLine("heheheh");
+                sw.Flush();
             }
 
             /*List<FOOD> menuList = new List<FOOD>();

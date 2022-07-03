@@ -23,7 +23,7 @@ namespace ClientUI
     public partial class MainWindow : Window
     {
         Client.Client client;
-        string imagePath;
+ 
         public MainWindow()
         {
 
@@ -61,21 +61,28 @@ namespace ClientUI
       
         private void chooseDishes(object sender, RoutedEventArgs e)
         {
-            menuArea.Children.Clear();
+            
+            TextBlock thisTextBlock = sender as TextBlock;
+      
+            client.sendRequest(thisTextBlock.Name);
 
+            menuArea.Children.Clear();
             Image dish = new Image();
+            
             BitmapImage bi = new BitmapImage();
             client.recvPic(ref bi); //receive image
             dish.Height = 550;
             dish.Width = 1060;
             dish.Stretch = Stretch.Fill;
+           
             dish.Source = bi;
+           
             DockPanel.SetDock(dish, Dock.Top);
             TextBlock des = new TextBlock();
             des.Height = 120;
             des.Width = 1060;
             des.Text = client.recvDescription(); //reveice desceripniton;
-
+         
             menuArea.Children.Add(dish);
             menuArea.Children.Add(des);
 
@@ -94,11 +101,11 @@ namespace ClientUI
                         switch (x)
                         {
                             case 1:
-                                return (new Thickness(75, 50, 0, 30));
+                                return (new Thickness(57, 60, 0, 30));
                             case 2:
-                                return (new Thickness(80, 140, 0, 30));
+                                return (new Thickness(80, 150, 0, 30));
                             default:
-                                return (new Thickness(85, 225, 0, 30));
+                                return (new Thickness(120, 230, 0, 30));
 
                         }
                         break;
@@ -108,11 +115,11 @@ namespace ClientUI
                         switch (x)
                         {
                             case 1:
-                                return (new Thickness(65, 230, 0, 30));
+                                return (new Thickness(47, 230, 0, 30));
                             case 2:
-                                return (new Thickness(80, 140, 0, 30));
+                                return (new Thickness(97, 140, 0, 30));
                             default:
-                                return (new Thickness(85, 60, 0, 30));
+                                return (new Thickness(70, 60, 0, 30));
 
                         }
                         break;
@@ -122,11 +129,11 @@ namespace ClientUI
                         switch (x)
                         {
                             case 1:
-                                return (new Thickness(75, 110, 0, 30));
+                                return (new Thickness(120, 105, 0, 30));
                             case 2:
-                                return (new Thickness(80, 270, 0, 30));
+                                return (new Thickness(125, 270, 0, 30));
                             default:
-                                return (new Thickness(85, 168, 0, 30));
+                                return (new Thickness(90, 168, 0, 30));
 
                         }
                         break;
@@ -136,11 +143,11 @@ namespace ClientUI
                         switch (x)
                         {
                             case 1:
-                                return (new Thickness(75, 50, 0, 30));
+                                return (new Thickness(110, 45, 0, 30));
                             case 2:
                                 return (new Thickness(80, 130, 0, 30));
                             default:
-                                return (new Thickness(85, 215, 0, 30));
+                                return (new Thickness(95, 215, 0, 30));
 
                         }
                         break;
@@ -160,6 +167,7 @@ namespace ClientUI
          
             try
             {
+               
                 var imageBrush = new ImageBrush { ImageSource = bi };
                 menuArea.Background = imageBrush;
             }
@@ -173,6 +181,7 @@ namespace ClientUI
             
             var c = 0;
             var i = 1;
+            var foodNum = 0;
             for (; i <= 3; ++i)
             {
                 var stackPanel = new StackPanel();
@@ -181,11 +190,11 @@ namespace ClientUI
                 stackPanel.Height = 670;
                 menuArea.Children.Add(stackPanel);
             }
-
+            
             int[] numberFood = new int[] { 8, 8, 6 };
             i = 0;
             List<string> a = client.recvMenu();
-
+            
             foreach (object child in menuArea.Children)
             {
                 if (child is StackPanel)
@@ -198,14 +207,14 @@ namespace ClientUI
                     label.Content = a[c++];
                     label.Margin = chooseThickness(1, i);
                     label.FontFamily = new FontFamily("SVN-Bali Script");
-                    label.FontSize = 57;
+                    label.FontSize = 40;
                     (child as StackPanel).Children.Add(label);
                     for (int j = 0; j < numberFood[i - 1]; ++j)
                     {
                         var textBlock = new TextBlock();
                         textBlock.Text = a[c++];
                         textBlock.MouseDown += chooseDishes;
-                        textBlock.Tag = "dish" + i.ToString();
+                        textBlock.Name = "_1_" + (++foodNum).ToString();
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
                         textBlock.FontSize = 18;
                         textBlock.Cursor = Cursors.Hand;
@@ -216,6 +225,7 @@ namespace ClientUI
                 }
 
             }
+           
         }
         private void soupMenu()
         {
@@ -235,7 +245,7 @@ namespace ClientUI
             {
                 MessageBox.Show(ex.Message);
             }
-
+            var foodNum = 0;
             var c = 0;
             var i = 1;
             for (; i <= 3; ++i)
@@ -270,12 +280,20 @@ namespace ClientUI
                         var textBlock = new TextBlock();
                         textBlock.Text = a[c++];
                         textBlock.MouseDown += chooseDishes;
-                        textBlock.Tag = "dish" + i.ToString();
+                        try
+                        {
+                            textBlock.Name = "_2_" + (++foodNum).ToString();
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
                         textBlock.FontSize = 18;
                         textBlock.Cursor = Cursors.Hand;
                         textBlock.FontFamily = new FontFamily("Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
+
                         (child as StackPanel).Children.Add(textBlock);
                     }
                 }
@@ -287,7 +305,6 @@ namespace ClientUI
             //Receive image
             BitmapImage bi = new BitmapImage();
             client.recvPic(ref bi);
-
 
             try
             {
@@ -301,7 +318,7 @@ namespace ClientUI
             }
             //Reveive List of menu
             //List<string> a = client.recvMenu();
-
+            var foodNum = 0;
             var c = 0;
             var i = 1;
             for (; i <= 3; ++i)
@@ -335,7 +352,7 @@ namespace ClientUI
                         var textBlock = new TextBlock();
                         textBlock.Text = a[c++];
                         textBlock.MouseDown += chooseDishes;
-                        textBlock.Tag = "dish" + i.ToString();
+                        textBlock.Name = "_3_" + (++foodNum).ToString();
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
                         textBlock.FontSize = 18;
                         textBlock.Cursor = Cursors.Hand;
@@ -365,7 +382,7 @@ namespace ClientUI
                 MessageBox.Show(ex.Message);
             }
 
-     
+            var foodNum = 0;
             var c = 0;
             var i = 1;
             for (; i <= 3; ++i)
@@ -378,7 +395,7 @@ namespace ClientUI
             }
 
             i = 0;
-            int[] numberFood = new int[] { 8, 8, 6 };
+            int[] numberFood = new int[] { 9, 7, 6 };
             List<string> a = client.recvMenu();
 
             foreach (object child in menuArea.Children)
@@ -399,7 +416,7 @@ namespace ClientUI
                         var textBlock = new TextBlock();
                         textBlock.Text = a[c++];
                         textBlock.MouseDown += chooseDishes;
-                        textBlock.Tag = "dish" + i.ToString();
+                        textBlock.Name = "_4_" + (++foodNum).ToString();
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
                         textBlock.FontSize = 18;
                         textBlock.Cursor = Cursors.Hand;

@@ -84,7 +84,7 @@ namespace Client
             int n = Int32.Parse(sr.ReadLine());         //Reveice size of image
             //MessageBox.Show(n.ToString());
             byte[] buffer = new byte[n];
-
+            
             stream.Read(buffer, 0, n);
             
             try
@@ -101,7 +101,7 @@ namespace Client
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.Message + " 123");
                     }
                     
                 }
@@ -113,7 +113,7 @@ namespace Client
                 MessageBox.Show(ex.Message);
             }
 
-
+         
         }
 
 
@@ -136,6 +136,17 @@ namespace Client
         public void sendRequest(int index, int foodchoice)
         {
             sw.WriteLine(index.ToString() + " " + foodchoice.ToString());
+            sw.Flush();
+        }
+
+        public void sendRequest(string fullRequest)
+        {
+            string request = "";
+            request += fullRequest[1];
+            request += ' ';
+            request += fullRequest.Remove(0, 3);
+            //MessageBox.Show(request);
+            sw.WriteLine(request);
             sw.Flush();
         }
     }
