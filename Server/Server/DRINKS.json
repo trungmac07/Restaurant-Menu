@@ -4,39 +4,48 @@
     "foodList": [
       {
         "name": "Orange Juice",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Grape Juice",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Apple Juice",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Strawberry Juice",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Guava Juice",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Blueberry Juice",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Lemon Juice",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Watermelon Juice",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Pineapple Juice",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       }
     ]
   },
@@ -45,31 +54,38 @@
     "foodList": [
       {
         "name": "Cocacola",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Pepsi",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Mirida",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "7-up",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Sting",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Fanta",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Lavie",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       }
     ]
   },
@@ -78,27 +94,33 @@
     "foodList": [
       {
         "name": "Strawberry",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Avocado",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Banana",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Tomato And Carrot",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Centella",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Mango",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       }
     ]
   }

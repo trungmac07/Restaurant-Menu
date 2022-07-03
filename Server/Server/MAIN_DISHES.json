@@ -4,35 +4,43 @@
     "foodList": [
       {
         "name": "Egg fried rice",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Chicken Fried Rice",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Seafood Fried Rice",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Beef Fried Rice",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Mushroom Spaghetti",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Creamy Spaghetti",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Meatball Spaghetti",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Ground Beef Spaghetti",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       }
     ]
   },
@@ -41,35 +49,43 @@
     "foodList": [
       {
         "name": "Beef Steak",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Lamb Steak",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Chicken Steak",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Crocodile Steak",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Diced Beef",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Pork And Broccoli",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Vegetable Paella",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Vegetable Stir-Fry",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       }
     ]
   },
@@ -78,27 +94,33 @@
     "foodList": [
       {
         "name": "Lobster Rolls",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Lobster Thermidor",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Fried Salmon",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Squid Stir-Fry",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Ebi Fry",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Fish Fingers",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       }
     ]
   }

@@ -60,6 +60,9 @@ namespace Client
             var numberOfFood = Int32.Parse(sr.ReadLine());
             for (int i = 0; i < numberOfFood; i++)
             {
+                // Get content
+                response = sr.ReadLine();
+                menuList.Add(response);
                 var numberOfDish = Int32.Parse(sr.ReadLine());
                 for (int j = 0; j < numberOfDish; j++)
                 {
@@ -71,7 +74,7 @@ namespace Client
             return menuList;
         }
 
-        public void recvPic()
+        public void recvPic(ref string imagePath)
         {
 
             int n = Int32.Parse(sr.ReadLine());         //Reveice size of image
@@ -87,18 +90,24 @@ namespace Client
                     System.Drawing.Image img = new Bitmap(Nstream);
                     try
                     {
-                        if (File.Exists(@".\image.jpg")) File.Delete(@".\image.jpg");
+                        if (File.Exists(@".\image.jpg") == true)
+                            File.Delete(@".\image.jpg");
+                        img.Save(@".\image.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        imagePath = @".\image.jpg";
                     }
-                    catch
+                    catch 
                     {
                     }
+                            File.Delete(@".\image2.jpg");
+                        var sourceImage = new Bitmap(@".\image.jpg");
+                        sourceImage.Dispose();
+                        img.Save(@".\image2.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        imagePath = @".\image2.jpg";
+                    }
 
-
-                    img.Save(@".\image.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                    img.Dispose();
                 }
 
-
+                
             }
             catch (Exception ex)
             {
@@ -112,7 +121,7 @@ namespace Client
         public List<string> recvList()
         {
             List<string> list = new List<string>();
-
+            List <string> list = new List<string>();
             return list;
         }
 

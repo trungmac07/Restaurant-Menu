@@ -27,6 +27,7 @@ namespace Server
     public partial class MainWindow : Window
     {
         public bool isStart;
+        public static string[] DatabasePath = { "../../../MAIN_DISHES.json", "../../../SOUP.json", "../../../DESSERT.json", "../../../DRINKS.json" };
         static void getMenuFromDatabase(string filePath, ref List<FOOD> menuList)
         {
             var jsonText = File.ReadAllText(filePath);
@@ -44,7 +45,8 @@ namespace Server
             sw.Flush();
             foreach (var menuItem in menuList)
             {
-                //sw.WriteLine(menuItem.name);
+                sw.WriteLine(menuItem.name);
+                sw.Flush();
                 sw.WriteLine(menuItem.foodList.Count);
                 sw.Flush();
                 foreach (var item in menuItem.foodList)
@@ -102,73 +104,46 @@ namespace Server
             }
         }
 
+        public static void sendImageToClient(StreamWriter sw, NetworkStream stream, string link)
+        {
+            System.Drawing.Image img = System.Drawing.Image.FromFile(link);
+            byte[] a = ImageToByteArray(img);
+            Console.WriteLine(a.Length);
+            int len = a.Length;
+            sw.WriteLine(len); //send size of image for client to create a buffer
+            sw.Flush();
+            Console.WriteLine(a.Length);
+            Console.WriteLine(len);
+            stream.Write(a, 0, len);  //send bytes
+            stream.Flush();
+        }
         public static void sendPicAndMenu(StreamWriter sw, NetworkStream stream, string request)
         {
             if (request[2] == '0')
             {
                 //Backround
-                System.Drawing.Image img = System.Drawing.Image.FromFile("./Image/Background/" + request[0] + ".jpg");
-                byte[] a = ImageToByteArray(img);
-                Console.WriteLine(a.Length);
-                int len = a.Length;
-                sw.WriteLine(len); //send size of image for client to create a buffer
-                sw.Flush();
-                Console.WriteLine(a.Length);
-                Console.WriteLine(len);
-
-                stream.Write(a, 0, len);  //send bytes
-                stream.Flush();
-
+                sendImageToClient(sw, stream, "./Image/Background/" + request[0] + ".jpg");
                 // Send menu list 
                 List<FOOD> menuList = new List<FOOD>();
-                switch (request[0])
-                {
-                    case '1':
-                        {
-                            getMenuFromDatabase("../../../MAIN_DISHES.json", ref menuList);
-                            break;
-                        }
-                    case '2':
-                        {
-                            getMenuFromDatabase("../../../SOUP.json", ref menuList);
-                            break;
-                        }
-                    case '3':
-                        {
-                            getMenuFromDatabase("../../../DESSERT.json", ref menuList);
-                            break;
-                        }
-                    case '4':
-                        {
-                            getMenuFromDatabase("../../../DRINKS.json", ref menuList);
-                            break;
-                        }
-                }
+
+                getMenuFromDatabase(DatabasePath[Int32.Parse( new string(request[0], 1)) - 1], ref menuList);
                 sendMenuToClient(sw, menuList);
             }
             else
             {
                 //Food
-                System.Drawing.Image img;
+                string path;
                 if (request.Length == 3)
                 {
-                    img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + ".jpg");
+                    //img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + ".jpg");
+                    path = "./Image/Food/" + request[0] + "." + request[2] + ".jpg";
                 }
                 else
                 {
-                    img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + request[3] + ".jpg");
+                    //img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + request[3] + ".jpg");
+                    path = "./Image/Food/" + request[0] + "." + request[2] + request[3] + ".jpg";
                 }
-                    
-                byte[] a = ImageToByteArray(img);
-
-                int len = a.Length;
-                sw.WriteLine(len); //send size of image for client to create a buffer
-                sw.Flush();
-                Console.WriteLine(a.Length);
-                Console.WriteLine(len);
-
-                stream.Write(a, 0, len);  //send bytes
-                stream.Flush();
+                sendImageToClient(sw, stream, path);
             }
 
             /*List<FOOD> menuList = new List<FOOD>();
@@ -179,6 +154,7 @@ namespace Server
 
         public static void ServerInit()
         {
+            /*
             var order = new ORDER
             {
                 clientName = "Nguyen Cao Khoi",
@@ -208,7 +184,7 @@ namespace Server
                 },
                 totalMoney = 5 * 120000 + 2 * 200000
             };
-
+            */
             const int serverPort = 6969;
             TcpListener listener = new TcpListener(System.Net.IPAddress.Any, serverPort);
             listener.Start();
@@ -280,6 +256,7 @@ namespace Server
     {
         public string name { get; set; }
         public int price { get; set; }
+        public string description { get; set; }
     }
     public class DISH_ORDER
     {
