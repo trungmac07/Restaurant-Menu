@@ -74,40 +74,35 @@ namespace Client
             return menuList;
         }
 
-        public void recvPic(ref string imagePath)
+        public void recvPic(ref BitmapImage bi)
         {
 
             int n = Int32.Parse(sr.ReadLine());         //Reveice size of image
-
+            //MessageBox.Show(n.ToString());
             byte[] buffer = new byte[n];
 
             stream.Read(buffer, 0, n);
-
+            
             try
             {
                 using (var Nstream = new MemoryStream(buffer, 0, n))
                 {
-                    System.Drawing.Image img = new Bitmap(Nstream);
+                    Nstream.Position = 0;
                     try
                     {
-                        if (File.Exists(@".\image.jpg") == true)
-                            File.Delete(@".\image.jpg");
-                        img.Save(@".\image.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                        imagePath = @".\image.jpg";
+                        bi.BeginInit();
+                        bi.CacheOption = BitmapCacheOption.OnLoad;
+                        bi.StreamSource = Nstream;
+                        bi.EndInit();
                     }
-                    catch 
+                    catch (Exception ex)
                     {
+                        MessageBox.Show(ex.Message);
                     }
-                            File.Delete(@".\image2.jpg");
-                        var sourceImage = new Bitmap(@".\image.jpg");
-                        sourceImage.Dispose();
-                        img.Save(@".\image2.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                        imagePath = @".\image2.jpg";
-                    }
-
+                    
                 }
 
-                
+
             }
             catch (Exception ex)
             {
@@ -121,7 +116,7 @@ namespace Client
         public List<string> recvList()
         {
             List<string> list = new List<string>();
-            List <string> list = new List<string>();
+
             return list;
         }
 
@@ -141,4 +136,3 @@ namespace Client
         }
     }
 }
-

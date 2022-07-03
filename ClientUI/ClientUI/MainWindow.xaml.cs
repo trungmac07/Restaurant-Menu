@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Net.Sockets;
 using System.Collections.Generic;
 using System.IO;
@@ -18,20 +19,20 @@ using Newtonsoft.Json;
 
 namespace ClientUI
 {
-    
+
     public partial class MainWindow : Window
     {
-        Client.Client client ;
+        Client.Client client;
         string imagePath;
         public MainWindow()
         {
-            
+
             InitializeComponent();  //Vay thi chay bth
             client = new Client.Client();
-            
+
             //client.recvPic();
 
-           
+
             /* InitializeComponent();  //Vay thi chay sai
              client.recvByte();*/
 
@@ -49,7 +50,7 @@ namespace ClientUI
                 DragMove();
         }
 
-        
+
 
         private void MoveCursorMenu(int index)
         {
@@ -61,8 +62,10 @@ namespace ClientUI
         {
             TextBlock a = sender as TextBlock;
             //MessageBox.Show(a.Tag.ToString());
-            client.recvPic(ref imagePath);
-         
+            BitmapImage bi = new BitmapImage();
+            client.recvPic(ref bi);
+
+
             /*ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("./a.jpg"));
             menuArea.Background = imageBrush;*/
@@ -137,22 +140,25 @@ namespace ClientUI
         private void mainCourseMenu()
         {
             //Receive image
-            client.recvPic(ref imagePath);
-
-            ImageBrush imageBrush = new ImageBrush();
-            Uri link = new Uri(imagePath, UriKind.Relative);
             BitmapImage bi = new BitmapImage();
+            client.recvPic(ref bi);
 
-            bi.BeginInit();
-            bi.UriSource = link;
-            bi.EndInit();
-            
-            imageBrush.ImageSource = bi;
-            menuArea.Background = imageBrush;
+         
+            try
+            {
+                var imageBrush = new ImageBrush { ImageSource = bi };
+                menuArea.Background = imageBrush;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             // GC.Collect();
-            imageBrush.Freeze();
+            
             var c = 0;
-            var i = 1;  
+            var i = 1;
             for (; i <= 3; ++i)
             {
                 var stackPanel = new StackPanel();
@@ -180,7 +186,7 @@ namespace ClientUI
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
-                    for (int j = 0; j < numberFood[i-1]; ++j)
+                    for (int j = 0; j < numberFood[i - 1]; ++j)
                     {
                         var textBlock = new TextBlock();
                         textBlock.Text = a[c++];
@@ -200,21 +206,21 @@ namespace ClientUI
         private void soupMenu()
         {
             //Receive image
-            
-           client.recvPic(ref imagePath);
 
-            ImageBrush imageBrush = new ImageBrush();
-            Uri link = new Uri(imagePath, UriKind.Relative);
             BitmapImage bi = new BitmapImage();
+            client.recvPic(ref bi);
 
-            bi.BeginInit();
-            bi.UriSource = link;
-            bi.EndInit();
 
-            imageBrush.ImageSource = bi;
-            menuArea.Background = imageBrush;
-            imageBrush.Freeze();
-            //GC.Collect();
+            try
+            {
+                var imageBrush = new ImageBrush { ImageSource = bi };
+                menuArea.Background = imageBrush;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             var c = 0;
             var i = 1;
@@ -234,7 +240,7 @@ namespace ClientUI
             {
                 if (child is StackPanel)
                 {
-              
+
                     ++i;
                     var label = new Label();
                     label.Name = "content" + i + "Label";
@@ -244,9 +250,9 @@ namespace ClientUI
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
-                    
-                    for (int j = 0; j < numberFood[i-1]; ++j)
-                    {   
+
+                    for (int j = 0; j < numberFood[i - 1]; ++j)
+                    {
                         var textBlock = new TextBlock();
                         textBlock.Text = a[c++];
                         textBlock.MouseDown += chooseDishes;
@@ -265,19 +271,20 @@ namespace ClientUI
         private void dessertMenu()
         {
             //Receive image
-           client.recvPic(ref imagePath);
-
-            ImageBrush imageBrush = new ImageBrush();
-            Uri link = new Uri(imagePath, UriKind.Relative);
             BitmapImage bi = new BitmapImage();
+            client.recvPic(ref bi);
 
-            bi.BeginInit();
-            bi.UriSource = link;
-            bi.EndInit();
 
-            imageBrush.ImageSource = bi;
-            menuArea.Background = imageBrush;
-            imageBrush.Freeze();
+            try
+            {
+                var imageBrush = new ImageBrush { ImageSource = bi };
+                menuArea.Background = imageBrush;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             //Reveive List of menu
             //List<string> a = client.recvMenu();
 
@@ -309,7 +316,7 @@ namespace ClientUI
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
-                    for (int j = 0; j < numberFood[i-1]; ++j)
+                    for (int j = 0; j < numberFood[i - 1]; ++j)
                     {
                         var textBlock = new TextBlock();
                         textBlock.Text = a[c++];
@@ -329,22 +336,22 @@ namespace ClientUI
         private void drinkMenu()
         {
             //Receive image
-           client.recvPic(ref imagePath);
-
-            ImageBrush imageBrush = new ImageBrush();
-            Uri link = new Uri(imagePath, UriKind.Relative);
             BitmapImage bi = new BitmapImage();
+            client.recvPic(ref bi);
 
-            bi.BeginInit();
-            bi.UriSource = link;
-            bi.EndInit();
 
-            imageBrush.ImageSource = bi;
-            menuArea.Background = imageBrush;
-            imageBrush.Freeze();
-            //Reveive List of menu
-            //List<string> a = client.recvMenu();
+            try
+            {
+                var imageBrush = new ImageBrush { ImageSource = bi };
+                menuArea.Background = imageBrush;
+            }
 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+     
             var c = 0;
             var i = 1;
             for (; i <= 3; ++i)
@@ -373,7 +380,7 @@ namespace ClientUI
                     label.FontFamily = new FontFamily("SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
-                    for (int j = 0; j < numberFood[i-1]; ++j)
+                    for (int j = 0; j < numberFood[i - 1]; ++j)
                     {
                         var textBlock = new TextBlock();
                         textBlock.Text = a[c++];
@@ -433,22 +440,11 @@ namespace ClientUI
         {
             menuArea.Children.Clear();
 
-            ImageBrush imageBrush = new ImageBrush();
-            Uri link = new Uri(@".\hehe.jpg", UriKind.Relative);
-            BitmapImage bi = new BitmapImage();
 
-            bi.BeginInit();
-            bi.UriSource = link;
-            bi.EndInit();
+            int index = 1 + listViewMenu.SelectedIndex;
+            MoveCursorMenu(index - 1);
 
-            imageBrush.ImageSource = bi;
-            menuArea.Background = imageBrush;
-            imageBrush.Freeze();
-
-            int index = 1+listViewMenu.SelectedIndex; 
-            MoveCursorMenu(index-1);
-            
-            if(index == 0)
+            if (index == 0)
             {
                 //send Welcome
             }
@@ -468,22 +464,31 @@ namespace ClientUI
         private void showMyList()
         {
             //Receive image
-           client.recvPic(ref imagePath);
-            ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = new BitmapImage(new Uri("C:/Users/Trung/Desktop/Image/4.png"));
-            menuArea.Background = imageBrush;
+            BitmapImage bi = new BitmapImage();
+            client.recvPic(ref bi);
 
+
+            try
+            {
+                var imageBrush = new ImageBrush { ImageSource = bi };
+                menuArea.Background = imageBrush;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             //Receive List
             List<string> a = client.recvList();
 
             var c = 0;
             var i = 0;
-            
+
             var stackPanel = new StackPanel();
             stackPanel.Name = "myListStack";
             menuArea.Children.Add(stackPanel);
-            
-        
+
+
             foreach (object child in menuArea.Children)
             {
                 if (child is StackPanel)
@@ -492,7 +497,7 @@ namespace ClientUI
                     {
                         DockPanel dockPanel = new DockPanel();
 
-                       
+
                         var textBlock = new TextBlock();
                         textBlock.Text = a[++c];
                         textBlock.Tag = "dish" + i.ToString();
@@ -519,7 +524,7 @@ namespace ClientUI
                         dockPanel.Children.Add(textBlock);
                         dockPanel.Children.Add(buttonPlus);
                         dockPanel.Children.Add(buttonMinus);
-                       
+
                         (child as StackPanel).Children.Add(dockPanel);
 
                     }
@@ -533,4 +538,3 @@ namespace ClientUI
     }
 }
 
-// 2 4 Trung dep trai
