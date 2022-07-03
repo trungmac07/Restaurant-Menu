@@ -22,8 +22,8 @@
                                     <Grid>
                                         <Ellipse x:Name="Elipse1" Fill="{TemplateBinding Background}" >
                                             <Ellipse.Effect>
-                                                <DropShadowEffect BlurRadius="15" ShadowDepth="10" >
-
+                                                <DropShadowEffect BlurRadius="0" ShadowDepth="10" >
+                                                  
                                                 </DropShadowEffect>
                                             </Ellipse.Effect>
                                         </Ellipse>

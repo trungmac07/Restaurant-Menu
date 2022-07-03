@@ -73,11 +73,11 @@ namespace Client
 
         public void recvPic()
         {
-           
+
             int n = Int32.Parse(sr.ReadLine());         //Reveice size of image
-            MessageBox.Show(n.ToString());
+
             byte[] buffer = new byte[n];
-            
+
             stream.Read(buffer, 0, n);
 
             try
@@ -89,34 +89,29 @@ namespace Client
                     {
                         if (File.Exists(@".\image.jpg")) File.Delete(@".\image.jpg");
                     }
-                    catch { 
-                    }
-                here:;
-                    try
-                    {
-                        img.Save(@".\image.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                    }
                     catch
                     {
-                        goto here;
                     }
+
+
+                    img.Save(@".\image.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                     img.Dispose();
                 }
-                
+
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
 
         }
 
 
         public List<string> recvList()
         {
-            List <string> list = new List<string>();
+            List<string> list = new List<string>();
 
             return list;
         }
