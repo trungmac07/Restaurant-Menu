@@ -4,27 +4,33 @@
     "foodList": [
       {
         "name": "Chicken Pho",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Pork Pho",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Beef Pho",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Seafood Noodles",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Beef Noodles",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Vegan Noodles",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       }
     ]
   },
@@ -33,35 +39,43 @@
     "foodList": [
       {
         "name": "Vegetable Soup",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Veg Corn Soup",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Pumpkin Soup",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Tomato Soup",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Mushroom Soup",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Yams soup",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Cream Of Spinach Soup",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Seaweed Soup",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       }
     ]
   },
@@ -70,35 +84,43 @@
     "foodList": [
       {
         "name": "Chicken Corn Soup",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Chicken ManChow Soup",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Crab Soup",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Sea Tuna Eyes",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Beef Radish Soup",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Bitter Melon Soup",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Tofu Soup",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Kimchi Soup",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       }
     ]
   }

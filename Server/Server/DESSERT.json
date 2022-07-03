@@ -4,35 +4,43 @@
     "foodList": [
       {
         "name": "Banana",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Apple",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Watermelon",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Papaya",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Grape",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Peach",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Orange",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Fruit Salad",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       }
     ]
   },
@@ -41,27 +49,33 @@
     "foodList": [
       {
         "name": "Blueberry Cake",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Stawberry Cake",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Vanilla Cake",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Chocolate Crepe",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Fruit Crepe",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Cheese Crepe",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       }
     ]
   },
@@ -70,35 +84,43 @@
     "foodList": [
       {
         "name": "Vanilla",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Coconut",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Mint",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Durian",
-        "price": 180000
+        "price": 180000,
+        "description": "flavorless"
       },
       {
         "name": "Strawberry",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Chocolate",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       },
       {
         "name": "Green Tea",
-        "price": 120000
+        "price": 120000,
+        "description": "flavorless"
       },
       {
         "name": "Banana",
-        "price": 200000
+        "price": 200000,
+        "description": "flavorless"
       }
     ]
   }
