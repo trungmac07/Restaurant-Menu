@@ -60,8 +60,6 @@ namespace ClientUI
         }
 
         private Storyboard myStoryboard, desStoryboard;
-        private TextBlock des;
-        private Border border, mother;
         private void chooseDishes(object sender, RoutedEventArgs e)
         {
             
@@ -76,14 +74,14 @@ namespace ClientUI
             client.recvPic(ref bi); //receive image
 
             //mother border loves her children like your mom <3 ;
-            mother = new Border();
+            Border mother = new Border();
             mother.Background = new SolidColorBrush(Colors.Pink);
             mother.Width = 1060;
             mother.Height = 550;
             DockPanel.SetDock(mother, Dock.Top);
 
             //Border Appear Animation
-            border = new Border();
+            Border border = new Border();
             border.Name = "dishImage";
             this.RegisterName(border.Name, border);
             border.Background = new ImageBrush(bi);
@@ -96,11 +94,11 @@ namespace ClientUI
             var hAnimation = new DoubleAnimation();
             hAnimation.From = 0;
             hAnimation.To = 550;
-            hAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.7));
+            hAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
             var wAnimation = new DoubleAnimation();
             wAnimation.From = 0;
             wAnimation.To = 1060;
-            wAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.7));
+            wAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
 
             myStoryboard = new Storyboard();
             myStoryboard.Children.Add(hAnimation);
@@ -113,11 +111,11 @@ namespace ClientUI
             DockPanel.SetDock(border, Dock.Top);
             mother.Child = border;
             menuArea.Children.Add(mother);
-            
+
 
 
             //Description appear animation
-            des = new TextBlock();
+            TextBlock des = new TextBlock();
             des.Name = "dishDes";
             this.RegisterName(des.Name, des);
             des.Height = 120;
@@ -130,8 +128,8 @@ namespace ClientUI
             var oAnimation = new DoubleAnimation();
             oAnimation.From = 0;
             oAnimation.To = 1;
-            oAnimation.Duration = new Duration(TimeSpan.FromSeconds(1.4));
-            oAnimation.BeginTime = TimeSpan.FromSeconds(0.7);
+            oAnimation.Duration = new Duration(TimeSpan.FromSeconds(1));
+            oAnimation.BeginTime = TimeSpan.FromSeconds(0.5);
 
             desStoryboard = new Storyboard();
             desStoryboard.Children.Add(oAnimation);
