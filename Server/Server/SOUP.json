@@ -5,32 +5,32 @@
       {
         "name": "Chicken Pho",
         "price": 120000,
-        "description": "flavorless"
+        "description": "Pho with Chicken is actually full of complex-yet-delicate spice infused flavours. That special something-something that makes it unforgettable, and you just can’t stop eating it."
       },
       {
         "name": "Pork Pho",
         "price": 200000,
-        "description": "flavorless"
+        "description": "Pho with Pork is actually full of complex-yet-delicate spice infused flavours. That special something-something that makes it unforgettable, and you just can’t stop eating it."
       },
       {
         "name": "Beef Pho",
         "price": 200000,
-        "description": "flavorless"
+        "description": "Specialty of Viet Nam, Beef Pho is actually full of complex-yet-delicate spice infused flavours. That special something-something that makes it unforgettable, and you just can’t stop eating it."
       },
       {
         "name": "Seafood Noodles",
         "price": 180000,
-        "description": "flavorless"
+        "description": "Fresh seafood from on of the best sea in Viet Nam cooking with fresh-yellow-egg noodle, you will never forget this after the first time tasting."
       },
       {
         "name": "Beef Noodles",
         "price": 120000,
-        "description": "flavorless"
+        "description": "With the beef from one of the best farm in Viet Nam where the cows are raised in the best conditions, you will never forget its savour after tasting."
       },
       {
         "name": "Vegan Noodles",
         "price": 200000,
-        "description": "flavorless"
+        "description": "Vegetables are really good and linked to many health benefits. Specially if you are vegetarian, you can’t skip our vegan noodles. You can feel the speacial sweetness and savour of vegetables from one of the best farm in Viet Nam."
       }
     ]
   },
@@ -40,42 +40,42 @@
       {
         "name": "Vegetable Soup",
         "price": 120000,
-        "description": "flavorless"
+        "description": "Vegetables are really good and linked to many health benefits. Specially if you are vegetarian, you can’t skip our vegetables soup. You can feel the speacial sweetness and savour of vegetables from one of the best farm in Viet Nam."
       },
       {
         "name": "Veg Corn Soup",
         "price": 200000,
-        "description": "flavorless"
+        "description": "With creamy and yummy taste and healthy, veg corn soup hot soup is a great way to warm up during cold winter days."
       },
       {
         "name": "Pumpkin Soup",
         "price": 200000,
-        "description": "flavorless"
+        "description": "Pumbkin is also a source of nutrients for your health. Here we have soup made of fresh pumpkin from one of the best farm in Viet Nam. This is creamy and full of flavour for you, you will never forget it."
       },
       {
         "name": "Tomato Soup",
         "price": 180000,
-        "description": "flavorless"
+        "description": "Tomatoes are very good because of the nutrients linked to many health benefits. Tomato soup is rich and creamy. Making of frest tomato from the best farm in Viet Nam, this will bring you bursting with amazing tomato flavor. Taste it and you will never forget it"
       },
       {
         "name": "Mushroom Soup",
         "price": 120000,
-        "description": "flavorless"
+        "description": "This mushroom soup is creamy and rich — it's one of people favorite soups of all time. The long, slow caramelization of the mushrooms requires a little patience, but it really unlocks their magical flavor, which is the secret to this mushroom soup. Taste it and you will never forget it."
       },
       {
         "name": "Yams soup",
         "price": 200000,
-        "description": "flavorless"
+        "description": "One of Viet Nam speacial vegetables - Yams with its beautiful color are cooked with dried shrimp. Rich and creamy combined with the sweetness of the dried shrimp make this unforgetable after the first time tasting."
       },
       {
         "name": "Cream Of Spinach Soup",
         "price": 120000,
-        "description": "flavorless"
+        "description": "Cream of Spinach Soup recipe combines fresh spinach greens with potato, cream, and seasonings for velvety and nourishing spinach soup. Serve as a side with a sandwich or as a homemade satisfying meal that’s packed with nutrients."
       },
       {
         "name": "Seaweed Soup",
         "price": 200000,
-        "description": "flavorless"
+        "description": "Seaweed soup  is a soup predominantly made with seaweed The soup is accompanied with beef, along with light seasoning. "
       }
     ]
   },
@@ -85,42 +85,42 @@
       {
         "name": "Chicken Corn Soup",
         "price": 120000,
-        "description": "flavorless"
+        "description": "Tasty soup cooked from fresh corn and chicken from one of the best farm in Viet Nam. You will never forget after the first taste."
       },
       {
         "name": "Chicken ManChow Soup",
         "price": 200000,
-        "description": "flavorless"
+        "description": "There are chicken, mushrooms and other veggies simmered in mild flavors.Steaming hot bowl of Chicken Manchow Soup is one of our Chinese Restaurant redos! It’s hot and spicy and will warm you up for sure!. "
       },
       {
         "name": "Crab Soup",
         "price": 200000,
-        "description": "flavorless"
+        "description": "Chicken, eggs, crab combination simmered with light seasoning. We bring you a delicous soup, one of our best seller speacially for kids. Tasting it you will feel the sweetness of the soup, savour of the egg and special smell of sea crab."
       },
       {
         "name": "Sea Tuna Eyes",
         "price": 180000,
-        "description": "flavorless"
+        "description": "Sea tuna eyes, a special dish from Phu Yen province, are fatty and have a unique flesh flavor. Tuna eyes are processed and cooked meticulously. The eyes only eyeballs and some vegetables, spices in dishes are put earthenware jars and cooked."
       },
       {
         "name": "Beef Radish Soup",
         "price": 120000,
-        "description": "flavorless"
+        "description": "Beef and radish soup is a very popular soup in Korea. The soup is non-spicy, so it’s a perfect choice for children. It’s hearty food best enjoyed with rice."
       },
       {
         "name": "Bitter Melon Soup",
         "price": 200000,
-        "description": "flavorless"
+        "description": "Stuffed bitter melon soup is a soup in Vietnamese cuisine. The bitterness can be a ride with some bites, but it is not hard to eat. The bitteness with the speacial favour and savour of pepper will bring you perfect experiment."
       },
       {
         "name": "Tofu Soup",
         "price": 120000,
-        "description": "flavorless"
+        "description": "This Korean tofu soup, or sundubu jjigae, is warm and comforting, and perfect for the entire family to enjoy, especially babies and toddlers."
       },
       {
         "name": "Kimchi Soup",
         "price": 200000,
-        "description": "flavorless"
+        "description": "Korean cuisine, kimchi is not only a condiment or pickle; it is also used as an ingredient in many cooked dishes. Kimchi soup, called jjigae, is a satisfying example. The fermented kimchi vegetables quickly provide deep flavor to the broth, "
       }
     ]
   }

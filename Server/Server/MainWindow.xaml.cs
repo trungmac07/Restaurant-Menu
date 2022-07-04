@@ -62,7 +62,25 @@ namespace Server
             //sw.Flush();
 
         }
+        public bool isCardValid(BANK_CARD clientCard)
+        {
+            List<BANK_CARD> cardList;
+            var jsonText = File.ReadAllText("../../../BANK_CARD.json");
+            cardList = JsonConvert.DeserializeObject<List<BANK_CARD>>(jsonText);
 
+            foreach (var card in cardList)
+            {
+                if (card.cardNumber == clientCard.cardNumber)
+                {
+                    if (card.money <= 0)
+                    {
+                        return false;
+                    }
+                    else return true;
+                }
+            }
+            return false;
+        }
         static void exportOrderToDatabase(List<ORDER> orderList)
         {
             File.WriteAllText("../../../ORDERS.json", string.Empty);
@@ -140,20 +158,39 @@ namespace Server
         {
             //Food
             string path;
+            int index;
             if (request.Length == 3)
             {
-                //img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + ".jpg");
                 path = "./Image/Food/" + request[0] + "/" + request[0] + "." + request[2] + ".jpg";
+                index = Int32.Parse(request[2].ToString());
             }
             else
             {
-                //img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + request[3] + ".jpg");
                 path = "./Image/Food/" + request[0] + "/" + request[0] + "." + request[2] + request[3] + ".jpg";
+                index = Int32.Parse(request[2].ToString()) * 10 + Int32.Parse(request[3].ToString());
             }
             Console.WriteLine(path);
             sendImageToClient(sw, stream, path);
-            sw.WriteLine("heheheh");
-            sw.Flush();
+
+            List<FOOD> menuList = new List<FOOD>();
+            getMenuFromDatabase(DatabasePath[Int32.Parse(new string(request[0], 1)) - 1], ref menuList);
+            int count = 0;
+            bool isFound = false;
+            foreach (FOOD item in menuList)
+            {
+                foreach (DISH dish in item.foodList)
+                {
+                    count++;
+                    if (count == index)
+                    {
+                        sw.WriteLine(dish.description);
+                        sw.Flush();
+                        isFound = true;
+                        break;
+                    }
+                }
+                if (isFound == true) break;
+            }
         }
 
         public static void receiveOrder(StreamReader sr, StreamWriter sw)
@@ -195,80 +232,8 @@ namespace Server
             exportOrderToDatabase(orderList);
             sendOrderToClient(sw, order);
         }
-
-        /*
-        public static void sendPicAndMenu(StreamWriter sw, NetworkStream stream, string request)
-        {
-            if (request[2] == '0')
-            {
-                //Backround
-                sendImageToClient(sw, stream, "./Image/Background/" + request[0] + ".jpg");
-                // Send menu list 
-                List<FOOD> menuList = new List<FOOD>();
-
-                getMenuFromDatabase(DatabasePath[Int32.Parse( new string(request[0], 1)) - 1], ref menuList);
-                sendMenuToClient(sw, menuList);
-            }
-            else
-            {
-                //Food
-                string path;
-                if (request.Length == 3)
-                {
-                    //img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + ".jpg");
-                    path = "./Image/Food/" + request[0] + "/" + request[0] + "." + request[2] + ".jpg";
-                }
-                else
-                {
-                    //img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + request[3] + ".jpg");
-                    path = "./Image/Food/" + request[0] + "/" + request[0] + "." + request[2] + request[3] + ".jpg";
-                }
-                Console.WriteLine(path);
-                sendImageToClient(sw, stream, path);
-                sw.WriteLine("heheheh");
-                sw.Flush();
-            }
-
-            List<FOOD> menuList = new List<FOOD>();
-            List<ORDER> orderList = new List<ORDER>();
-            getMenuFromDatabase("../../../SOUP.json", ref menuList);
-            sendMenuToClient(sw, menuList);
-        }
-        */
-
         public static void ServerInit()
         {
-            /*
-            var order = new ORDER
-            {
-                clientName = "Nguyen Cao Khoi",
-                dateTime = new DateTime(2022, 3, 29),
-                dishOrder = new List<DISH_ORDER>
-                {
-                    new DISH_ORDER
-                    {
-                        dish = new DISH
-                        {
-                            name = "Chicken Pho",
-                            price = 120000
-                        },
-                        numberOfDishes = 5,
-                        totalMoney = 5 * 120000
-                    },
-                    new DISH_ORDER
-                    {
-                        dish = new DISH
-                        {
-                            name = "Vegan Noodles",
-                            price = 200000
-                        },
-                        numberOfDishes = 2,
-                        totalMoney = 2 * 200000
-                    }
-                },
-                totalMoney = 5 * 120000 + 2 * 200000
-            };
-            */
             const int serverPort = 6969;
             TcpListener listener = new TcpListener(System.Net.IPAddress.Any, serverPort);
             listener.Start();
@@ -294,8 +259,6 @@ namespace Server
                             Console.WriteLine("Client has disconnected!");
                         }
                     }
-                    //getOrderFromDatabase(ref orderList);
-                    //sendOrderToClient(sw, orderList, "Nguyen Cao Khoi");
                 }
                 catch (Exception ex)
                 {
@@ -375,11 +338,19 @@ namespace Server
         public DateTime dateTime { get; set; }
         public List<DISH_ORDER> dishOrder { get; set; }
         public int totalMoney { get; set; }
-
+        public bool isPayed { get; set; }
         public ORDER()
         {
             totalMoney = 0;
+            isPayed = false;
         }
+
+    }
+    [Serializable]
+    public class BANK_CARD
+    {
+        public string cardNumber { get; set; }
+        public int money { get; set; }
 
     }
 }
