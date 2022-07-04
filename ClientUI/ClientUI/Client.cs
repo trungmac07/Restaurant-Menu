@@ -192,26 +192,17 @@ namespace Client
             order.numofDishOrders = Int32.Parse(sr.ReadLine());
             for (int i = 0; i < order.numofDishOrders; i++)
             {
-                MessageBox.Show("1");
                 DISH_ORDER a = new DISH_ORDER();
-                MessageBox.Show("2");
                 a.dish = new DISH();
-                MessageBox.Show("3");
                 a.dish.name = sr.ReadLine();
-                MessageBox.Show("4");
                 a.dish.price = Int32.Parse(sr.ReadLine());
-                MessageBox.Show("5");
                 a.numberOfDishes = Int32.Parse(sr.ReadLine());
-                MessageBox.Show("6");
                 a.totalMoney = Int32.Parse(sr.ReadLine());
-                MessageBox.Show("7");
                 if (order.dishOrder == null)
                     order.dishOrder = new List<DISH_ORDER>();
                 order.dishOrder.Add(a);
-                MessageBox.Show("8");
             }
             order.totalMoney = Int32.Parse(sr.ReadLine());
-            MessageBox.Show("end");
         }
     }
 
