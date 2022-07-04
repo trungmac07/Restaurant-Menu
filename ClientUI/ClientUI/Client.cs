@@ -28,6 +28,7 @@ namespace Client
         StreamReader sr;
         StreamWriter sw;
         List<DISH> list;
+        Dictionary<DISH, int> dic;
         public
 
         Client()
@@ -36,7 +37,7 @@ namespace Client
             stream = client.GetStream();
             sr = new StreamReader(stream);
             sw = new StreamWriter(stream);
-            List<DISH> list = new List<DISH>();
+            Dictionary<DISH, int> dic = new Dictionary<DISH, int>();
         }
 
         ~Client()
@@ -153,14 +154,15 @@ namespace Client
         }
         public void putinCart(DISH dish)
         {
-            list.Add(dish);
+            dic[dish] += 1 ;
+            foreach (var x in dic)
+                MessageBox.Show(x.ToString());
         }
     }
     public class DISH
     {
         public string name { get; set; }
         public int price { get; set; }
-        public string description { get; set; }
     }
     class FOOD
     {

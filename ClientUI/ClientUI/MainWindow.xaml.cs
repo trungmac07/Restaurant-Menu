@@ -20,7 +20,6 @@ using Newtonsoft.Json;
 
 namespace ClientUI
 {
-
     public partial class MainWindow : Window
     {
         Client.Client client;
@@ -131,12 +130,23 @@ namespace ClientUI
             //back button
             Button back = new Button();
             back.Content = "Back";
-            back.Height = 100;
+            back.Height = 50;
             back.Width = 100;
             back.FontSize = 37;
             back.FontFamily = new FontFamily("SVN-Bali Script");
             back.Background = new SolidColorBrush(Colors.Gold);
             back.Click += backToMenu;
+
+            //addfood button
+            Button addfood = new Button();
+            addfood.Name = (sender as TextBlock).Text;
+            addfood.Content = "addfood";
+            addfood.Height = 50;
+            addfood.Width = 100;
+            addfood.FontSize = 37;
+            addfood.FontFamily = new FontFamily("SVN-Bali Script");
+            addfood.Background = new SolidColorBrush(Colors.Gold);
+            addfood.Click += addFoodToCart;
 
             //Description appear animation
             TextBlock des = new TextBlock();
@@ -163,7 +173,8 @@ namespace ClientUI
 
             desArea.Children.Add(des);
             desArea.Children.Add(back);
-           
+            desArea.Children.Add(addfood);
+
             menuArea.Children.Add(desArea);
          
 
@@ -201,6 +212,24 @@ namespace ClientUI
                 
         }
 
+        private void addFoodToCart(object sender, RoutedEventArgs e)
+        {
+            string str = (sender as Button).Name;
+            int found = str.IndexOf('.');
+            string foodname = str.Substring(0, found);
+            int index = str.Length;
+            for(; index > 0; index--)
+            {
+                if (str[index] == '.')
+                    break;
+            }
+            string price = str.Substring(index + 1, str.Length - index - 1);
+            Client.DISH dish = new Client.DISH();
+            dish.name = foodname;
+            dish.price = int.Parse(price);
+            
+            client.putinCart(dish);
+        }
         private Thickness chooseThickness(int mode, int x)
         {
             switch (mode)

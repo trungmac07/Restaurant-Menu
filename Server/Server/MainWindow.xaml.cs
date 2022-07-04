@@ -274,6 +274,7 @@ namespace Server
     {
         public string name { get; set; }
         public List<DISH> foodList { get; set; }
+        public int num;
     }
 
     [Serializable]
