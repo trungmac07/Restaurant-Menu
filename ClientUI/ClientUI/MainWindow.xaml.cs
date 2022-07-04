@@ -62,8 +62,7 @@ namespace ClientUI
         private Storyboard myStoryboard, desStoryboard;
         private void chooseDishes(object sender, RoutedEventArgs e)
         {
-            
-
+           
             foreach (var child in menuArea.Children)
             {
                 if (child is StackPanel)
@@ -184,11 +183,14 @@ namespace ClientUI
         }
         private void backToMenu(object sender, RoutedEventArgs e)
         {
-           
-            menuArea.Children.Remove(menuArea.FindName("desArea") as DockPanel);
-            menuArea.Children.Remove(menuArea.FindName("mother") as Border);
-            this.UnregisterName("desArea");
-            this.UnregisterName("mother");
+            var find = menuArea.FindName("desArea");
+            if (find != null)
+            {
+                menuArea.Children.Remove(find as DockPanel);
+                this.UnregisterName("desArea");
+                menuArea.Children.Remove(menuArea.FindName("mother") as Border);
+                this.UnregisterName("mother");
+            }
 
             //menuArea.Children.Clear();
             foreach (var child in menuArea.Children)
@@ -576,6 +578,7 @@ namespace ClientUI
 
         private void selectMenu(object sender, RoutedEventArgs e)
         {
+            backToMenu(null,null);
             menuArea.Children.Clear();
 
 
