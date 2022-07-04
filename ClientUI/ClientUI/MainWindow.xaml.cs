@@ -118,6 +118,7 @@ namespace ClientUI
             mother.Child = border;
             menuArea.Children.Add(mother);
 
+
             //description area 
             DockPanel desArea = new DockPanel();
             desArea.Name = "desArea";
@@ -138,6 +139,7 @@ namespace ClientUI
             back.Background = new SolidColorBrush(Colors.Gold);
             back.Click += backToMenu;
 
+
             //Description appear animation
             TextBlock des = new TextBlock();
             des.Name = "dishDes";
@@ -149,6 +151,7 @@ namespace ClientUI
             des.Background = new SolidColorBrush(Colors.Pink);
             des.FontSize = 23;
             
+
             var oAnimation = new DoubleAnimation();
             oAnimation.From = 0;
             oAnimation.To = 1;
