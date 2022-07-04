@@ -28,8 +28,8 @@ namespace Client
         StreamReader sr;
         StreamWriter sw;
         List<DISH> list;
-        Dictionary<KeyValuePair<string, int>, int> dic;
         public
+        Dictionary<KeyValuePair<string, int>, int> dic;
 
         Client()
         {
@@ -186,19 +186,30 @@ namespace Client
         }
         public void recvBill(ORDER order)
         {
-            string str = sr.ReadLine();
-            order.dateTime = DateTime.ParseExact(str, "yyyy-MM-dd HH:mm:ss,fff", System.Globalization.CultureInfo.InvariantCulture);
+            order.dateTime = sr.ReadLine();
             order.numofDishOrders = Int32.Parse(sr.ReadLine());
-            for(int i = 0; i < order.numofDishOrders; i++)
+            for (int i = 0; i < order.numofDishOrders; i++)
             {
+                MessageBox.Show("1");
                 DISH_ORDER a = new DISH_ORDER();
+                MessageBox.Show("2");
+                a.dish = new DISH();
+                MessageBox.Show("3");
                 a.dish.name = sr.ReadLine();
+                MessageBox.Show("4");
                 a.dish.price = Int32.Parse(sr.ReadLine());
+                MessageBox.Show("5");
                 a.numberOfDishes = Int32.Parse(sr.ReadLine());
+                MessageBox.Show("6");
                 a.totalMoney = Int32.Parse(sr.ReadLine());
+                MessageBox.Show("7");
+                if (order.dishOrder == null)
+                    order.dishOrder = new List<DISH_ORDER>();
                 order.dishOrder.Add(a);
+                MessageBox.Show("8");
             }
             order.totalMoney = Int32.Parse(sr.ReadLine());
+            MessageBox.Show("end");
         }
     }
 
@@ -222,7 +233,7 @@ namespace Client
     {
         public string id { get; set; }
         public string clientName { get; set; }
-        public DateTime dateTime { get; set; }
+        public string dateTime { get; set; }
         public List<DISH_ORDER> dishOrder { get; set; }
         public int numofDishOrders { get; set; }
         public int totalMoney { get; set; }

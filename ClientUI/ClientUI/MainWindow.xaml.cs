@@ -642,7 +642,9 @@ namespace ClientUI
             {
                 //send List
                 client.requestOrder();
-
+                Client.ORDER order = new Client.ORDER();
+                client.recvBill(order);
+                MessageBox.Show(order.dishOrder[0].dish.name);
             }
             else
             {
