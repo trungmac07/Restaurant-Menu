@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "4HyCOq3eiGx2sWJ9dkNhV/gEEGH/0xt2WgfEPsc4be8XCDpyPH8EM3AuGMBXT0fUnhPU4MnYwB4wM1QP8j/OKQ==",
   "success": true,
-  "projectFilePath": "E:\\Code\\Project\\Socket-Project\\SOCKET-PROJECT\\ClientUI\\ClientUI\\ClientUI.csproj",
+  "projectFilePath": "C:\\Users\\PhamDangSonHa\\OneDrive - VNU-HCMUS\\Documents\\GitHub\\SOCKET PROJECT\\ClientUI\\ClientUI\\ClientUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Trung\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Trung\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
