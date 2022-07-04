@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:ClientUI"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
@@ -11,9 +12,13 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
+            <FontFamily x:Key="svn">pack://application:,,,/Fonts/#SVN-Bali Script</FontFamily>
+        
         </ResourceDictionary>
-
+        
     </Application.Resources>
+
+    
+       
 
 </Application>

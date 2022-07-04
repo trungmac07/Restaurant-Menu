@@ -138,17 +138,19 @@ namespace ClientUI
             back.Background = new SolidColorBrush(Colors.Gold);
             back.Click += backToMenu;
             DockPanel.SetDock(back, Dock.Bottom);
+            
             //addfood button
             Button addfood = new Button();
             addfood.Content = "Add Food\n\n" + (sender as TextBlock).Text;
             addfood.Height = 50;
             addfood.Width = 100;
-            addfood.FontSize = 21;
+            addfood.FontSize = 22;
             addfood.FontFamily = new FontFamily("SVN-Bali Script");
             addfood.Background = new SolidColorBrush(Colors.Gold);
             addfood.Click += addFoodToCart;
             DockPanel.SetDock(addfood, Dock.Top);
 
+            //Button Area
             DockPanel buttonArea = new DockPanel();
             buttonArea.Height = 100;
             buttonArea.Width = 100;
@@ -361,7 +363,8 @@ namespace ClientUI
                     label.HorizontalAlignment = HorizontalAlignment.Left;
                     label.Content = a[c++];
                     label.Margin = chooseThickness(1, i);
-                    label.FontFamily = new FontFamily("SVN-Bali Script");
+                    label.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
+
                     label.FontSize = 40;
                     (child as StackPanel).Children.Add(label);
                     for (int j = 0; j < numberFood[i - 1]; ++j)
@@ -426,7 +429,7 @@ namespace ClientUI
                     label.HorizontalAlignment = HorizontalAlignment.Left;
                     label.Content = a[c++];
                     label.Margin = chooseThickness(2, i);
-                    label.FontFamily = new FontFamily("SVN-Bali Script");
+                    label.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
 
@@ -499,7 +502,7 @@ namespace ClientUI
                     label.HorizontalAlignment = HorizontalAlignment.Left;
                     label.Content = a[c++];
                     label.Margin = chooseThickness(3, i);
-                    label.FontFamily = new FontFamily("SVN-Bali Script");
+                    label.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
                     for (int j = 0; j < numberFood[i - 1]; ++j)
@@ -563,7 +566,7 @@ namespace ClientUI
                     label.HorizontalAlignment = HorizontalAlignment.Left;
                     label.Content = a[c++];
                     label.Margin = chooseThickness(4, i);
-                    label.FontFamily = new FontFamily("SVN-Bali Script");
+                    label.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
                     label.FontSize = 57;
                     (child as StackPanel).Children.Add(label);
                     for (int j = 0; j < numberFood[i - 1]; ++j)
