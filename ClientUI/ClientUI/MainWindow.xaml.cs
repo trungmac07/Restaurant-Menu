@@ -131,21 +131,23 @@ namespace ClientUI
             //back button
             Button back = new Button();
             back.Content = "Back";
+            back.Foreground = new SolidColorBrush(Colors.Black);
             back.Height = 50;
             back.Width = 100;
             back.FontSize = 37;
-            back.FontFamily = new FontFamily("SVN-Bali Script");
+            back.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
             back.Background = new SolidColorBrush(Colors.Gold);
             back.Click += backToMenu;
             DockPanel.SetDock(back, Dock.Bottom);
             
             //addfood button
-            Button addfood = new Button();
+            Button addfood = new Button();    
             addfood.Content = "Add Food\n\n" + (sender as TextBlock).Text;
+            addfood.Foreground = new SolidColorBrush(Colors.Black);
             addfood.Height = 50;
             addfood.Width = 100;
             addfood.FontSize = 22;
-            addfood.FontFamily = new FontFamily("SVN-Bali Script");
+            addfood.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
             addfood.Background = new SolidColorBrush(Colors.Gold);
             addfood.Click += addFoodToCart;
             DockPanel.SetDock(addfood, Dock.Top);
