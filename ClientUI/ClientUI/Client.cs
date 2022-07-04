@@ -27,6 +27,7 @@ namespace Client
         NetworkStream stream;
         StreamReader sr;
         StreamWriter sw;
+        List<DISH> list;
         public
 
         Client()
@@ -35,6 +36,7 @@ namespace Client
             stream = client.GetStream();
             sr = new StreamReader(stream);
             sw = new StreamWriter(stream);
+            List<DISH> list = new List<DISH>();
         }
 
         ~Client()
@@ -149,5 +151,20 @@ namespace Client
             sw.WriteLine(request);
             sw.Flush();
         }
+        public void putinCart(DISH dish)
+        {
+            list.Add(dish);
+        }
+    }
+    public class DISH
+    {
+        public string name { get; set; }
+        public int price { get; set; }
+        public string description { get; set; }
+    }
+    class FOOD
+    {
+        public string name { get; set; }
+        public List<DISH> foodList { get; set; }
     }
 }
