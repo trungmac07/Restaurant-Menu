@@ -120,7 +120,7 @@
                         <TextBlock Text="Drink" VerticalAlignment="Center" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Height="60" Cursor="Hand">
+                <ListViewItem Height="60" Cursor="Hand" >
                     <StackPanel Orientation="Horizontal">
                         <Button Visibility="Hidden" Width="10"></Button>
                         <Image Source="C:\Users\Trung\Desktop\Icon\5.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0" Stretch="UniformToFill"/>

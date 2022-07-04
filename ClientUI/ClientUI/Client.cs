@@ -169,12 +169,19 @@ namespace Client
         }
         public void requestOrder()
         {
+            MessageBox.Show("Order sended");
             sw.WriteLine("5");//yeu cau order
+            sw.Flush();
+            sw.WriteLine(dic.Count);// so luong cua x trong dic 
+            sw.Flush();
             foreach(var x in dic)
             {
                 sw.WriteLine(x.Key.Key);//ten mon
+                sw.Flush();
                 sw.WriteLine(x.Key.Value);//gia
+                sw.Flush();
                 sw.WriteLine(x.Value);//so luong
+                sw.Flush();
             }
         }
     }

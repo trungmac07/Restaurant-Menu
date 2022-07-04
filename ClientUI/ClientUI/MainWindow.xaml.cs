@@ -583,7 +583,6 @@ namespace ClientUI
 
             }
         }
-
         private void chooseMenuLayout(int x)
         {
             switch (x)
@@ -621,7 +620,6 @@ namespace ClientUI
             chooseMenuLayout(1);
 
         }
-
         private void selectMenu(object sender, RoutedEventArgs e)
         {
             backToMenu(null, null);
@@ -638,6 +636,8 @@ namespace ClientUI
             else if (index == 5)
             {
                 //send List
+                client.requestOrder();
+
             }
             else
             {
