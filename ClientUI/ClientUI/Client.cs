@@ -167,6 +167,16 @@ namespace Client
             foreach (var x in dic)
                 Console.WriteLine(x.ToString());
         }
+        public void requestOrder()
+        {
+            sw.WriteLine("5");
+            foreach(var x in dic)
+            {
+                sw.WriteLine(x.Key.Key);//ten mon
+                sw.WriteLine(x.Key.Value);//gia
+                sw.WriteLine(x.Value);//so luong
+            }
+        }
     }
 
 
