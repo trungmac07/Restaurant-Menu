@@ -63,35 +63,42 @@ namespace Server
 
         }
 
-        static void exportOrderToDatabase(ORDER order)
+        static void exportOrderToDatabase(List<ORDER> orderList)
         {
-            File.AppendAllText("../../../ORDERS.json", JsonConvert.SerializeObject(order));
+            File.WriteAllText("../../../ORDERS.json", string.Empty);
+            File.WriteAllText("../../../ORDERS.json", "[");
+            int count = 0;
+            foreach (var order in orderList)
+            {
+                if (count != 0) File.AppendAllText("../../../ORDERS.json", ",");
+                File.AppendAllText("../../../ORDERS.json", JsonConvert.SerializeObject(order));
+                count++;
+            }
+            File.AppendAllText("../../../ORDERS.json", "]");
         }
         static void getOrderFromDatabase(ref List<ORDER> orderList)
         {
             var jsonText = File.ReadAllText("../../../ORDERS.json");
             orderList = JsonConvert.DeserializeObject<List<ORDER>>(jsonText);
         }
-        static void sendOrderToClient(StreamWriter sw, List<ORDER> orderList, string userName)
+        static void sendOrderToClient(StreamWriter sw, ORDER order)
         {
-            if (orderList == null)
-                return;
-            foreach (var item in orderList)
+            sw.WriteLine(order.dateTime);
+            sw.Flush();
+            sw.WriteLine(order.dishOrder.Count);
+            sw.Flush();
+            foreach (var dishItem in order.dishOrder)
             {
-                if (item.clientName == userName)
-                {
-                    sw.WriteLine(item.dateTime);
-                    sw.WriteLine(item.dishOrder.Count);
-                    foreach (var dishItem in item.dishOrder)
-                    {
-                        sw.WriteLine(dishItem.dish.name);
-                        sw.WriteLine(dishItem.dish.price);
-                        sw.WriteLine(dishItem.numberOfDishes);
-                        sw.WriteLine(dishItem.totalMoney);
-                    }
-                    sw.WriteLine(item.totalMoney);
-                }
+                sw.WriteLine(dishItem.dish.name);
+                sw.Flush();
+                sw.WriteLine(dishItem.dish.price);
+                sw.Flush();
+                sw.WriteLine(dishItem.numberOfDishes);
+                sw.Flush();
+                sw.WriteLine(dishItem.totalMoney);
+                sw.Flush();
             }
+            sw.WriteLine(order.totalMoney);
             sw.Flush();
         }
 
@@ -117,6 +124,79 @@ namespace Server
             stream.Write(a, 0, len);  //send bytes
             stream.Flush();
         }
+
+        public static void sendBackgroundAndMenu(StreamWriter sw, NetworkStream stream, string request)
+        {
+            //Backround
+            sendImageToClient(sw, stream, "./Image/Background/" + request[0] + ".jpg");
+            // Send menu list 
+            List<FOOD> menuList = new List<FOOD>();
+
+            getMenuFromDatabase(DatabasePath[Int32.Parse(new string(request[0], 1)) - 1], ref menuList);
+            sendMenuToClient(sw, menuList);
+        }
+
+        public static void sendFoodImageAndDesciption(StreamWriter sw, NetworkStream stream, string request)
+        {
+            //Food
+            string path;
+            if (request.Length == 3)
+            {
+                //img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + ".jpg");
+                path = "./Image/Food/" + request[0] + "/" + request[0] + "." + request[2] + ".jpg";
+            }
+            else
+            {
+                //img = System.Drawing.Image.FromFile("./Image/Food/" + request[0] + "." + request[2] + request[3] + ".jpg");
+                path = "./Image/Food/" + request[0] + "/" + request[0] + "." + request[2] + request[3] + ".jpg";
+            }
+            Console.WriteLine(path);
+            sendImageToClient(sw, stream, path);
+            sw.WriteLine("heheheh");
+            sw.Flush();
+        }
+
+        public static void receiveOrder(StreamReader sr, StreamWriter sw)
+        {
+            ORDER order = new ORDER();
+            List<ORDER> orderList = new List<ORDER>();
+            int numberOfDish = Int32.Parse(sr.ReadLine());
+            getOrderFromDatabase(ref orderList);
+            if (orderList != null)
+            {
+                Console.WriteLine(orderList.Count);
+                order.id = (orderList.Count + 1).ToString();
+            }
+            else
+            {
+                orderList = new List<ORDER>();
+                order.id = "1";
+            }
+            
+            order.clientName = "Trung map djt";
+            order.dateTime = DateTime.Now;
+            order.dishOrder = new List<DISH_ORDER>();
+            Console.WriteLine(numberOfDish);
+            for (int i = 0; i < numberOfDish; i++)
+            {
+                var newDish = new DISH_ORDER();
+                newDish.dish = new DISH();
+                newDish.dish.name = sr.ReadLine();
+                Console.WriteLine(newDish.dish.name);
+                newDish.dish.price = Int32.Parse(sr.ReadLine());
+                Console.WriteLine(newDish.dish.price);
+                newDish.numberOfDishes = Int32.Parse(sr.ReadLine());
+                Console.WriteLine(newDish.numberOfDishes);
+                newDish.totalMoney = newDish.numberOfDishes * newDish.dish.price;
+                order.dishOrder.Add(newDish);
+                order.totalMoney += newDish.totalMoney;
+            }
+            orderList.Add(order);
+            exportOrderToDatabase(orderList);
+            sendOrderToClient(sw, order);
+        }
+
+        /*
         public static void sendPicAndMenu(StreamWriter sw, NetworkStream stream, string request)
         {
             if (request[2] == '0')
@@ -149,11 +229,12 @@ namespace Server
                 sw.Flush();
             }
 
-            /*List<FOOD> menuList = new List<FOOD>();
+            List<FOOD> menuList = new List<FOOD>();
             List<ORDER> orderList = new List<ORDER>();
             getMenuFromDatabase("../../../SOUP.json", ref menuList);
-            sendMenuToClient(sw, menuList);*/
+            sendMenuToClient(sw, menuList);
         }
+        */
 
         public static void ServerInit()
         {
@@ -213,7 +294,6 @@ namespace Server
                             Console.WriteLine("Client has disconnected!");
                         }
                     }
-                    //exportOrderToDatabase(order);
                     //getOrderFromDatabase(ref orderList);
                     //sendOrderToClient(sw, orderList, "Nguyen Cao Khoi");
                 }
@@ -226,11 +306,21 @@ namespace Server
         }
         public static void recvRequest(StreamReader sr, StreamWriter sw, NetworkStream stream)
         {
-            string request = "";
+            string request;
             request = sr.ReadLine();
             Console.WriteLine(request);
-            // Doi sendPic thành này nha 
-            sendPicAndMenu(sw, stream, request);
+            if (request[0] == '5')
+            {
+                receiveOrder(sr, sw);
+            }
+            else 
+            {
+                if (request[2] == '0')
+                    sendBackgroundAndMenu(sw, stream, request);
+                else
+                    sendFoodImageAndDesciption(sw, stream, request);
+            }
+            //sendPicAndMenu(sw, stream, request);
             
         }
         public void Run(object sender, RoutedEventArgs e)
@@ -280,10 +370,16 @@ namespace Server
     [Serializable]
     class ORDER
     {
+        public string id { get; set; }
         public string clientName { get; set; }
         public DateTime dateTime { get; set; }
         public List<DISH_ORDER> dishOrder { get; set; }
         public int totalMoney { get; set; }
+
+        public ORDER()
+        {
+            totalMoney = 0;
+        }
 
     }
 }

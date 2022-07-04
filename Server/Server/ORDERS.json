@@ -1,25 +1,19 @@
-﻿[
+[
   {
-    "clientName": "Nguyen Cao Khoi",
-    "dateTime": "2022-03-29T00:00:00",
+    "id": "1",
+    "clientName": "Trung map djt",
+    "dateTime": "2022-07-04T15:29:19.6269976+07:00",
     "dishOrder": [
       {
         "dish": {
-          "name": "Chicken Pho",
-          "price": 120000
+          "name": "Strawberry Juice",
+          "price": 180000,
+          "description": null
         },
         "numberOfDishes": 5,
-        "totalMoney": 600000
-      },
-      {
-        "dish": {
-          "name": "Vegan Noodles",
-          "price": 200000
-        },
-        "numberOfDishes": 2,
-        "totalMoney": 400000
+        "totalMoney": 900000
       }
     ],
-    "totalMoney": 1000000
+    "totalMoney": 900000
   }
 ]
