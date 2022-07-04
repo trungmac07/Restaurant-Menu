@@ -13,6 +13,12 @@
 	  <None Remove="Fonts\comici.ttf" />
 	  <None Remove="Fonts\comicz.ttf" />
 	  <None Remove="Fonts\SVN-Bali Script.ttf" />
+	  <None Remove="Icon\1.png" />
+	  <None Remove="Icon\2.png" />
+	  <None Remove="Icon\3.png" />
+	  <None Remove="Icon\4.png" />
+	  <None Remove="Icon\5.png" />
+	  <None Remove="Icon\power-on.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -30,6 +36,24 @@
 	  </Resource>
 	  <Resource Include="Fonts\SVN-Bali Script.ttf">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Icon\1.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Icon\2.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Icon\3.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Icon\4.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Icon\5.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Icon\power-on.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Resource>
 	</ItemGroup>
 

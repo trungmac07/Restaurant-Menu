@@ -25,15 +25,45 @@
         <StackPanel VerticalAlignment="Top">
             <Grid Background="White" Height="10"/>
             <Grid Background="White">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0">
-                    <Button  x:Name="ButtonFechar" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Click="ButtonFechar_Click">
-                        <Image Height="30" Width="30" Source="C:\Users\Trung\Desktop\Icon\power-on.png"/>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0">
+
+                    <Button Margin="0 0 0 10" x:Name="ButtonFechar" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Click="ButtonFechar_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Ellipse Stroke="Black" StrokeThickness="2">
+                                        <Ellipse.Fill>
+                                            <RadialGradientBrush>
+                                                <GradientStop Offset="0"
+                                          Color="Pink" />
+                                                <GradientStop Offset="1"
+                                          Color="Pink" />
+                                                <GradientStop Offset="1"
+                                          Color="Pink" />
+                                                <RadialGradientBrush.Transform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform ScaleY="0.65" />
+                                                    </TransformGroup>
+                                                </RadialGradientBrush.Transform>
+                                            </RadialGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <Image Height="30" Width="30" Source=".\Icon\power-on.png"/>
+
                     </Button>
+
+
+
                 </StackPanel>
             </Grid>
         </StackPanel>
 
-        <DockPanel Name="menuArea" Margin="220,50,0,0">
+        <DockPanel Name="menuArea" Margin="220,65,0,0">
             <Border  Background="White" CornerRadius="45">
                 <ScrollViewer>
                     <StackPanel Name="motherStack">
@@ -95,7 +125,7 @@
 
 
 
-        <Grid Width="220" HorizontalAlignment="Left" Background="Pink">
+        <Grid Width="220" HorizontalAlignment="Left" Background="Pink" Margin="0,50,0,0">
 
             <Grid x:Name="GridCursor" Margin="0 100 0 0" Background="Pink" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
 
@@ -103,35 +133,35 @@
                 <ListViewItem Height="60" Cursor="Hand">
                     <StackPanel Orientation="Horizontal">
                         <Button Visibility="Hidden" Width="10"></Button>
-                        <Image Source="C:\Users\Trung\Desktop\Icon\1.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0"/>
+                        <Image Source=".\Icon\1.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0"/>
                         <TextBlock Text="Main Course" VerticalAlignment="Center" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Cursor="Hand">
                     <StackPanel Orientation="Horizontal">
                         <Button Visibility="Hidden" Width="10"></Button>
-                        <Image Source="C:\Users\Trung\Desktop\Icon\2.png" Width="37" Height="37"  VerticalAlignment="Center" Margin="0"/>
+                        <Image Source=".\Icon\2.png" Width="37" Height="37"  VerticalAlignment="Center" Margin="0"/>
                         <TextBlock Text="Soup" VerticalAlignment="Center" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Cursor="Hand">
                     <StackPanel Orientation="Horizontal">
                         <Button Visibility="Hidden" Width="10"></Button>
-                        <Image Source="C:\Users\Trung\Desktop\Icon\3.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0"/>
+                        <Image Source=".\Icon\3.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0"/>
                         <TextBlock Text="Dessert" VerticalAlignment="Center" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Cursor="Hand">
                     <StackPanel Orientation="Horizontal">
                         <Button Visibility="Hidden" Width="10"></Button>
-                        <Image Source="C:/Users/Trung/Desktop\Icon\4.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0"/>
+                        <Image Source=".\Icon\4.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0"/>
                         <TextBlock Text="Drink" VerticalAlignment="Center" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60" Cursor="Hand" >
                     <StackPanel Orientation="Horizontal">
                         <Button Visibility="Hidden" Width="10"></Button>
-                        <Image Source="C:\Users\Trung\Desktop\Icon\5.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0" Stretch="UniformToFill"/>
+                        <Image Source=".\Icon\5.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0" Stretch="UniformToFill"/>
                         <TextBlock Text="My List" VerticalAlignment="Center" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
