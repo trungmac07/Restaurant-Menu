@@ -54,7 +54,7 @@ namespace ClientUI
 
         private void MoveCursorMenu(int index)
         {
-            TrainsitionigContentSlide.OnApplyTemplate();
+            //TrainsitionigContentSlide.OnApplyTemplate();
             GridCursor.Margin = new Thickness(0, (100 + (60 * index)), 0, 0);
         }
 
@@ -627,6 +627,7 @@ namespace ClientUI
         }
         private void selectMenu(object sender, RoutedEventArgs e)
         {
+           
             backToMenu(null, null);
             menuArea.Children.Clear();
 
@@ -641,8 +642,8 @@ namespace ClientUI
             else if (index == 5)
             {
                 //send List
-                client.requestOrder();
-
+                //client.requestOrder();
+                showMyList();
             }
             else
             {
@@ -655,77 +656,208 @@ namespace ClientUI
 
         private void showMyList()
         {
+            menuArea.Children.Clear();
             //Receive image
-            BitmapImage bi = new BitmapImage();
-            client.recvPic(ref bi);
+           /* BitmapImage bi = new BitmapImage();
+            client.recvPic(ref bi);*/
+            
+            Border border = new Border();
+            border.Background = new SolidColorBrush(Colors.White);
+            border.CornerRadius = new CornerRadius(45, 45, 0, 0);
 
+            ScrollViewer scrollViewer = new ScrollViewer();
 
-            try
+            StackPanel stackPanel = new StackPanel();   
+            
+            DockPanel dockPanel = new DockPanel();
+            dockPanel.Margin = new Thickness(50, 50, 0, 0);
+
+            TextBlock name = new TextBlock();
+            name.Height = 25;
+            name.Width = 350;
+            name.FontSize = 21;
+            name.Text = "DISH";
+
+            TextBlock price = new TextBlock();
+            price.Height = 25;
+            price.Width = 250;
+            price.FontSize = 21;
+            price.Text = "PRICE";
+
+            Button buttonPlus = new Button();
+            buttonPlus.Height = 25;
+            buttonPlus.Width = 25;
+            buttonPlus.Content = "+";
+            buttonPlus.FontSize = 21;
+
+            TextBlock num = new TextBlock();
+            num.Height = 25;
+            num.Width = 500;
+            num.FontSize = 21;
+            num.Text = "AMOUNT";
+            num.TextAlignment = TextAlignment.Left; 
+            DockPanel.SetDock(num,Dock.Left);
+
+            Button buttonMinus = new Button();
+            buttonMinus.Height = 25;
+            buttonMinus.Width = 25;
+            buttonMinus.Content = "-";
+            buttonMinus.FontSize = 21;
+
+            Button trick = new Button();
+            trick.Height = 3;
+            trick.Width = 1060;
+            trick.Background = new SolidColorBrush(Colors.Black);
+            trick.BorderThickness = new Thickness(0, 0, 0, 0);
+
+            Button x = new Button();
+            x.Height = 25;
+            x.Width = 25;
+            x.Content = "x";
+            x.FontSize = 21;
+
+            dockPanel.Children.Add(name);
+            dockPanel.Children.Add(price);
+            dockPanel.Children.Add(num);
+
+            border.Child = scrollViewer;
+            
+            scrollViewer.Content = stackPanel;
+
+            stackPanel.Children.Add(dockPanel);
+            stackPanel.Children.Add(trick);
+
+            menuArea.Children.Add(border);
+
+            
+
+            foreach (var dish in client.dic)
             {
-                var imageBrush = new ImageBrush { ImageSource = bi };
-                menuArea.Background = imageBrush;
+                string dishName = dish.Key.Key;
+                int dishPrice = dish.Key.Value;
+                int dishNum = dish.Value;
+
+                dockPanel = new DockPanel();
+                dockPanel.Margin = new Thickness(50, 50, 0, 0);
+
+                name = new TextBlock();
+                name.Height = 25;
+                name.Width = 350;
+                name.FontSize = 21;
+                name.Text = dishName;
+
+                price = new TextBlock();
+                price.Height = 25;
+                price.Width = 250;
+                price.FontSize = 21;
+                price.Text = dishPrice.ToString();
+
+                buttonPlus = new Button();
+                buttonPlus.Height = 25;
+                buttonPlus.Width = 25;
+                buttonPlus.Content = "+";
+                buttonPlus.FontSize = 21;
+                buttonPlus.Tag = dishName + " " + dishPrice; 
+                buttonPlus.Click += addDish;
+
+                num = new TextBlock();
+                num.Height = 25;
+                num.Width = 25;
+                num.FontSize = 21;
+                num.Text = dishNum.ToString();
+                num.TextAlignment = TextAlignment.Center;
+
+                buttonMinus = new Button();
+                buttonMinus.Height = 25;
+                buttonMinus.Width = 25;
+                buttonMinus.Content = "-";
+                buttonMinus.FontSize = 21;
+                buttonMinus.Tag = dishName + " " + dishPrice;
+                buttonMinus.Click += removeDish;
+
+                x = new Button();
+                x.Height = 25;
+                x.Width = 25;
+                x.Content = "x";
+                x.FontSize = 21;
+                x.Click += removeAllDish;
+                x.Tag = dishName + " " + dishPrice;
+
+
+                dockPanel.Children.Add(name);
+                dockPanel.Children.Add(price);
+                dockPanel.Children.Add(buttonMinus);
+                dockPanel.Children.Add(num);
+                dockPanel.Children.Add(buttonPlus);
+                dockPanel.Children.Add(x);
+
+                stackPanel.Children.Add(dockPanel);
+
             }
 
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            //Receive List
-            List<string> a = client.recvList();
-
-            var c = 0;
-            var i = 0;
-
-            var stackPanel = new StackPanel();
-            stackPanel.Name = "myListStack";
-            menuArea.Children.Add(stackPanel);
 
 
-            foreach (object child in menuArea.Children)
-            {
-                if (child is StackPanel)
+
+        }
+
+        void addDish(object sender, RoutedEventArgs e)
+        {
+            string name = (sender as Button).Tag as string;
+            
+            int found = 0;
+            for (int i = name.Length - 1; i >= 0; --i)
+                if (name[i] == ' ')
                 {
-                    for (int j = 0; j < a.Count; ++j)
-                    {
-                        DockPanel dockPanel = new DockPanel();
-
-
-                        var textBlock = new TextBlock();
-                        textBlock.Text = a[++c];
-                        textBlock.Tag = "dish" + i.ToString();
-                        textBlock.Margin = new Thickness(40, 7, 0, 0);
-                        textBlock.Width = 400;
-                        textBlock.Height = 50;
-                        textBlock.FontSize = 18;
-                        textBlock.Cursor = Cursors.Hand;
-                        textBlock.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#Comic Sans MS");
-                        textBlock.Style = (Style)Resources["changeColor"];
-                        DockPanel.SetDock(textBlock, Dock.Left);
-
-                        Button buttonPlus = new Button();
-                        buttonPlus.Tag = "";
-                        buttonPlus.Click += client.add;
-
-                        var numberDish = new TextBlock();
-                        //numberDish.Text = numberOfDish;
-
-                        Button buttonMinus = new Button();
-                        buttonMinus.Tag = "";
-                        buttonPlus.Click += client.remove;
-
-                        dockPanel.Children.Add(textBlock);
-                        dockPanel.Children.Add(buttonPlus);
-                        dockPanel.Children.Add(buttonMinus);
-
-                        (child as StackPanel).Children.Add(dockPanel);
-
-                    }
+                    found = i;
+                    break;
                 }
+            string price = name.Substring(found+1);
+            name = name.Remove(found,name.Length - found);
+            int num = Int32.Parse(price);
+            KeyValuePair<string, int> pair = new KeyValuePair<string, int>(name, num);
+            ++client.dic[pair];
+            showMyList();
+        }
 
-            }
+        void removeDish(object sender, RoutedEventArgs e)
+        {
+            string name = (sender as Button).Tag as string;
+           
+            int found = 0;
+            for (int i = name.Length - 1; i >= 0; --i)
+                if (name[i] == ' ')
+                {
+                    found = i;
+                    break;
+                }
+            string price = name.Substring(found + 1);
+            name = name.Remove(found, name.Length - found);
+            int num = Int32.Parse(price);
+            KeyValuePair<string, int> pair = new KeyValuePair<string, int>(name, num);
+            --client.dic[pair];
+            if(client.dic[pair] == 0)
+                client.dic.Remove(pair);
 
+            showMyList();
+        }
 
-
+        void removeAllDish(object sender, RoutedEventArgs e)
+        {
+            string name = (sender as Button).Tag as string;
+          
+            int found = 0;
+            for (int i = name.Length - 1; i >= 0; --i)
+                if (name[i] == ' ')
+                {
+                    found = i;
+                    break;
+                }
+            string price = name.Substring(found + 1);
+            name = name.Remove(found, name.Length - found);
+            int num = Int32.Parse(price);
+            KeyValuePair<string, int> pair = new KeyValuePair<string, int>(name, num);
+            client.dic.Remove(pair);
+            showMyList();
         }
     }
 }

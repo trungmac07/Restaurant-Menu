@@ -28,9 +28,11 @@ namespace Client
         StreamReader sr;
         StreamWriter sw;
         List<DISH> list;
-        Dictionary<KeyValuePair<string, int>, int> dic;
+        
         public
+        Dictionary<KeyValuePair<string, int>, int> dic;
 
+        public
         Client()
         {
             client = new TcpClient("127.0.0.1", 6969);

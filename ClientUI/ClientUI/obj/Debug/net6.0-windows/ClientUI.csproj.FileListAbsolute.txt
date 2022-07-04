@@ -3,8 +3,6 @@ E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\bin\Debug\net6.0
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\ClientUI.runtimeconfig.json
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\ClientUI.dll
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\ClientUI.pdb
-E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\MaterialDesignColors.dll
-E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\MaterialDesignThemes.Wpf.dll
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.csproj.AssemblyReference.cache
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\MainWindow.g.cs

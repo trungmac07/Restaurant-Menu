@@ -6,12 +6,7 @@
     <Application.Resources>
         
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+            
             <FontFamily x:Key="svn">pack://application:,,,/Fonts/#SVN-Bali Script</FontFamily>
             <FontFamily x:Key="comic">pack://application:,,,/Fonts/#Comic Sans MS</FontFamily>
         </ResourceDictionary>

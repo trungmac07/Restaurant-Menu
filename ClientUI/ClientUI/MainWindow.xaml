@@ -17,53 +17,60 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
+
     </Window.Resources>
 
 
-    <Grid Background="#FFEEEEEE" MouseDown="Grid_MouseDown">
+    <Grid Background="Pink" MouseDown="Grid_MouseDown">
         <StackPanel VerticalAlignment="Top">
-            <Grid Background="Pink" Height="10"/>
-            <Grid Margin="5">
+            <Grid Background="White" Height="10"/>
+            <Grid Background="White">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0">
-                    <Button Width="45" Height="45" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray">
-                        <materialDesign:PackIcon Kind="BellOutline"/>
-                    </Button>
-                    <Button Width="45" Height="45" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Margin="0 0 10 0">
-                        <materialDesign:PackIcon Kind="Settings"/>
-                    </Button>
-                    <Button x:Name="ButtonFechar" Width="45" Height="45" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Click="ButtonFechar_Click">
-                        <materialDesign:PackIcon Kind="Power"/>
+                    <Button  x:Name="ButtonFechar" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Click="ButtonFechar_Click">
+                        <Image Height="30" Width="30" Source="C:\Users\Trung\Desktop\Icon\power-on.png"/>
                     </Button>
                 </StackPanel>
             </Grid>
         </StackPanel>
 
         <DockPanel Name="menuArea" Margin="220,50,0,0">
-            <Border BorderBrush="Black" BorderThickness="10,10,10,10" CornerRadius="70" DockPanel.Dock="Top" Height="550" Width="1060">
-                <Border.Background>
-                    <ImageBrush></ImageBrush>
-                </Border.Background>
-                <Border.Triggers>
-                    <EventTrigger RoutedEvent="Border.Loaded">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation From="0" To="550" Duration="0:0:1" Storyboard.TargetProperty="Height">
-                                </DoubleAnimation>
-                                <DoubleAnimation From="0" To="1060" Duration="0:0:1" Storyboard.TargetProperty="Width">
-                                </DoubleAnimation>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Border.Triggers>
+            <Border  Background="White" CornerRadius="45">
+                <ScrollViewer>
+                    <StackPanel Name="motherStack">
+                        <DockPanel Margin="50 50 0 0 ">
+                            <TextBlock Height="25" Width="350" FontSize="21">Ten mon an</TextBlock>
+                            <TextBlock Height="25" Width="250" FontSize="21">Gia tien</TextBlock>
+                            <TextBlock Height="25" Width="474" FontSize="21" TextAlignment="Left" >AMOUNT</TextBlock>
+                        </DockPanel>
+                        <Button Margin ="0 20 0 0 " Height="3" Content="+" FontSize="21" Width="1060" Background="Black" BorderThickness="0 0 0 0"></Button>
+                        <DockPanel Margin="50 20 0 0 ">
+                            <TextBlock Height="25" Width="350" FontSize="21">Ten mon an</TextBlock>
+                            <TextBlock Height="25" Width="250" FontSize="21">Gia tien</TextBlock>
+                            <Button Height="25" Content="+" FontSize="21" Width="20"></Button>
+                            <TextBlock Height="25" Width="25" FontSize="21" TextAlignment="Center" >5</TextBlock>
+                            <Button Height="25" Content="-" FontSize="21" Width="25"></Button>
+                            <Button Height="25" Content="x" FontSize="21" Width="25"></Button>
+                        </DockPanel>
+                        <DockPanel Margin="50 20 0 0 ">
+                            <TextBlock Height="25" Width="350" FontSize="21">Ten mon an</TextBlock>
+                            <TextBlock Height="25" Width="250" FontSize="21">Gia tien</TextBlock>
+                            <Button Height="25" Content="+" FontSize="21" Width="20"></Button>
+                            <TextBlock Height="25" Width="25" FontSize="21" TextAlignment="Center" >5</TextBlock>
+                            <Button Height="25" Content="-" FontSize="21" Width="25"></Button>
+                            <Button Height="25" Content="x" FontSize="21" Width="25"></Button>
+                        </DockPanel>
+                        <DockPanel Margin="50 20 0 0 ">
+                            <TextBlock Height="25" Width="350" FontSize="21">Ten mon an</TextBlock>
+                            <TextBlock Height="25" Width="250" FontSize="21">Gia tien</TextBlock>
+                            <Button Height="25" Content="+" FontSize="21" Width="20"></Button>
+                            <TextBlock Height="25" Width="25" FontSize="21" TextAlignment="Center" >5</TextBlock>
+                            <Button Height="25" Content="-" FontSize="21" Width="25"></Button>
+                            <Button Height="25" Content="x" FontSize="21" Width="25"></Button>
+                        </DockPanel>
+                    </StackPanel>
+                </ScrollViewer>
             </Border>
-            <DockPanel Height="120" Width="1060">
-                <TextBlock FontFamily="{StaticResource comic}" FontSize="25" Name="dishDescription" Text="Dish description" Height="120" Width="940"></TextBlock>
-                <DockPanel Height="100" Width = "100">
-                    <Button Height="50" Width = "100" DockPanel.Dock="Top"></Button>
-                    <Button Height="50" Width = "100"></Button>
-                </DockPanel>
-            </DockPanel>
+
             <!--<DockPanel.Background>
                 <ImageBrush ImageSource="C:/Users/Trung/Desktop/5-01-01-01.png" />
             </DockPanel.Background>
@@ -89,10 +96,10 @@
 
 
         <Grid Width="220" HorizontalAlignment="Left" Background="Pink">
-            <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
-                <Grid x:Name="GridCursor" Margin="0 100 0 0" Background="Black" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
-            </materialDesign:TransitioningContent>
-            <ListView x:Name="listViewMenu" Margin="0 100" Foreground="Black" FontFamily="Comic Sans MS" FontSize="19" SelectionChanged="selectMenu" SelectedIndex="-1" FontWeight="Medium">
+
+            <Grid x:Name="GridCursor" Margin="0 100 0 0" Background="Pink" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
+
+            <ListView x:Name="listViewMenu" Margin="0 100" Background="Pink" Foreground="Black" FontFamily="Comic Sans MS" FontSize="19" SelectionChanged="selectMenu" SelectedIndex="-1" FontWeight="Medium" BorderThickness="0 0 0 0" >
                 <ListViewItem Height="60" Cursor="Hand">
                     <StackPanel Orientation="Horizontal">
                         <Button Visibility="Hidden" Width="10"></Button>
