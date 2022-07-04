@@ -16,7 +16,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
+
     </Window.Resources>
 
 
@@ -58,7 +58,10 @@
             </Border>
             <DockPanel Height="120" Width="1060">
                 <TextBlock  Name="dishDescription" Text="Dish description" Height="120" Width="940"></TextBlock>
-                <Button Height="100" Width = "100"></Button>
+                <DockPanel Height="100" Width = "100">
+                    <Button Height="50" Width = "100" DockPanel.Dock="Top"></Button>
+                    <Button Height="50" Width = "100"></Button>
+                </DockPanel>
             </DockPanel>
             <!--<DockPanel.Background>
                 <ImageBrush ImageSource="C:/Users/Trung/Desktop/5-01-01-01.png" />

@@ -28,7 +28,7 @@ namespace Client
         StreamReader sr;
         StreamWriter sw;
         List<DISH> list;
-        Dictionary<DISH, int> dic;
+        Dictionary<KeyValuePair<string, int>, int> dic;
         public
 
         Client()
@@ -37,7 +37,8 @@ namespace Client
             stream = client.GetStream();
             sr = new StreamReader(stream);
             sw = new StreamWriter(stream);
-            Dictionary<DISH, int> dic = new Dictionary<DISH, int>();
+            dic = new Dictionary<KeyValuePair<string, int>, int>();
+      
         }
 
         ~Client()
@@ -154,11 +155,21 @@ namespace Client
         }
         public void putinCart(DISH dish)
         {
-            dic[dish] += 1 ;
+            string name = dish.name;
+            int price = dish.price;
+            var idx = new KeyValuePair<string, int>(name, price);
+            
+            if(dic.ContainsKey(idx))
+                dic[idx] += 1;
+            else
+                dic.Add(idx, 1);
+            Console.WriteLine(dish.name + " " + dic[idx]);
             foreach (var x in dic)
-                MessageBox.Show(x.ToString());
+                Console.WriteLine(x.ToString());
         }
     }
+
+
     public class DISH
     {
         public string name { get; set; }

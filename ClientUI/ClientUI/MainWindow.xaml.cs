@@ -29,7 +29,7 @@ namespace ClientUI
 
             InitializeComponent();  //Vay thi chay bth
             client = new Client.Client();
-            
+
             //client.recvPic();
 
 
@@ -61,15 +61,15 @@ namespace ClientUI
         private Storyboard myStoryboard, desStoryboard;
         private void chooseDishes(object sender, RoutedEventArgs e)
         {
-           
+
             foreach (var child in menuArea.Children)
             {
                 if (child is StackPanel)
                     (child as StackPanel).Visibility = Visibility.Collapsed;
             }
-           
+
             TextBlock thisTextBlock = sender as TextBlock;
-            
+
             client.sendRequest(thisTextBlock.Name);
 
 
@@ -137,17 +137,23 @@ namespace ClientUI
             back.FontFamily = new FontFamily("SVN-Bali Script");
             back.Background = new SolidColorBrush(Colors.Gold);
             back.Click += backToMenu;
-
+            DockPanel.SetDock(back, Dock.Bottom);
             //addfood button
             Button addfood = new Button();
-            addfood.Name = (sender as TextBlock).Text;
-            addfood.Content = "addfood";
+            addfood.Content = "Add Food\n\n" + (sender as TextBlock).Text;
             addfood.Height = 50;
             addfood.Width = 100;
-            addfood.FontSize = 37;
+            addfood.FontSize = 21;
             addfood.FontFamily = new FontFamily("SVN-Bali Script");
             addfood.Background = new SolidColorBrush(Colors.Gold);
             addfood.Click += addFoodToCart;
+            DockPanel.SetDock(addfood, Dock.Top);
+
+            DockPanel buttonArea = new DockPanel();
+            buttonArea.Height = 100;
+            buttonArea.Width = 100;
+            buttonArea.Children.Add(back);
+            buttonArea.Children.Add(addfood);
 
             //Description appear animation
             TextBlock des = new TextBlock();
@@ -159,7 +165,7 @@ namespace ClientUI
             des.Opacity = 0;
             des.Background = new SolidColorBrush(Colors.Pink);
             des.FontSize = 23;
-            
+
 
             var oAnimation = new DoubleAnimation();
             oAnimation.From = 0;
@@ -174,11 +180,11 @@ namespace ClientUI
             des.Loaded += showDes;
 
             desArea.Children.Add(des);
-            desArea.Children.Add(back);
-            desArea.Children.Add(addfood);
+            desArea.Children.Add(buttonArea);
+
 
             menuArea.Children.Add(desArea);
-         
+
 
             /*ImageBrush imageBrush = new ImageBrush();
             imageBrush.ImageSource = new BitmapImage(new Uri("./a.jpg"));
@@ -208,19 +214,28 @@ namespace ClientUI
             //menuArea.Children.Clear();
             foreach (var child in menuArea.Children)
             {
-                if(child is StackPanel)
+                if (child is StackPanel)
                     (child as StackPanel).Visibility = Visibility.Visible;
             }
-                
+
         }
 
         private void addFoodToCart(object sender, RoutedEventArgs e)
         {
-            string str = (sender as Button).Name;
+            var x = (sender as Button).Content;
+            string str = x.ToString();
+           
+
+            string[] word = str.Split("\n\n");
+            //MessageBox.Show(word[1]);
+            
+            str = word[1];
+            //MessageBox.Show("123" + str);
             int found = str.IndexOf('.');
             string foodname = str.Substring(0, found);
-            int index = str.Length;
-            for(; index > 0; index--)
+            int index = str.Length - 1;
+            //MessageBox.Show(index.ToString());
+            for (; index >= 0; index--)
             {
                 if (str[index] == '.')
                     break;
@@ -609,7 +624,7 @@ namespace ClientUI
 
         private void selectMenu(object sender, RoutedEventArgs e)
         {
-            backToMenu(null,null);
+            backToMenu(null, null);
             menuArea.Children.Clear();
 
 
