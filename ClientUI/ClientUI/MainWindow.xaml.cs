@@ -378,7 +378,7 @@ namespace ClientUI
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
                         textBlock.FontSize = 18;
                         textBlock.Cursor = Cursors.Hand;
-                        textBlock.FontFamily = new FontFamily("Comic Sans MS");
+                        textBlock.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
                         (child as StackPanel).Children.Add(textBlock);
                     }
@@ -451,7 +451,7 @@ namespace ClientUI
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
                         textBlock.FontSize = 18;
                         textBlock.Cursor = Cursors.Hand;
-                        textBlock.FontFamily = new FontFamily("Comic Sans MS");
+                        textBlock.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
 
                         (child as StackPanel).Children.Add(textBlock);
@@ -516,7 +516,7 @@ namespace ClientUI
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
                         textBlock.FontSize = 18;
                         textBlock.Cursor = Cursors.Hand;
-                        textBlock.FontFamily = new FontFamily("Comic Sans MS");
+                        textBlock.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
                         (child as StackPanel).Children.Add(textBlock);
                     }
@@ -580,7 +580,7 @@ namespace ClientUI
                         textBlock.Margin = new Thickness(40, 7, 0, 0);
                         textBlock.FontSize = 18;
                         textBlock.Cursor = Cursors.Hand;
-                        textBlock.FontFamily = new FontFamily("Comic Sans MS");
+                        textBlock.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
                         (child as StackPanel).Children.Add(textBlock);
                     }
@@ -698,7 +698,7 @@ namespace ClientUI
                         textBlock.Height = 50;
                         textBlock.FontSize = 18;
                         textBlock.Cursor = Cursors.Hand;
-                        textBlock.FontFamily = new FontFamily("Comic Sans MS");
+                        textBlock.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#Comic Sans MS");
                         textBlock.Style = (Style)Resources["changeColor"];
                         DockPanel.SetDock(textBlock, Dock.Left);
 
