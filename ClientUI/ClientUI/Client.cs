@@ -169,7 +169,7 @@ namespace Client
         }
         public void requestOrder()
         {
-            sw.WriteLine("5");
+            sw.WriteLine("5");//yeu cau order
             foreach(var x in dic)
             {
                 sw.WriteLine(x.Key.Key);//ten mon
