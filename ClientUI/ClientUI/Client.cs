@@ -184,6 +184,22 @@ namespace Client
                 sw.Flush();
             }
         }
+        public void recvBill(ORDER order)
+        {
+            string str = sr.ReadLine();
+            order.dateTime = DateTime.ParseExact(str, "yyyy-MM-dd HH:mm:ss,fff", System.Globalization.CultureInfo.InvariantCulture);
+            order.numofDishOrders = Int32.Parse(sr.ReadLine());
+            for(int i = 0; i < order.numofDishOrders; i++)
+            {
+                DISH_ORDER a = new DISH_ORDER();
+                a.dish.name = sr.ReadLine();
+                a.dish.price = Int32.Parse(sr.ReadLine());
+                a.numberOfDishes = Int32.Parse(sr.ReadLine());
+                a.totalMoney = Int32.Parse(sr.ReadLine());
+                order.dishOrder.Add(a);
+            }
+            order.totalMoney = Int32.Parse(sr.ReadLine());
+        }
     }
 
 
@@ -192,9 +208,29 @@ namespace Client
         public string name { get; set; }
         public int price { get; set; }
     }
-    class FOOD
+    public class DISH_ORDER
     {
-        public string name { get; set; }
-        public List<DISH> foodList { get; set; }
+        public DISH dish { get; set; }
+        public int numberOfDishes { get; set; }
+        public int totalMoney { get; set; }
+        public DISH_ORDER()
+        {
+            totalMoney = 0;
+        }
+    }
+    class ORDER
+    {
+        public string id { get; set; }
+        public string clientName { get; set; }
+        public DateTime dateTime { get; set; }
+        public List<DISH_ORDER> dishOrder { get; set; }
+        public int numofDishOrders { get; set; }
+        public int totalMoney { get; set; }
+
+        public ORDER()
+        {
+            totalMoney = 0;
+        }
+
     }
 }
