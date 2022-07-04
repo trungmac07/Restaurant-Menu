@@ -4,16 +4,16 @@
 exe
 C#
 .cs
-C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\
+E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\
 ClientUI
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\App.xaml
+E:\Code\Project\Socket-Project\SOCKET-PROJECT\ClientUI\ClientUI\App.xaml
 11407045341
 
 4513602099
-198951545219
+196-850003945
 MainWindow.xaml;
 
 False

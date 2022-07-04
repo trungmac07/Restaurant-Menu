@@ -692,7 +692,7 @@ namespace ClientUI
 
             TextBlock num = new TextBlock();
             num.Height = 25;
-            num.Width = 500;
+            num.Width = 250 ;
             num.FontSize = 21;
             num.Text = "AMOUNT";
             num.TextAlignment = TextAlignment.Left; 
@@ -711,14 +711,17 @@ namespace ClientUI
             trick.BorderThickness = new Thickness(0, 0, 0, 0);
 
             Button x = new Button();
-            x.Height = 25;
-            x.Width = 25;
-            x.Content = "x";
+            x.Height = 50;
+            x.Width = 100;
+            x.Content = "ORDER";
             x.FontSize = 21;
+            x.Background = new SolidColorBrush(Colors.Gold);
+            x.Click += sendOrderRequest;
 
             dockPanel.Children.Add(name);
             dockPanel.Children.Add(price);
             dockPanel.Children.Add(num);
+            dockPanel.Children.Add(x);
 
             border.Child = scrollViewer;
             
@@ -738,7 +741,7 @@ namespace ClientUI
                 int dishNum = dish.Value;
 
                 dockPanel = new DockPanel();
-                dockPanel.Margin = new Thickness(50, 50, 0, 0);
+                dockPanel.Margin = new Thickness(50, 35, 0, 0);
 
                 name = new TextBlock();
                 name.Height = 25;
@@ -783,7 +786,6 @@ namespace ClientUI
                 x.Click += removeAllDish;
                 x.Tag = dishName + " " + dishPrice;
 
-
                 dockPanel.Children.Add(name);
                 dockPanel.Children.Add(price);
                 dockPanel.Children.Add(buttonMinus);
@@ -794,9 +796,6 @@ namespace ClientUI
                 stackPanel.Children.Add(dockPanel);
 
             }
-
-
-
 
         }
 
@@ -858,6 +857,11 @@ namespace ClientUI
             KeyValuePair<string, int> pair = new KeyValuePair<string, int>(name, num);
             client.dic.Remove(pair);
             showMyList();
+        }
+
+        void sendOrderRequest(object sender, RoutedEventArgs e )
+        {
+            //Ha`
         }
     }
 }
