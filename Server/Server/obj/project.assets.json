@@ -160,19 +160,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PhamDangSonHa\\.nuget\\packages\\": {}
+    "C:\\Users\\NC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PhamDangSonHa\\OneDrive - VNU-HCMUS\\Documents\\GitHub\\SOCKET PROJECT\\Server\\Server\\Server.csproj",
+      "projectUniqueName": "C:\\Users\\NC\\Downloads\\SOCKET-PROJECT-main\\Server\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "C:\\Users\\PhamDangSonHa\\OneDrive - VNU-HCMUS\\Documents\\GitHub\\SOCKET PROJECT\\Server\\Server\\Server.csproj",
-      "packagesPath": "C:\\Users\\PhamDangSonHa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PhamDangSonHa\\OneDrive - VNU-HCMUS\\Documents\\GitHub\\SOCKET PROJECT\\Server\\Server\\obj\\",
+      "projectPath": "C:\\Users\\NC\\Downloads\\SOCKET-PROJECT-main\\Server\\Server\\Server.csproj",
+      "packagesPath": "C:\\Users\\NC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NC\\Downloads\\SOCKET-PROJECT-main\\Server\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\PhamDangSonHa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\NC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -225,7 +225,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
