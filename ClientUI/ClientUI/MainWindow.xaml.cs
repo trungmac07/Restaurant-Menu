@@ -63,7 +63,12 @@ namespace ClientUI
         private void chooseDishes(object sender, RoutedEventArgs e)
         {
             
-            menuArea.Children.Clear();
+
+            foreach (var child in menuArea.Children)
+            {
+                if (child is StackPanel)
+                    (child as StackPanel).Visibility = Visibility.Collapsed;
+            }
            
             TextBlock thisTextBlock = sender as TextBlock;
             
@@ -73,11 +78,13 @@ namespace ClientUI
             BitmapImage bi = new BitmapImage();
             client.recvPic(ref bi); //receive image
 
-            //mother border loves her children like your mom <3 ;
+            //Mother border loves her children like your mom <3 ;
             Border mother = new Border();
             mother.Background = new SolidColorBrush(Colors.Pink);
             mother.Width = 1060;
             mother.Height = 550;
+            mother.Name = "mother";
+            this.RegisterName(mother.Name, mother);
             DockPanel.SetDock(mother, Dock.Top);
 
             //Border Appear Animation
@@ -112,14 +119,32 @@ namespace ClientUI
             mother.Child = border;
             menuArea.Children.Add(mother);
 
+            //description area 
+            DockPanel desArea = new DockPanel();
+            desArea.Name = "desArea";
+            this.RegisterName(desArea.Name, desArea);
+            desArea.Height = 120;
+            desArea.Width = 1060;
+            desArea.Background = new SolidColorBrush(Colors.Pink);
+            DockPanel.SetDock(desArea, Dock.Bottom);
 
+
+            //back button
+            Button back = new Button();
+            back.Content = "Back";
+            back.Height = 100;
+            back.Width = 100;
+            back.FontSize = 37;
+            back.FontFamily = new FontFamily("SVN-Bali Script");
+            back.Background = new SolidColorBrush(Colors.Gold);
+            back.Click += backToMenu;
 
             //Description appear animation
             TextBlock des = new TextBlock();
             des.Name = "dishDes";
             this.RegisterName(des.Name, des);
             des.Height = 120;
-            des.Width = 1060;
+            des.Width = 940;
             des.Text = client.recvDescription(); //reveice desceripniton;
             des.Opacity = 0;
             des.Background = new SolidColorBrush(Colors.Pink);
@@ -136,10 +161,11 @@ namespace ClientUI
             Storyboard.SetTargetName(oAnimation, des.Name);
             Storyboard.SetTargetProperty(oAnimation, new PropertyPath(Border.OpacityProperty));
             des.Loaded += showDes;
-            DockPanel.SetDock(des, Dock.Bottom);
-            
+
+            desArea.Children.Add(des);
+            desArea.Children.Add(back);
            
-            menuArea.Children.Add(des);
+            menuArea.Children.Add(desArea);
          
 
             /*ImageBrush imageBrush = new ImageBrush();
@@ -156,6 +182,23 @@ namespace ClientUI
             desStoryboard.Begin(this);
             this.UnregisterName("dishDes");
         }
+        private void backToMenu(object sender, RoutedEventArgs e)
+        {
+           
+            menuArea.Children.Remove(menuArea.FindName("desArea") as DockPanel);
+            menuArea.Children.Remove(menuArea.FindName("mother") as Border);
+            this.UnregisterName("desArea");
+            this.UnregisterName("mother");
+
+            //menuArea.Children.Clear();
+            foreach (var child in menuArea.Children)
+            {
+                if(child is StackPanel)
+                    (child as StackPanel).Visibility = Visibility.Visible;
+            }
+                
+        }
+
         private Thickness chooseThickness(int mode, int x)
         {
             switch (mode)

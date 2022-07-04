@@ -56,8 +56,10 @@
                     </EventTrigger>
                 </Border.Triggers>
             </Border>
-            <TextBlock  Name="dishDescription" Text="Dish description" Height="120" Width="1060"></TextBlock>
-
+            <DockPanel Height="120" Width="1060">
+                <TextBlock  Name="dishDescription" Text="Dish description" Height="120" Width="940"></TextBlock>
+                <Button Height="100" Width = "100"></Button>
+            </DockPanel>
             <!--<DockPanel.Background>
                 <ImageBrush ImageSource="C:/Users/Trung/Desktop/5-01-01-01.png" />
             </DockPanel.Background>
