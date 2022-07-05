@@ -186,7 +186,7 @@ namespace Client
                 sw.Flush();
             }
         }
-        public void recvBill(ORDER order)
+        public void recvBill(ref ORDER order)
         {
             order.dateTime = sr.ReadLine();
             order.numofDishOrders = Int32.Parse(sr.ReadLine());
@@ -222,7 +222,7 @@ namespace Client
             totalMoney = 0;
         }
     }
-    class ORDER
+    public class ORDER
     {
         public string id { get; set; }
         public string clientName { get; set; }

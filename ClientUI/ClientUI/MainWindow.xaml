@@ -64,42 +64,94 @@
         </StackPanel>
 
         <DockPanel Name="menuArea" Margin="220,65,0,0">
-            <Border  Background="White" CornerRadius="45">
-                <ScrollViewer>
-                    <StackPanel Name="motherStack">
-                        <DockPanel Margin="50 50 0 0 ">
-                            <TextBlock Height="25" Width="350" FontSize="21">Ten mon an</TextBlock>
-                            <TextBlock Height="25" Width="250" FontSize="21">Gia tien</TextBlock>
-                            <TextBlock Height="25" Width="474" FontSize="21" TextAlignment="Left" >AMOUNT</TextBlock>
-                        </DockPanel>
-                        <Button Margin ="0 20 0 0 " Height="3" Content="+" FontSize="21" Width="1060" Background="Black" BorderThickness="0 0 0 0"></Button>
-                        <DockPanel Margin="50 20 0 0 ">
-                            <TextBlock Height="25" Width="350" FontSize="21">Ten mon an</TextBlock>
-                            <TextBlock Height="25" Width="250" FontSize="21">Gia tien</TextBlock>
-                            <Button Height="25" Content="+" FontSize="21" Width="20"></Button>
-                            <TextBlock Height="25" Width="25" FontSize="21" TextAlignment="Center" >5</TextBlock>
-                            <Button Height="25" Content="-" FontSize="21" Width="25"></Button>
-                            <Button Height="25" Content="x" FontSize="21" Width="25"></Button>
-                        </DockPanel>
-                        <DockPanel Margin="50 20 0 0 ">
-                            <TextBlock Height="25" Width="350" FontSize="21">Ten mon an</TextBlock>
-                            <TextBlock Height="25" Width="250" FontSize="21">Gia tien</TextBlock>
-                            <Button Height="25" Content="+" FontSize="21" Width="20"></Button>
-                            <TextBlock Height="25" Width="25" FontSize="21" TextAlignment="Center" >5</TextBlock>
-                            <Button Height="25" Content="-" FontSize="21" Width="25"></Button>
-                            <Button Height="25" Content="x" FontSize="21" Width="25"></Button>
-                        </DockPanel>
-                        <DockPanel Margin="50 20 0 0 ">
-                            <TextBlock Height="25" Width="350" FontSize="21">Ten mon an</TextBlock>
-                            <TextBlock Height="25" Width="250" FontSize="21">Gia tien</TextBlock>
-                            <Button Height="25" Content="+" FontSize="21" Width="20"></Button>
-                            <TextBlock Height="25" Width="25" FontSize="21" TextAlignment="Center" >5</TextBlock>
-                            <Button Height="25" Content="-" FontSize="21" Width="25"></Button>
-                            <Button Height="25" Content="x" FontSize="21" Width="25"></Button>
+
+            <ScrollViewer Width="530" Background="White">
+                <StackPanel Name="motherStack">
+                    <StackPanel  Margin="0 0 0 0 ">
+                        <TextBlock HorizontalAlignment="Left" Margin="0 20 0 0" Height="25" Width="350" FontSize="21"><Run Text="Ten mon an"/></TextBlock>
+                        <TextBlock Margin="0 0 0 0" Height="25" Width="350"  FontSize="17"><Run Text="Gia tien"/></TextBlock>
+                        <DockPanel Margin="0 0 0 0" >
+                            <TextBlock Margin="0 0 0 20" Height="25" Width="300"  FontSize="17"><Run Text="So luong"/></TextBlock>
+                            <TextBlock Margin="0 0 0 0" Height="25" Width="150"  FontSize="17"><Run Text="Tong Cong"/></TextBlock>
                         </DockPanel>
                     </StackPanel>
-                </ScrollViewer>
-            </Border>
+                    <StackPanel Background="Pink" Margin="0 0 0 0 ">
+                        <TextBlock Margin="0 20 0 0" Height="25" Width="350" FontSize="21"><Run Text="Ten mon an"/></TextBlock>
+                        <TextBlock Margin="0 0 0 0" Height="25" Width="350"  FontSize="17"><Run Text="Gia tien"/></TextBlock>
+                        <DockPanel Margin="55 0 0 0" >
+                            <TextBlock Margin="30 0 0 20" Height="25" Width="300"  FontSize="17"><Run Text="So luong"/></TextBlock>
+                            <TextBlock Margin="0 0 0 0" Height="25" Width="150"  FontSize="17"><Run Text="Tong Cong"/></TextBlock>
+                        </DockPanel>
+                    </StackPanel>
+                    <StackPanel  Margin="0 0 0 0 ">
+                        <TextBlock Margin="0 20 0 0" Height="25" Width="350" FontSize="21"><Run Text="Ten mon an"/></TextBlock>
+                        <TextBlock Margin="0 0 0 0" Height="25" Width="350"  FontSize="17"><Run Text="Gia tien"/></TextBlock>
+                        <DockPanel Margin="55 0 0 0" >
+                            <TextBlock Margin="30 0 0 20" Height="25" Width="300"  FontSize="17"><Run Text="So luong"/></TextBlock>
+                            <TextBlock Margin="0 0 0 0" Height="25" Width="150"  FontSize="17"><Run Text="Tong Cong"/></TextBlock>
+                        </DockPanel>
+                    </StackPanel>
+                    <StackPanel Background="Pink"  Margin="0 0 0 0 ">
+                        <TextBlock Margin="0 20 0 0" Height="25" Width="350" FontSize="21"><Run Text="Ten mon an"/></TextBlock>
+                        <TextBlock Margin="0 0 0 0" Height="25" Width="350"  FontSize="17"><Run Text="Gia tien"/></TextBlock>
+                        <DockPanel Margin="55 0 0 0" >
+                            <TextBlock Margin="30 0 0 20" Height="25" Width="300"  FontSize="17"><Run Text="So luong"/></TextBlock>
+                            <TextBlock Margin="0 0 0 0" Height="25" Width="150"  FontSize="17"><Run Text="Tong Cong"/></TextBlock>
+                        </DockPanel>
+                    </StackPanel>
+                    <StackPanel  Margin="0 0 0 0 ">
+                        <TextBlock Margin="0 20 0 0" Height="25" Width="350" FontSize="21"><Run Text="Ten mon an"/></TextBlock>
+                        <TextBlock Margin="0 0 0 0" Height="25" Width="350"  FontSize="17"><Run Text="Gia tien"/></TextBlock>
+                        <DockPanel Margin="55 0 0 0" >
+                            <TextBlock Margin="30 0 0 20" Height="25" Width="300"  FontSize="17"><Run Text="So luong"/></TextBlock>
+                            <TextBlock Margin="0 0 0 0" Height="25" Width="150"  FontSize="17"><Run Text="Tong Cong"/></TextBlock>
+                        </DockPanel>
+                    </StackPanel>
+                    <StackPanel Background="Pink" Margin="0 0 0 0 ">
+                        <TextBlock Margin="0 20 0 0" Height="25" Width="350" FontSize="21"><Run Text="Ten mon an"/></TextBlock>
+                        <TextBlock Margin="0 0 0 0" Height="25" Width="350"  FontSize="17"><Run Text="Gia tien"/></TextBlock>
+                        <DockPanel Margin="55 0 0 20" >
+                            <TextBlock Margin="30 0 0 0" Height="25" Width="300"  FontSize="17"><Run Text="So luong"/></TextBlock>
+                            <TextBlock Margin="0 0 0 0" Height="25" Width="150"  FontSize="17"><Run Text="Tong Cong"/></TextBlock>
+                        </DockPanel>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+
+
+            <StackPanel Width="530" Background="White" >
+                <TextBlock Margin="0 40 0 30" Height="25" Width="474" FontSize="21" TextAlignment="CENTER" >RESTAURANT NAME</TextBlock>
+                <TextBlock  Height="25" Width="474" FontSize="21" TextAlignment="CENTER" >~BILL TABLE NUMBER X~</TextBlock>
+                <TextBlock  Height="25" Width="474" FontSize="17" TextAlignment="CENTER" >hh:mm - dd/mm/yyyy</TextBlock>
+
+                <Button Margin ="0 50 0 0 " Height="3" FontSize="21" Width="1060" Background="Black" BorderThickness="0 0 0 0"></Button>
+                
+                
+                <TextBlock Margin="130 50 0 0"  Height="25" Width="350" FontSize="21" TextAlignment="Right">TOTAL: XXXXXXXXXX vnd</TextBlock>
+                
+                
+                <Button Margin ="0 0 0 0 " Height="3" FontSize="21" Width="1060" Background="Black" BorderThickness="0 0 0 0"></Button>
+                <Label Margin="0 40 0 0" Width="300" HorizontalContentAlignment="Center" FontSize="40" > PAYMENT </Label>
+
+
+                <Button Background="pink" Margin="40" Height="70" Width="200" Content="payment1">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <Button Background="pink" Height="70" Width="200" Content="payment1">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                
+            </StackPanel>
+
 
             <!--<DockPanel.Background>
                 <ImageBrush ImageSource="C:/Users/Trung/Desktop/5-01-01-01.png" />
@@ -125,9 +177,9 @@
 
 
 
-        <Grid Width="220" HorizontalAlignment="Left" Background="Pink" Margin="0,50,0,0">
+        <Grid Name="motherGrid" Width="220" HorizontalAlignment="Left" Background="Pink" Margin="0,50,0,0">
 
-            <Grid x:Name="GridCursor" Margin="0 100 0 0" Background="Pink" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
+            <Grid x:Name="GridCursor" Margin="0 100 0 0" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
 
             <ListView x:Name="listViewMenu" Margin="0 100" Background="Pink" Foreground="Black" FontFamily="Comic Sans MS" FontSize="19" SelectionChanged="selectMenu" SelectedIndex="-1" FontWeight="Medium" BorderThickness="0 0 0 0" >
                 <ListViewItem Height="60" Cursor="Hand">

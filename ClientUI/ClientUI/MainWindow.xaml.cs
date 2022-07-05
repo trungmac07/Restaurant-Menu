@@ -139,14 +139,15 @@ namespace ClientUI
             back.Background = new SolidColorBrush(Colors.Gold);
             back.Click += backToMenu;
             DockPanel.SetDock(back, Dock.Bottom);
-            
+
             //addfood button
-            Button addfood = new Button();    
-            addfood.Content = "Add Food\n\n" + (sender as TextBlock).Text;
+            Button addfood = new Button();
+            addfood.HorizontalContentAlignment = HorizontalAlignment.Center;
+            addfood.Content = " Add Food\n\n" + (sender as TextBlock).Text;
             addfood.Foreground = new SolidColorBrush(Colors.Black);
             addfood.Height = 50;
             addfood.Width = 100;
-            addfood.FontSize = 22;
+            addfood.FontSize = 30;
             addfood.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
             addfood.Background = new SolidColorBrush(Colors.Gold);
             addfood.Click += addFoodToCart;
@@ -169,7 +170,8 @@ namespace ClientUI
             des.Opacity = 0;
             des.Background = new SolidColorBrush(Colors.Pink);
             des.FontSize = 23;
-
+            des.TextWrapping = TextWrapping.Wrap;
+            des.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#Comic Sans MS");
 
             var oAnimation = new DoubleAnimation();
             oAnimation.From = 0;
@@ -228,11 +230,10 @@ namespace ClientUI
         {
             var x = (sender as Button).Content;
             string str = x.ToString();
-           
-
+            
             string[] word = str.Split("\n\n");
             //MessageBox.Show(word[1]);
-            
+
             str = word[1];
             //MessageBox.Show("123" + str);
             int found = str.IndexOf('.');
@@ -248,7 +249,7 @@ namespace ClientUI
             Client.DISH dish = new Client.DISH();
             dish.name = foodname;
             dish.price = int.Parse(price);
-            
+
             client.putinCart(dish);
         }
         private Thickness chooseThickness(int mode, int x)
@@ -627,7 +628,7 @@ namespace ClientUI
         }
         private void selectMenu(object sender, RoutedEventArgs e)
         {
-           
+
             backToMenu(null, null);
             menuArea.Children.Clear();
 
@@ -658,17 +659,17 @@ namespace ClientUI
         {
             menuArea.Children.Clear();
             //Receive image
-           /* BitmapImage bi = new BitmapImage();
-            client.recvPic(ref bi);*/
-            
+            /* BitmapImage bi = new BitmapImage();
+             client.recvPic(ref bi);*/
+
             Border border = new Border();
             border.Background = new SolidColorBrush(Colors.White);
             border.CornerRadius = new CornerRadius(45, 45, 0, 0);
 
             ScrollViewer scrollViewer = new ScrollViewer();
 
-            StackPanel stackPanel = new StackPanel();   
-            
+            StackPanel stackPanel = new StackPanel();
+
             DockPanel dockPanel = new DockPanel();
             dockPanel.Margin = new Thickness(50, 50, 0, 0);
 
@@ -692,11 +693,11 @@ namespace ClientUI
 
             TextBlock num = new TextBlock();
             num.Height = 25;
-            num.Width = 250 ;
+            num.Width = 250;
             num.FontSize = 21;
             num.Text = "AMOUNT";
-            num.TextAlignment = TextAlignment.Left; 
-            DockPanel.SetDock(num,Dock.Left);
+            num.TextAlignment = TextAlignment.Left;
+            DockPanel.SetDock(num, Dock.Left);
 
             Button buttonMinus = new Button();
             buttonMinus.Height = 25;
@@ -709,6 +710,7 @@ namespace ClientUI
             trick.Width = 1060;
             trick.Background = new SolidColorBrush(Colors.Black);
             trick.BorderThickness = new Thickness(0, 0, 0, 0);
+
 
             Button x = new Button();
             x.Height = 50;
@@ -724,7 +726,7 @@ namespace ClientUI
             dockPanel.Children.Add(x);
 
             border.Child = scrollViewer;
-            
+
             scrollViewer.Content = stackPanel;
 
             stackPanel.Children.Add(dockPanel);
@@ -732,7 +734,6 @@ namespace ClientUI
 
             menuArea.Children.Add(border);
 
-            
 
             foreach (var dish in client.dic)
             {
@@ -760,7 +761,7 @@ namespace ClientUI
                 buttonPlus.Width = 25;
                 buttonPlus.Content = "+";
                 buttonPlus.FontSize = 21;
-                buttonPlus.Tag = dishName + " " + dishPrice; 
+                buttonPlus.Tag = dishName + " " + dishPrice;
                 buttonPlus.Click += addDish;
 
                 num = new TextBlock();
@@ -802,7 +803,7 @@ namespace ClientUI
         void addDish(object sender, RoutedEventArgs e)
         {
             string name = (sender as Button).Tag as string;
-            
+
             int found = 0;
             for (int i = name.Length - 1; i >= 0; --i)
                 if (name[i] == ' ')
@@ -810,8 +811,8 @@ namespace ClientUI
                     found = i;
                     break;
                 }
-            string price = name.Substring(found+1);
-            name = name.Remove(found,name.Length - found);
+            string price = name.Substring(found + 1);
+            name = name.Remove(found, name.Length - found);
             int num = Int32.Parse(price);
             KeyValuePair<string, int> pair = new KeyValuePair<string, int>(name, num);
             ++client.dic[pair];
@@ -821,7 +822,7 @@ namespace ClientUI
         void removeDish(object sender, RoutedEventArgs e)
         {
             string name = (sender as Button).Tag as string;
-           
+
             int found = 0;
             for (int i = name.Length - 1; i >= 0; --i)
                 if (name[i] == ' ')
@@ -834,7 +835,7 @@ namespace ClientUI
             int num = Int32.Parse(price);
             KeyValuePair<string, int> pair = new KeyValuePair<string, int>(name, num);
             --client.dic[pair];
-            if(client.dic[pair] == 0)
+            if (client.dic[pair] == 0)
                 client.dic.Remove(pair);
 
             showMyList();
@@ -843,7 +844,7 @@ namespace ClientUI
         void removeAllDish(object sender, RoutedEventArgs e)
         {
             string name = (sender as Button).Tag as string;
-          
+
             int found = 0;
             for (int i = name.Length - 1; i >= 0; --i)
                 if (name[i] == ' ')
@@ -859,10 +860,249 @@ namespace ClientUI
             showMyList();
         }
 
-        void sendOrderRequest(object sender, RoutedEventArgs e )
+        void sendOrderRequest(object sender, RoutedEventArgs e)
         {
+            if (client.dic.Count == 0)
+            {
+                MessageBox.Show("Please choose some dished first.");
+                return;
+            }
+                
             //Ha`
+            client.requestOrder();
+            Client.ORDER myOrder = new Client.ORDER();
+            client.recvBill(ref myOrder);
+
+            menuArea.Background = new SolidColorBrush(Colors.Snow);
+            listViewMenu.IsEnabled = false;
+
+           
+            //UI BILL
+            menuArea.Children.Clear();
+
+            ScrollViewer scrollViewer = new ScrollViewer();
+            scrollViewer.Width = 530;
+            scrollViewer.Background = new SolidColorBrush(Colors.Snow);
+
+            StackPanel stackPanel = new StackPanel();
+
+            bool pink = false;
+            foreach (var dish in myOrder.dishOrder)
+            {
+                
+                StackPanel info = new StackPanel();
+
+                if (pink)
+                    info.Background = new SolidColorBrush(Colors.Pink);
+
+                pink = true ^ pink;
+
+                TextBlock name = new TextBlock();
+                name.Margin = new Thickness(35, 20, 0, 0);
+                name.Height = 25;
+                name.Width = 350;
+                name.FontSize = 21;
+                name.Text = dish.dish.name;
+                name.HorizontalAlignment = HorizontalAlignment.Left;
+
+                TextBlock price = new TextBlock();
+                price.Margin = new Thickness(35, 0, 0, 0);
+                price.Height = 25;
+                price.Width = 350;
+                price.FontSize = 17;
+                price.Text = "Price: " + dish.dish.price.ToString();
+                price.HorizontalAlignment = HorizontalAlignment.Left;
+
+                DockPanel totalPanel = new DockPanel();
+                totalPanel.Margin = new Thickness(0, 0, 0, 0);
+
+                TextBlock amount = new TextBlock();
+                amount.Margin = new Thickness(35, 0, 0, 20);
+                amount.Height = 25;
+                amount.Width = 300;
+                amount.FontSize = 17;
+                amount.Text = "Amount: " + dish.numberOfDishes.ToString();
+
+                TextBlock total = new TextBlock();
+                total.Margin = new Thickness(0, 0, 0, 20);
+                total.Height = 25;
+                total.Width = 300;
+                total.FontSize = 17;
+                total.Text = dish.totalMoney.ToString();
+
+                totalPanel.Children.Add(amount);
+                totalPanel.Children.Add(total);
+
+                info.Children.Add(name);
+                info.Children.Add(price);
+                info.Children.Add(totalPanel);
+
+                stackPanel.Children.Add(info);
+            }
+
+            scrollViewer.Content = stackPanel;
+
+            menuArea.Children.Add(scrollViewer);
+
+            StackPanel stackPanel1 = new StackPanel();
+
+            TextBlock restaurantName = new TextBlock();
+            restaurantName.Margin = new Thickness(0, 20, 0, 10);
+            restaurantName.Height = 57;
+            restaurantName.Width = 475;
+            restaurantName.FontSize = 47;
+            restaurantName.TextAlignment = TextAlignment.Center;
+            restaurantName.Text = "RESTAURANT NAME";
+            restaurantName.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
+
+            TextBlock bill = new TextBlock();
+            bill.Height = 50;
+            bill.Margin = new Thickness(0, 0, 0, 10);
+            bill.Width = 475;
+            bill.FontSize = 37;
+            bill.TextAlignment = TextAlignment.Center;
+            bill.Text = "~~BILL~~";
+            bill.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
+
+            TextBlock date = new TextBlock();
+            date.Height = 25;
+            date.Width = 475;
+            date.FontSize = 17;
+            date.TextAlignment = TextAlignment.Center;
+            date.Text = myOrder.dateTime;
+
+            Button line = new Button();
+            line.Margin = new Thickness(0, 30, 0, 0);
+            line.Width = 1060;
+            line.Height = 3;
+            line.Background = new SolidColorBrush(Colors.Black);
+            line.BorderThickness = new Thickness(0, 0, 0, 0);
+
+            TextBlock totalBill = new TextBlock();
+            totalBill.Margin = new Thickness(130, 40, 0, 10);
+            totalBill.Width = 350;
+            totalBill.Height = 25;
+            totalBill.FontSize = 21;
+            totalBill.TextAlignment = TextAlignment.Right;
+            totalBill.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans ms");
+            totalBill.FontWeight = FontWeights.Bold;
+            totalBill.Text = "TOTAL: " + myOrder.totalMoney.ToString() + " VND";
+
+            Button line2 = new Button();
+            line2.Margin = new Thickness(0, 0, 0, 0);
+            line2.Width = 1060;
+            line2.Height = 3;
+            line2.Background = new SolidColorBrush(Colors.Black);
+            line2.BorderThickness = new Thickness(0, 0, 0, 0);
+
+            Label payment = new Label();
+            payment.Margin = new Thickness(0, 40, 0, 0);
+            payment.Width = 300;
+            payment.FontSize = 40;
+            payment.HorizontalContentAlignment = HorizontalAlignment.Center;
+            payment.Content = "PAYMENT";
+            payment.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans ms");
+
+            Button cash = new Button();
+            cash.Background = new SolidColorBrush(Colors.Pink);
+            cash.Margin = new Thickness(25, 25, 25, 25);
+            cash.Width = 200;
+            cash.Height = 50;
+            cash.Content = "CASH";
+            cash.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans ms");
+            cash.FontSize = 27;
+            cash.BorderThickness = new Thickness(0, 0, 0, 0);
+            cash.Click += cashPay;
+
+            Button bank = new Button();
+            bank.Background = new SolidColorBrush(Colors.Pink);
+            bank.Margin = new Thickness(25, 0, 25, 0);
+            bank.Width = 200;
+            bank.Height = 50;
+            bank.Content = "BANK";
+            bank.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans ms");
+            bank.FontSize = 27;
+            bank.BorderThickness = new Thickness(0, 0, 0, 0);
+            bank.Click += banking;
+            var style = new Style
+            {
+                TargetType = typeof(Border),
+                Setters = { new Setter { Property = Border.CornerRadiusProperty, Value = new CornerRadius(15) } }
+            };
+
+            cash.Resources.Add(style.TargetType, style);
+            bank.Resources.Add(style.TargetType, style);
+
+            TextBox bankId = new TextBox();
+            bankId.Name = "stk";
+            bankId.Background = new SolidColorBrush(Colors.Pink);
+            bankId.Width = 350;
+            bankId.Height = 50;
+            bankId.HorizontalAlignment = HorizontalAlignment.Center;
+            bankId.Margin = new Thickness(0, 15, 0, 0);
+            bankId.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans ms");
+            bankId.Resources.Add(style.TargetType, style);
+            bankId.FontSize = 27;
+            bankId.TextAlignment = TextAlignment.Center;
+            bankId.Visibility = Visibility.Collapsed;
+            bankId.KeyDown += new KeyEventHandler(typeBankingId);
+            this.RegisterName(bankId.Name, bankId);
+
+
+            stackPanel1.Children.Add(restaurantName);
+            stackPanel1.Children.Add(bill);
+            stackPanel1.Children.Add(date);
+            stackPanel1.Children.Add(line);
+            stackPanel1.Children.Add(totalBill);
+            stackPanel1.Children.Add(line2);
+            stackPanel1.Children.Add(payment);
+            stackPanel1.Children.Add(cash);
+            stackPanel1.Children.Add(bank);
+            stackPanel1.Children.Add(bankId);
+
+            menuArea.Children.Add(stackPanel1);
+            //hien bill
+            Console.WriteLine(myOrder.dateTime);
+            Console.WriteLine(myOrder.numofDishOrders);
+            for (int i = 0; i < myOrder.numofDishOrders; i++)
+            {
+                Console.WriteLine(myOrder.dishOrder[i].dish.name);
+                Console.WriteLine(myOrder.dishOrder[i].dish.price);
+                Console.WriteLine(myOrder.dishOrder[i].numberOfDishes);
+
+            }
+            Console.WriteLine(myOrder.totalMoney);
+
         }
+
+
+        void banking(object sender, RoutedEventArgs e)
+        {
+            TextBox bankNum = (this.FindName("stk") as TextBox);
+            bankNum.Visibility = Visibility.Visible;
+            
+        }
+
+        void sendBankingId()
+        {
+            MessageBox.Show("SENDED");
+        }
+        void typeBankingId(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                sendBankingId();
+            }
+            this.UnregisterName("stk");
+        }
+        void cashPay(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Cam on nha cuc cung <3");
+            listViewMenu.IsEnabled = true;
+            this.UnregisterName("stk");
+        }
+
+        
     }
 }
 
