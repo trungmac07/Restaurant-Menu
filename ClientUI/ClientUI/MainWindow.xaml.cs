@@ -1091,13 +1091,15 @@ namespace ClientUI
         {
             if(e.Key == Key.Enter)
             {
-                sendBankingId();
+                string bankId = (sender as TextBox).Text;
+                client.sendPayMent("0", bankId);
+                this.UnregisterName("stk");
             }
-            this.UnregisterName("stk");
         }
         void cashPay(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Cam on nha cuc cung <3");
+            client.sendPayMent("1","");
             listViewMenu.IsEnabled = true;
             this.UnregisterName("stk");
         }

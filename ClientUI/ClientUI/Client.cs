@@ -204,6 +204,16 @@ namespace Client
             }
             order.totalMoney = Int32.Parse(sr.ReadLine());
         }
+        public void sendPayMent(string type, string bankID)
+        {
+            sw.WriteLine("6 " + type);
+            sw.Flush();
+            if(type == "1")
+            {
+                sw.WriteLine(bankID);
+                sw.Flush();
+            }
+        }
     }
 
 
