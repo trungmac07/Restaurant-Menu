@@ -19,6 +19,7 @@
 	  <None Remove="Icon\4.png" />
 	  <None Remove="Icon\5.png" />
 	  <None Remove="Icon\power-on.png" />
+	  <None Remove="Icon\welcome.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -53,6 +54,9 @@
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="Icon\power-on.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Icon\welcome.jpg">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Resource>
 	</ItemGroup>

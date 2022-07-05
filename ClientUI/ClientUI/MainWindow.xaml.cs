@@ -23,15 +23,15 @@ namespace ClientUI
     public partial class MainWindow : Window
     {
         Client.Client client;
-
+        bool haveBill ;
         public MainWindow()
         {
 
             InitializeComponent();  //Vay thi chay bth
             client = new Client.Client();
-
+            myOrder = new Client.ORDER();
             //client.recvPic();
-
+            haveBill = false;
 
             /* InitializeComponent();  //Vay thi chay sai
              client.recvByte();*/
@@ -693,7 +693,7 @@ namespace ClientUI
 
             TextBlock num = new TextBlock();
             num.Height = 25;
-            num.Width = 250;
+            num.Width = 150;
             num.FontSize = 21;
             num.Text = "AMOUNT";
             num.TextAlignment = TextAlignment.Left;
@@ -711,7 +711,11 @@ namespace ClientUI
             trick.Background = new SolidColorBrush(Colors.Black);
             trick.BorderThickness = new Thickness(0, 0, 0, 0);
 
-
+            var style = new Style
+            {
+                TargetType = typeof(Border),
+                Setters = { new Setter { Property = Border.CornerRadiusProperty, Value = new CornerRadius(7) } }
+            };
             Button x = new Button();
             x.Height = 50;
             x.Width = 100;
@@ -719,11 +723,22 @@ namespace ClientUI
             x.FontSize = 21;
             x.Background = new SolidColorBrush(Colors.Gold);
             x.Click += sendOrderRequest;
+            x.Resources.Add(style.TargetType, style);
+
+            Button y = new Button();
+            y.Height = 50;
+            y.Width = 100;
+            y.Content = "BILL";
+            y.FontSize = 21;
+            y.Background = new SolidColorBrush(Colors.Gold);
+            y.Click += bill;
+            y.Resources.Add(style.TargetType, style);
 
             dockPanel.Children.Add(name);
             dockPanel.Children.Add(price);
             dockPanel.Children.Add(num);
             dockPanel.Children.Add(x);
+            dockPanel.Children.Add(y);
 
             border.Child = scrollViewer;
 
@@ -782,7 +797,7 @@ namespace ClientUI
                 x = new Button();
                 x.Height = 25;
                 x.Width = 25;
-                x.Content = "x";
+                x.Content = "X";
                 x.FontSize = 21;
                 x.Click += removeAllDish;
                 x.Tag = dishName + " " + dishPrice;
@@ -860,6 +875,7 @@ namespace ClientUI
             showMyList();
         }
 
+        Client.ORDER myOrder;
         void sendOrderRequest(object sender, RoutedEventArgs e)
         {
             if (client.dic.Count == 0)
@@ -870,13 +886,28 @@ namespace ClientUI
                 
             //Ha`
             client.requestOrder();
-            Client.ORDER myOrder = new Client.ORDER();
+            
             client.recvBill(ref myOrder);
+            haveBill = true;
+            bill(null,null);
 
+        }
+
+        void bill(object sender, RoutedEventArgs e)
+        {
+            if(sender == null)
+            {
+                listViewMenu.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                if(haveBill == false)
+                {
+                    MessageBox.Show("You have no bill, please order something");
+                    return;
+                }
+            }
             menuArea.Background = new SolidColorBrush(Colors.Snow);
-            listViewMenu.IsEnabled = false;
-
-           
             //UI BILL
             menuArea.Children.Clear();
 
@@ -889,7 +920,7 @@ namespace ClientUI
             bool pink = false;
             foreach (var dish in myOrder.dishOrder)
             {
-                
+
                 StackPanel info = new StackPanel();
 
                 if (pink)
@@ -1033,7 +1064,16 @@ namespace ClientUI
             cash.Resources.Add(style.TargetType, style);
             bank.Resources.Add(style.TargetType, style);
 
+            if(sender != null)
+            {
+                payment.Visibility = Visibility.Hidden;
+                cash.Visibility = Visibility.Hidden;
+                bank.Visibility = Visibility.Hidden;
+            }
+
             TextBox bankId = new TextBox();
+
+
             bankId.Name = "stk";
             bankId.Background = new SolidColorBrush(Colors.Pink);
             bankId.Width = 350;
@@ -1072,9 +1112,7 @@ namespace ClientUI
 
             }
             Console.WriteLine(myOrder.totalMoney);
-
         }
-
 
         void banking(object sender, RoutedEventArgs e)
         {
@@ -1091,15 +1129,18 @@ namespace ClientUI
         {
             if(e.Key == Key.Enter)
             {
-                sendBankingId();
+               
+                if (this.FindName("stk") != null)
+                    this.UnregisterName("stk");
             }
-            this.UnregisterName("stk");
+           
         }
         void cashPay(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Cam on nha cuc cung <3");
-            listViewMenu.IsEnabled = true;
-            this.UnregisterName("stk");
+            listViewMenu.Visibility = Visibility.Visible;
+            if (this.FindName("stk") != null)
+                this.UnregisterName("stk");
         }
 
         

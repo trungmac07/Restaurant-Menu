@@ -24,8 +24,10 @@ namespace Server
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window
     {
+        
         public bool isStart;
         public static string[] DatabasePath = { "../../../MAIN_DISHES.json", "../../../SOUP.json", "../../../DESSERT.json", "../../../DRINKS.json" };
         static void getMenuFromDatabase(string filePath, ref List<FOOD> menuList)
@@ -120,6 +122,8 @@ namespace Server
             sw.Flush();
         }
 
+       
+
         public static byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
             using (var ms = new MemoryStream())
@@ -193,6 +197,7 @@ namespace Server
             }
         }
 
+        
         public static void receiveOrder(StreamReader sr, StreamWriter sw)
         {
             ORDER order = new ORDER();
@@ -231,7 +236,10 @@ namespace Server
             orderList.Add(order);
             exportOrderToDatabase(orderList);
             sendOrderToClient(sw, order);
+          
         }
+
+       
         public static void ServerInit()
         {
             const int serverPort = 6969;
@@ -273,8 +281,9 @@ namespace Server
             request = sr.ReadLine();
             Console.WriteLine(request);
             if (request[0] == '5')
-            {
+            { 
                 receiveOrder(sr, sw);
+               
             }
             else 
             {
@@ -305,7 +314,7 @@ namespace Server
         {
             isStart = false;
             InitializeComponent();
-            
+          
         }
     }
     public class DISH

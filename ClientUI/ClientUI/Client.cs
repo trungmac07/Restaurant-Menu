@@ -28,7 +28,7 @@ namespace Client
         StreamReader sr;
         StreamWriter sw;
         List<DISH> list;
-        
+       
         public
         Dictionary<KeyValuePair<string, int>, int> dic;
 
