@@ -27,8 +27,6 @@ C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\Clie
 C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\ClientUI.runtimeconfig.json
 C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\ClientUI.dll
 C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\ClientUI.pdb
-C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\MaterialDesignColors.dll
-C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\MaterialDesignThemes.Wpf.dll
 C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\ClientUI.csproj.AssemblyReference.cache
 C:\Users\PhamDangSonHa\OneDrive - VNU-HCMUS\Documents\GitHub\SOCKET PROJECT\ClientUI\ClientUI\obj\Debug\net6.0-windows\MainWindow.g.cs

@@ -54,8 +54,21 @@ namespace Server
                 foreach (var item in menuItem.foodList)
                 {
                     string s = item.name;
-                    for (int i = 0; i < 30 - item.name.Length - item.price.ToString().Length; i++)
+                    Font font1 = new Font("SVN-Bali Script", 18);
+                    SizeF stringSize = new SizeF();
+                    using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(new Bitmap(1, 1)))
+                    {
+                        stringSize = graphics.MeasureString(s, font1);
+                    }
+                    while (stringSize.Width < 360)
+                    {
                         s += '.';
+                        using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(new Bitmap(1, 1)))
+                        {
+                            stringSize = graphics.MeasureString(s + item.price, font1);
+                        }
+                        if (stringSize.Width >= 360) break;
+                    }
                     s += item.price;
                     sw.WriteLine(s);
                     sw.Flush();
@@ -214,7 +227,7 @@ namespace Server
                 orderList = new List<ORDER>();
                 order.id = "1";
             }
-            
+
             order.clientName = "Trung map djt";
             order.dateTime = DateTime.Now;
             order.dishOrder = new List<DISH_ORDER>();
@@ -238,8 +251,20 @@ namespace Server
             sendOrderToClient(sw, order);
           
         }
-
-       
+        public static void ClientLoop(TcpClient client, StreamReader sr, StreamWriter sw, NetworkStream stream)
+        {
+            while (client.Connected)
+            {
+                try
+                {
+                    recvRequest(sr, sw, stream);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Client has disconnected!");
+                }
+            }
+        }
         public static void ServerInit()
         {
             const int serverPort = 6969;
@@ -256,17 +281,8 @@ namespace Server
                 StreamWriter sw = new StreamWriter(client.GetStream());
                 try
                 {
-                    while (client.Connected)
-                    {
-                        try
-                        {
-                            recvRequest(sr, sw, stream);
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("Client has disconnected!");
-                        }
-                    }
+                    Thread newThread = new Thread(() => ClientLoop(client, sr, sw, stream));
+                    newThread.Start();
                 }
                 catch (Exception ex)
                 {
@@ -285,7 +301,7 @@ namespace Server
                 receiveOrder(sr, sw);
                
             }
-            else 
+            else
             {
                 if (request[2] == '0')
                     sendBackgroundAndMenu(sw, stream, request);
@@ -293,7 +309,7 @@ namespace Server
                     sendFoodImageAndDesciption(sw, stream, request);
             }
             //sendPicAndMenu(sw, stream, request);
-            
+
         }
         public void Run(object sender, RoutedEventArgs e)
         {
@@ -306,15 +322,15 @@ namespace Server
                 isStart = true;
             }
             else
-            { 
+            {
                 MessageBox.Show("Server has started, stop pressing the button bro ???? ");
             }
-        } 
+        }
         public MainWindow()
         {
             isStart = false;
             InitializeComponent();
-          
+
         }
     }
     public class DISH

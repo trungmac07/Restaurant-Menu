@@ -1129,6 +1129,9 @@ namespace ClientUI
         {
             if(e.Key == Key.Enter)
             {
+                string bankId = (sender as TextBox).Text;
+                client.sendPayMent("0", bankId);
+                this.UnregisterName("stk");
                
                 if (this.FindName("stk") != null)
                     this.UnregisterName("stk");
@@ -1138,6 +1141,9 @@ namespace ClientUI
         void cashPay(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Cam on nha cuc cung <3");
+            client.sendPayMent("1","");
+            listViewMenu.IsEnabled = true;
+            this.UnregisterName("stk");
             listViewMenu.Visibility = Visibility.Visible;
             if (this.FindName("stk") != null)
                 this.UnregisterName("stk");
