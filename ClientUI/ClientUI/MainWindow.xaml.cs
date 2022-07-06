@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Net.Sockets;
 using System.Collections.Generic;
@@ -1141,8 +1141,9 @@ namespace ClientUI
                
                 if (this.FindName("stk") != null)
                     this.UnregisterName("stk");
+                
+                client.afterPayment();
             }
-
         }
         void cashPay(object sender, RoutedEventArgs e)
         {

@@ -214,6 +214,17 @@ namespace Client
                 sw.Flush();
             }
         }
+        public void afterPayment()
+        {
+            if(sr.ReadLine() == "1")
+            {
+                MessageBox.Show("Successfully paid your bill");
+            }
+            else
+            {
+                MessageBox.Show("Fail to pay your bill");
+            }
+        }
     }
 
 
