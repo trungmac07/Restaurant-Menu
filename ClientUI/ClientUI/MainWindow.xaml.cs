@@ -89,7 +89,8 @@ namespace ClientUI
             Border border = new Border();
             border.Name = "dishImage";
             this.RegisterName(border.Name, border);
-            border.Background = new ImageBrush(bi);
+            ImageBrush bg = new ImageBrush(bi);
+            border.Background = bg;
             border.CornerRadius = new CornerRadius(60);
             border.BorderThickness = new Thickness(7, 7, 7, 7);
             border.BorderBrush = Brushes.Black;
@@ -151,7 +152,8 @@ namespace ClientUI
             addfood.FontSize = 30;
             addfood.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
             addfood.Background = new SolidColorBrush(Colors.Gold);
-            addfood.Click += addFoodToCart;
+            addfood.Click += (sender, EventArgs) => { addFoodToCart(sender, EventArgs, bg); }; 
+            
             DockPanel.SetDock(addfood, Dock.Top);
 
             //Button Area
@@ -227,7 +229,7 @@ namespace ClientUI
 
         }
 
-        private void addFoodToCart(object sender, RoutedEventArgs e)
+        private void addFoodToCart(object sender, RoutedEventArgs e,ImageBrush bi)
         {
             var x = (sender as Button).Content;
             string str = x.ToString();
@@ -251,7 +253,7 @@ namespace ClientUI
             dish.name = foodname;
             dish.price = int.Parse(price);
 
-            client.putinCart(dish);
+            client.putinCart(dish, bi);
         }
         private Thickness chooseThickness(int mode, int x)
         {
@@ -675,29 +677,36 @@ namespace ClientUI
             dockPanel.Margin = new Thickness(50, 50, 0, 0);
 
             TextBlock name = new TextBlock();
-            name.Height = 25;
+            name.Height = 40;
             name.Width = 350;
-            name.FontSize = 21;
+            name.FontSize = 30;
             name.Text = "DISH";
+            name.Margin = new Thickness(45, 0, 0, 0);
+            name.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
 
             TextBlock price = new TextBlock();
-            price.Height = 25;
-            price.Width = 250;
-            price.FontSize = 21;
+            price.Height = 40;
+            price.Width = 120;
+            price.FontSize = 30;
             price.Text = "PRICE";
+            price.Margin = new Thickness(37, 0, 0, 0);
+            price.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
 
             Button buttonPlus = new Button();
-            buttonPlus.Height = 25;
+            buttonPlus.Height = 37;
             buttonPlus.Width = 25;
             buttonPlus.Content = "+";
             buttonPlus.FontSize = 21;
-
+            
             TextBlock num = new TextBlock();
-            num.Height = 25;
+            num.Height = 40;
             num.Width = 150;
-            num.FontSize = 21;
+            num.FontSize = 30;
             num.Text = "AMOUNT";
+            num.Margin = new Thickness(12, 0, 0, 0);
             num.TextAlignment = TextAlignment.Left;
+            num.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
+
             DockPanel.SetDock(num, Dock.Left);
 
             Button buttonMinus = new Button();
@@ -717,23 +726,28 @@ namespace ClientUI
                 TargetType = typeof(Border),
                 Setters = { new Setter { Property = Border.CornerRadiusProperty, Value = new CornerRadius(7) } }
             };
+
             Button x = new Button();
             x.Height = 50;
             x.Width = 100;
             x.Content = "ORDER";
-            x.FontSize = 21;
+            x.FontSize = 30;
             x.Background = new SolidColorBrush(Colors.Gold);
             x.Click += sendOrderRequest;
             x.Resources.Add(style.TargetType, style);
+            x.Margin = new Thickness(40, 0, 0, 0);
+            x.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script"); 
 
             Button y = new Button();
             y.Height = 50;
             y.Width = 100;
             y.Content = "BILL";
-            y.FontSize = 21;
+            y.FontSize = 30;
             y.Background = new SolidColorBrush(Colors.Gold);
             y.Click += bill;
             y.Resources.Add(style.TargetType, style);
+            y.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
+
 
             dockPanel.Children.Add(name);
             dockPanel.Children.Add(price);
@@ -761,48 +775,65 @@ namespace ClientUI
                 dockPanel.Margin = new Thickness(50, 35, 0, 0);
 
                 name = new TextBlock();
-                name.Height = 25;
-                name.Width = 350;
+                name.Height = 35;
+                name.Width = 250;
                 name.FontSize = 21;
                 name.Text = dishName;
+                name.Margin = new Thickness(30, 0, 0, 0);
+                name.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans MS");
 
                 price = new TextBlock();
-                price.Height = 25;
-                price.Width = 250;
+                price.Height = 35;
+                price.Width = 150;
                 price.FontSize = 21;
                 price.Text = dishPrice.ToString();
+                price.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans MS");
 
                 buttonPlus = new Button();
-                buttonPlus.Height = 25;
+                buttonPlus.Height = 35;
                 buttonPlus.Width = 25;
                 buttonPlus.Content = "+";
                 buttonPlus.FontSize = 21;
                 buttonPlus.Tag = dishName + " " + dishPrice;
                 buttonPlus.Click += addDish;
+                buttonPlus.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans MS");
 
                 num = new TextBlock();
-                num.Height = 25;
+                num.Height = 35;
                 num.Width = 25;
                 num.FontSize = 21;
                 num.Text = dishNum.ToString();
                 num.TextAlignment = TextAlignment.Center;
+                num.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans MS");
 
                 buttonMinus = new Button();
-                buttonMinus.Height = 25;
+                buttonMinus.Height = 35;
                 buttonMinus.Width = 25;
                 buttonMinus.Content = "-";
                 buttonMinus.FontSize = 21;
                 buttonMinus.Tag = dishName + " " + dishPrice;
                 buttonMinus.Click += removeDish;
+                buttonMinus.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans MS");
 
                 x = new Button();
-                x.Height = 25;
+                x.Height = 35;
                 x.Width = 25;
                 x.Content = "X";
                 x.FontSize = 21;
                 x.Click += removeAllDish;
                 x.Tag = dishName + " " + dishPrice;
+                x.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans MS");
+                KeyValuePair<string, int> idx = new KeyValuePair<string, int> (dishName, dishPrice);
+                
 
+
+                Border dishImage = new Border();
+                dishImage.Height = 75;
+                dishImage.Width = 145;
+
+                dishImage.Background = client.pic[idx];
+
+                dockPanel.Children.Add(dishImage);
                 dockPanel.Children.Add(name);
                 dockPanel.Children.Add(price);
                 dockPanel.Children.Add(buttonMinus);
@@ -852,7 +883,11 @@ namespace ClientUI
             KeyValuePair<string, int> pair = new KeyValuePair<string, int>(name, num);
             --client.dic[pair];
             if (client.dic[pair] == 0)
+            {
                 client.dic.Remove(pair);
+                client.pic.Remove(pair);
+            }
+                
 
             showMyList();
         }
@@ -873,6 +908,7 @@ namespace ClientUI
             int num = Int32.Parse(price);
             KeyValuePair<string, int> pair = new KeyValuePair<string, int>(name, num);
             client.dic.Remove(pair);
+            client.pic.Remove(pair);
             showMyList();
         }
 
@@ -893,7 +929,7 @@ namespace ClientUI
                     string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please type in your bill ID", "Bill ID", "HKT#");
                     if (UserAnswer != null && UserAnswer != "")
                     {
-                        
+                        // neu nhu ma bill dung -> nhan cai bill cu~ roi^` nhan luon cai bill moi -> so tien can tra them
 
 
                     }

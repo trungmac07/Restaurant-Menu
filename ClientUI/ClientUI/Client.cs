@@ -30,6 +30,8 @@ namespace Client
         List<DISH> list;
        
         public Dictionary<KeyValuePair<string, int>, int> dic;
+        public Dictionary<KeyValuePair<string, int>, ImageBrush> pic;
+
         public ORDER order;
         public
         Client()
@@ -39,6 +41,7 @@ namespace Client
             sr = new StreamReader(stream);
             sw = new StreamWriter(stream);
             dic = new Dictionary<KeyValuePair<string, int>, int>();
+            pic = new Dictionary<KeyValuePair<string, int>, ImageBrush>();
             order = new ORDER();
         }
 
@@ -155,12 +158,12 @@ namespace Client
             sw.WriteLine(request);
             sw.Flush();
         }
-        public void putinCart(DISH dish)
+        public void putinCart(DISH dish, ImageBrush bi)
         {
             string name = dish.name;
             int price = dish.price;
             var idx = new KeyValuePair<string, int>(name, price);
-
+        
             if (dic.ContainsKey(idx))
                 dic[idx] += 1;
             else
@@ -168,6 +171,10 @@ namespace Client
             Console.WriteLine(dish.name + " " + dic[idx]);
             foreach (var x in dic)
                 Console.WriteLine(x.ToString());
+
+            if (!pic.ContainsKey(idx))
+                pic.Add(idx, bi);
+
         }
         public void requestOrder()
         {
