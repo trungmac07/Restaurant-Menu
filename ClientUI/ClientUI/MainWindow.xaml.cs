@@ -1135,8 +1135,9 @@ namespace ClientUI
 
                 if (this.FindName("stk") != null)
                     this.UnregisterName("stk");
+                
+                client.afterPayment();
             }
-
         }
         void cashPay(object sender, RoutedEventArgs e)
         {
@@ -1147,6 +1148,8 @@ namespace ClientUI
             listViewMenu.Visibility = Visibility.Visible;
             if (this.FindName("stk") != null)
                 this.UnregisterName("stk");
+
+            client.afterPayment();
         }
 
 
