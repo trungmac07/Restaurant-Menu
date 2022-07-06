@@ -208,7 +208,7 @@ namespace Client
         {
             sw.WriteLine("6 " + type);
             sw.Flush();
-            if(type == "1")
+            if(type == "0")
             {
                 sw.WriteLine(bankID);
                 sw.Flush();
