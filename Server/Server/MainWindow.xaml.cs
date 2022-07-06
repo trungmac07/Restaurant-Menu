@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.Drawing;
-using System.Drawing.Imaging;
+
 
 
 namespace Server
@@ -24,33 +24,52 @@ namespace Server
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    
+    public class Client
+    {
+
+        public TcpClient client;
+        public NetworkStream stream;
+        public StreamReader sr;
+        public StreamWriter sw;
+
+        public void setStream()
+        {
+            stream = client.GetStream();
+            sr = new StreamReader(stream);
+            sw = new StreamWriter(stream);
+        }
+    }
+
+
     public partial class MainWindow : Window
     {
-        
+
         public bool isStart;
-        public static string[] DatabasePath = { "../../../MAIN_DISHES.json", "../../../SOUP.json", "../../../DESSERT.json", "../../../DRINKS.json" };
-        static void getMenuFromDatabase(string filePath, ref List<FOOD> menuList)
+        public string[] DatabasePath = { "../../../MAIN_DISHES.json", "../../../SOUP.json", "../../../DESSERT.json", "../../../DRINKS.json" };
+
+
+        void getMenuFromDatabase(string filePath, ref List<FOOD> menuList)
         {
             var jsonText = File.ReadAllText(filePath);
             menuList = JsonConvert.DeserializeObject<List<FOOD>>(jsonText);
         }
-        static void sendMenuToClient(StreamWriter sw, List<FOOD> menuList)
+
+        void sendMenuToClient(Client client, List<FOOD> menuList)
         {
             if (menuList == null)
             {
-                sw.WriteLine(0);
-                sw.Flush();
+                client.sw.WriteLine(0);
+                client.sw.Flush();
                 return;
             }
-            sw.WriteLine(menuList.Count);
-            sw.Flush();
+            client.sw.WriteLine(menuList.Count);
+            client.sw.Flush();
             foreach (var menuItem in menuList)
             {
-                sw.WriteLine(menuItem.name);
-                sw.Flush();
-                sw.WriteLine(menuItem.foodList.Count);
-                sw.Flush();
+                client.sw.WriteLine(menuItem.name);
+                client.sw.Flush();
+                client.sw.WriteLine(menuItem.foodList.Count);
+                client.sw.Flush();
                 foreach (var item in menuItem.foodList)
                 {
                     string s = item.name;
@@ -60,7 +79,7 @@ namespace Server
                     {
                         stringSize = graphics.MeasureString(s, font1);
                     }
-                    while (stringSize.Width < 360)
+                    while (stringSize.Width < 250)
                     {
                         s += '.';
                         using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(new Bitmap(1, 1)))
@@ -70,14 +89,14 @@ namespace Server
                         if (stringSize.Width >= 360) break;
                     }
                     s += item.price;
-                    sw.WriteLine(s);
-                    sw.Flush();
+                    client.sw.WriteLine(s);
+                    client.sw.Flush();
                 }
             }
-            //sw.Flush();
+            //client.sw.Flush();
 
         }
-        public static bool isCardValid(string clientCard, int money)
+        public bool isCardValid(string clientCard, int money)
         {
             List<BANK_CARD> cardList;
             var jsonText = File.ReadAllText("../../../BANK_CARD.json");
@@ -111,7 +130,9 @@ namespace Server
             }
             return false;
         }
-        static void exportOrderToDatabase(List<ORDER> orderList)
+
+
+        void exportOrderToDatabase(List<ORDER> orderList)
         {
             File.WriteAllText("../../../ORDERS.json", string.Empty);
             File.WriteAllText("../../../ORDERS.json", "[");
@@ -124,69 +145,71 @@ namespace Server
             }
             File.AppendAllText("../../../ORDERS.json", "]");
         }
-        static void getOrderFromDatabase(ref List<ORDER> orderList)
+
+        void getOrderFromDatabase(ref List<ORDER> orderList)
         {
             var jsonText = File.ReadAllText("../../../ORDERS.json");
             orderList = JsonConvert.DeserializeObject<List<ORDER>>(jsonText);
         }
-        static void sendOrderToClient(StreamWriter sw, ORDER order)
+
+        void sendOrderToClient(Client client, ORDER order)
         {
-            sw.WriteLine(order.dateTime);
-            sw.Flush();
-            sw.WriteLine(order.dishOrder.Count);
-            sw.Flush();
+            client.sw.WriteLine(order.dateTime);
+            client.sw.Flush();
+            client.sw.WriteLine(order.dishOrder.Count);
+            client.sw.Flush();
             foreach (var dishItem in order.dishOrder)
             {
-                sw.WriteLine(dishItem.dish.name);
-                sw.Flush();
-                sw.WriteLine(dishItem.dish.price);
-                sw.Flush();
-                sw.WriteLine(dishItem.numberOfDishes);
-                sw.Flush();
-                sw.WriteLine(dishItem.totalMoney);
-                sw.Flush();
+                client.sw.WriteLine(dishItem.dish.name);
+                client.sw.Flush();
+                client.sw.WriteLine(dishItem.dish.price);
+                client.sw.Flush();
+                client.sw.WriteLine(dishItem.numberOfDishes);
+                client.sw.Flush();
+                client.sw.WriteLine(dishItem.totalMoney);
+                client.sw.Flush();
             }
-            sw.WriteLine(order.totalMoney);
-            sw.Flush();
+            client.sw.WriteLine(order.totalMoney);
+            client.sw.Flush();
         }
 
-       
 
-        public static byte[] ImageToByteArray(System.Drawing.Image imageIn)
+
+        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
             using (var ms = new MemoryStream())
             {
-                imageIn.Save(ms, ImageFormat.Jpeg);
+                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 return ms.ToArray();
             }
         }
 
-        public static void sendImageToClient(StreamWriter sw, NetworkStream stream, string link)
+        public void sendImageToClient(Client client, string link)
         {
             System.Drawing.Image img = System.Drawing.Image.FromFile(link);
             byte[] a = ImageToByteArray(img);
             Console.WriteLine(a.Length);
             int len = a.Length;
-            sw.WriteLine(len); //send size of image for client to create a buffer
-            sw.Flush();
+            client.sw.WriteLine(len); //send size of image for client to create a buffer
+            client.sw.Flush();
             Console.WriteLine(a.Length);
             Console.WriteLine(len);
-            stream.Write(a, 0, len);  //send bytes
-            stream.Flush();
+            client.stream.Write(a, 0, len);  //send bytes
+            client.stream.Flush();
         }
 
-        public static void sendBackgroundAndMenu(StreamWriter sw, NetworkStream stream, string request)
+        public void sendBackgroundAndMenu(Client client, string request)
         {
             //Backround
-            sendImageToClient(sw, stream, "./Image/Background/" + request[0] + ".jpg");
+            sendImageToClient(client, "./Image/Background/" + request[0] + ".jpg");
             // Send menu list 
             List<FOOD> menuList = new List<FOOD>();
 
             getMenuFromDatabase(DatabasePath[Int32.Parse(new string(request[0], 1)) - 1], ref menuList);
-            sendMenuToClient(sw, menuList);
+            sendMenuToClient(client, menuList);
         }
 
-        public static void sendFoodImageAndDesciption(StreamWriter sw, NetworkStream stream, string request)
+        public void sendFoodImageAndDesciption(Client client, string request)
         {
             //Food
             string path;
@@ -202,7 +225,7 @@ namespace Server
                 index = Int32.Parse(request[2].ToString()) * 10 + Int32.Parse(request[3].ToString());
             }
             Console.WriteLine(path);
-            sendImageToClient(sw, stream, path);
+            sendImageToClient(client, path);
 
             List<FOOD> menuList = new List<FOOD>();
             getMenuFromDatabase(DatabasePath[Int32.Parse(new string(request[0], 1)) - 1], ref menuList);
@@ -215,8 +238,8 @@ namespace Server
                     count++;
                     if (count == index)
                     {
-                        sw.WriteLine(dish.description);
-                        sw.Flush();
+                        client.sw.WriteLine(dish.description);
+                        client.sw.Flush();
                         isFound = true;
                         break;
                     }
@@ -224,7 +247,7 @@ namespace Server
                 if (isFound == true) break;
             }
         }
-        public static void getPayment(StreamReader sr, StreamWriter sw, string request, ORDER order)
+        public void getPayment(Client client, string request, ORDER order)
         {
             List<ORDER> orderList = new List<ORDER>();
             getOrderFromDatabase(ref orderList);
@@ -233,21 +256,21 @@ namespace Server
                 order.payment = "cash";
                 order.bankCard = null;
                 order.isPayed = true;
-                sw.WriteLine("1");
+                client.sw.WriteLine("1");
             }
             else if (request[2] == '0')
             {
                 order.payment = "banking";
-                order.bankCard = sr.ReadLine(); 
+                order.bankCard = client.sr.ReadLine(); 
                 if (isCardValid(order.bankCard, order.totalMoney) == false)
                 {
                     order.isPayed = false;
-                    sw.WriteLine("0");
+                    client.sw.WriteLine("0");
                 }
                 else
                 {
                     order.isPayed = true;
-                    sw.WriteLine("1");
+                    client.sw.WriteLine("1");
                 }
             }
             foreach(ORDER Order in orderList)
@@ -262,11 +285,11 @@ namespace Server
             }
             exportOrderToDatabase(orderList);
         }
-        public static void receiveOrder(StreamReader sr, StreamWriter sw, ref ORDER order)
+        public void receiveOrder(Client client,ref ORDER order)
         {
             order = new ORDER();
             List<ORDER> orderList = new List<ORDER>();
-            int numberOfDish = Int32.Parse(sr.ReadLine());
+            int numberOfDish = Int32.Parse(client.sr.ReadLine());
             getOrderFromDatabase(ref orderList);
             if (orderList != null)
             {
@@ -287,11 +310,11 @@ namespace Server
             {
                 var newDish = new DISH_ORDER();
                 newDish.dish = new DISH();
-                newDish.dish.name = sr.ReadLine();
+                newDish.dish.name = client.sr.ReadLine();
                 Console.WriteLine(newDish.dish.name);
-                newDish.dish.price = Int32.Parse(sr.ReadLine());
+                newDish.dish.price = Int32.Parse(client.sr.ReadLine());
                 Console.WriteLine(newDish.dish.price);
-                newDish.numberOfDishes = Int32.Parse(sr.ReadLine());
+                newDish.numberOfDishes = Int32.Parse(client.sr.ReadLine());
                 Console.WriteLine(newDish.numberOfDishes);
                 newDish.totalMoney = newDish.numberOfDishes * newDish.dish.price;
                 order.dishOrder.Add(newDish);
@@ -299,26 +322,139 @@ namespace Server
             }
             orderList.Add(order);
             exportOrderToDatabase(orderList);
-            sendOrderToClient(sw, order);
+            sendOrderToClient(client, order);
+
+
+            drawUI(order);
+
         }
-        
-        public static void ServerInit()
+
+        bool drawColor = true;
+
+        public void drawUI(ORDER dishOrder)
         {
+            this.Dispatcher.Invoke(() =>
+            {
+
+
+                
+                Border motherBorder = new Border();
+                motherBorder.Width = 670;
+                motherBorder.HorizontalAlignment = HorizontalAlignment.Center;
+                motherBorder.BorderThickness = new Thickness(2, 2, 2, 2);
+                motherBorder.BorderBrush = new SolidColorBrush(Colors.Black);
+                
+                DockPanel whole = new DockPanel();
+               
+                Button tableNum = new Button();
+                tableNum.BorderThickness = new Thickness(0, 0, 2, 0);
+                tableNum.Width = 70;
+                tableNum.FontSize = 37;
+                tableNum.Content = "7";
+
+                StackPanel viewDish = new StackPanel();
+                viewDish.Width = 500;
+                if (drawColor == true)
+                    whole.Background = new SolidColorBrush(Colors.LightBlue);
+                
+                whole.Children.Add(tableNum);
+
+                foreach (var dish in dishOrder.dishOrder)
+                {
+                    DockPanel dock = new DockPanel();
+
+                   
+
+                    TextBlock name = new TextBlock();
+                    name.Height = 45;
+                    name.Margin = new Thickness(45, 0, 0, 0);
+                    name.Text = dish.dish.name + "  x" + dish.numberOfDishes;
+                    name.FontSize = 23;
+
+                    Button done = new Button();
+                    done.Background = new SolidColorBrush(System.Windows.Media.Colors.LawnGreen);
+                    done.Width = 45;
+                    done.HorizontalAlignment = HorizontalAlignment.Right;
+                    done.BorderThickness = new Thickness(0, 0, 0, 0);
+
+                    try
+                    {
+                        ImageBrush imageBrush = new ImageBrush();
+                        imageBrush.ImageSource = new BitmapImage(new Uri("./Image/tick.png", UriKind.Relative));
+                        done.Background = imageBrush;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+
+                  
+                    dock.Children.Add(name);
+                    dock.Children.Add(done);
+
+                    viewDish.Children.Add(dock);
+                }
+
+
+
+                whole.Children.Add(viewDish);
+
+                motherBorder.Child = whole;
+
+                menuArea.Children.Add(motherBorder);
+
+
+                drawColor = true ^ drawColor;
+            });
+        }
+
+
+
+
+        public void ClientLoop(Client client)
+        {
+            while (client.client.Connected)
+            {
+                try
+                {
+                    recvRequest(client);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Client has disconnected!");
+                }
+            }
+        }
+
+
+        public void ServerInit()
+        {
+
             const int serverPort = 6969;
             TcpListener listener = new TcpListener(System.Net.IPAddress.Any, serverPort);
             listener.Start();
 
+            List<Client> clientList = new List<Client>();
+
+
             while (true)
             {
                 Console.WriteLine("Waiting for a connection.");
-                TcpClient client = listener.AcceptTcpClient();
+                Client customer = new Client();
+                customer.client = listener.AcceptTcpClient();
+                customer.setStream();
                 Console.WriteLine("Client accepted");
-                NetworkStream stream = client.GetStream();
-                StreamReader sr = new StreamReader(client.GetStream());
-                StreamWriter sw = new StreamWriter(client.GetStream());
+                clientList.Add(customer);
+
                 try
                 {
-                    Thread newThread = new Thread(() => recvRequest(client, sr, sw, stream));
+                    Thread newThread = new Thread(o =>
+                    {
+                        ClientLoop(clientList[clientList.Count - 1]);
+                        System.Windows.Threading.Dispatcher.Run();
+                    });
+                    newThread.SetApartmentState(ApartmentState.STA);
+
                     newThread.Start();
                 }
                 catch (Exception ex)
@@ -328,30 +464,30 @@ namespace Server
 
             }
         }
-        public static void recvRequest(TcpClient client, StreamReader sr, StreamWriter sw, NetworkStream stream)
+        public void recvRequest(Client client)
         {
             ORDER order = null;
-            while (client.Connected)
+            while (client.client.Connected)
             {
                 try
                 {
                     string request;
-                    request = sr.ReadLine();
+                    request = client.sr.ReadLine();
                     Console.WriteLine(request);
                     if (request[0] == '5')
                     {
-                        receiveOrder(sr, sw, ref order);
+                        receiveOrder(client, ref order);
                     }
                     else if (request[0] == '6')
                     {
-                        getPayment(sr, sw, request, order);
+                        getPayment(client, request, order);
                     }
                     else
                     {
                         if (request[2] == '0')
-                            sendBackgroundAndMenu(sw, stream, request);
+                            sendBackgroundAndMenu(client, request);
                         else
-                            sendFoodImageAndDesciption(sw, stream, request);
+                            sendFoodImageAndDesciption(client, request);
                     }
                 }
                 catch (Exception ex)
@@ -361,15 +497,22 @@ namespace Server
             }
 
         }
+
         public void Run(object sender, RoutedEventArgs e)
         {
             startButton.Visibility = Visibility.Collapsed;
             mainScreen.Background = null;
             if (isStart == false)
             {
-                Thread mainThread = new Thread(ServerInit);
-                mainThread.Start();
                 isStart = true;
+                Thread mainThread = new Thread(o =>
+                {
+                    ServerInit();
+                    System.Windows.Threading.Dispatcher.Run();
+                });
+                mainThread.SetApartmentState(ApartmentState.STA);
+                //mainThread.SetApartmentState(ApartmentState.STA);
+                mainThread.Start();
             }
             else
             {
@@ -398,7 +541,7 @@ namespace Server
     }
 
     [Serializable]
-    class FOOD
+    public class FOOD
     {
         public string name { get; set; }
         public List<DISH> foodList { get; set; }
