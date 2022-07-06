@@ -929,14 +929,18 @@ namespace ClientUI
                     string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please type in your bill ID", "Bill ID", "HKT#");
                     if (UserAnswer != null && UserAnswer != "")
                     {
-                        // neu nhu ma bill dung -> nhan cai bill cu~ roi^` nhan luon cai bill moi -> so tien can tra them
 
+                        client.sendBillID(UserAnswer);
+                        while(client.recvBillID() == false && MessageBox.Show("Do you have a bill before ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                        {
+                            MessageBox.Show("Can't find your bill ID");
+                            UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please type in your bill ID", "Bill ID", "HKT#");
+                            client.sendBillID(UserAnswer);
+                        }
 
                     }
                     return;
                 }
-                
-
             }
 
             //Ha`

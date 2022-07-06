@@ -302,15 +302,14 @@ namespace Server
             if (orderList != null)
             {
                 Console.WriteLine(orderList.Count);
-                order.id = (orderList.Count + 1).ToString();
+                order.id = "HKT#" + (orderList.Count + 1).ToString();
             }
             else
             {
                 orderList = new List<ORDER>();
-                order.id = "1";
+                order.id = "HKT#1";
             }
 
-            order.clientName = "Trung map djt";
             order.dateTime = DateTime.Now;
             order.dishOrder = new List<DISH_ORDER>();
             Console.WriteLine(numberOfDish);
@@ -336,9 +335,7 @@ namespace Server
             drawUI(order);
 
         }
-
         bool drawColor = true;
-
         public void drawUI(ORDER dishOrder)
         {
             this.Dispatcher.Invoke(() =>
@@ -415,10 +412,6 @@ namespace Server
                 drawColor = true ^ drawColor;
             });
         }
-
-
-
-
         public void ClientLoop(Client client)
         {
             while (client.client.Connected)
@@ -474,6 +467,24 @@ namespace Server
 
             }
         }
+        public bool getBillID(Client client, string billID, StreamWriter sw)
+        {
+            List<ORDER> orderList = new List<ORDER>();
+            getOrderFromDatabase(ref orderList);
+            foreach (ORDER order in orderList)
+            {
+                if (order.id == billID)
+                {
+                    sw.WriteLine("1");
+                    sw.Flush();
+                    sendOrderToClient(client, order);
+                    return true;
+                }
+            }
+            sw.WriteLine("0");
+            sw.Flush();
+            return false;
+        }
         public void recvRequest(Client client)
         {
             ORDER order = null;
@@ -492,6 +503,11 @@ namespace Server
                     {
                         getPayment(client, request, order);
                     }
+                    else if (request[0] == '7')
+                    {
+                        string billID = client.sr.ReadLine();
+                        getBillID(client, billID, client.sw);
+                    }    
                     else
                     {
                         if (request[2] == '0')
@@ -563,7 +579,6 @@ namespace Server
     public class ORDER
     {
         public string id { get; set; }
-        public string clientName { get; set; }
         public DateTime dateTime { get; set; }
         public List<DISH_ORDER> dishOrder { get; set; }
         public int totalMoney { get; set; }
