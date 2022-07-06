@@ -8,7 +8,6 @@ E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-win
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\MainWindow.g.cs
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\App.g.cs
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\Server_MarkupCompile.cache
-E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\Server_MarkupCompile.lref
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\MainWindow.baml
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.g.resources
 E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.GeneratedMSBuildEditorConfig.editorconfig

@@ -23,7 +23,7 @@ namespace ClientUI
     public partial class MainWindow : Window
     {
         Client.Client client;
-        bool haveBill ;
+        bool haveBill;
         public MainWindow()
         {
 
@@ -231,7 +231,7 @@ namespace ClientUI
         {
             var x = (sender as Button).Content;
             string str = x.ToString();
-            
+
             string[] word = str.Split("\n\n");
             //MessageBox.Show(word[1]);
 
@@ -884,7 +884,7 @@ namespace ClientUI
                 MessageBox.Show("Please choose some dished first.");
                 return;
             }
-                
+
             //Ha`
             client.requestOrder();
             
@@ -898,13 +898,13 @@ namespace ClientUI
 
         void bill(object sender, RoutedEventArgs e)
         {
-            if(sender == null)
+            if (sender == null)
             {
                 listViewMenu.Visibility = Visibility.Collapsed;
             }
             else
             {
-                if(haveBill == false)
+                if (haveBill == false)
                 {
                     MessageBox.Show("You have no bill, please order something");
                     return;
@@ -1067,7 +1067,7 @@ namespace ClientUI
             cash.Resources.Add(style.TargetType, style);
             bank.Resources.Add(style.TargetType, style);
 
-            if(sender != null)
+            if (sender != null)
             {
                 payment.Visibility = Visibility.Hidden;
                 cash.Visibility = Visibility.Hidden;
@@ -1133,7 +1133,7 @@ namespace ClientUI
         }
         void typeBankingId(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 string bankId = (sender as TextBox).Text;
                 client.sendPayMent("0", bankId);
@@ -1142,12 +1142,12 @@ namespace ClientUI
                 if (this.FindName("stk") != null)
                     this.UnregisterName("stk");
             }
-           
+
         }
         void cashPay(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Cam on nha cuc cung <3");
-            client.sendPayMent("1","");
+            client.sendPayMent("1", "");
             listViewMenu.IsEnabled = true;
             
             listViewMenu.Visibility = Visibility.Visible;
@@ -1156,7 +1156,6 @@ namespace ClientUI
             bill(sender, null);
         }
 
-        
+
     }
 }
-

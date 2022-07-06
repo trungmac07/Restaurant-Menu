@@ -96,8 +96,7 @@ namespace Server
             //client.sw.Flush();
 
         }
-
-        public bool isCardValid(BANK_CARD clientCard)
+        public static bool isCardValid(string clientCard, int money)
         {
             List<BANK_CARD> cardList;
             var jsonText = File.ReadAllText("../../../BANK_CARD.json");
@@ -105,13 +104,28 @@ namespace Server
 
             foreach (var card in cardList)
             {
-                if (card.cardNumber == clientCard.cardNumber)
+                if (card.cardNumber == clientCard)
                 {
-                    if (card.money <= 0)
+                    if (card.money < money)
                     {
                         return false;
                     }
-                    else return true;
+                    else
+                    {
+                        card.money -= money;
+                        File.WriteAllText("../../../BANK_CARD.json", string.Empty);
+                        File.WriteAllText("../../../BANK_CARD.json", "[");
+                        int count = 0;
+                        foreach (var Card in cardList)
+                        {
+                            if (count != 0) File.AppendAllText("../../../BANK_CARD.json", ",");
+                            File.AppendAllText("../../../BANK_CARD.json", JsonConvert.SerializeObject(Card));
+                            count++;
+                        }
+                        File.AppendAllText("../../../BANK_CARD.json", "]");
+                        return true;
+
+                    }
                 }
             }
             return false;
@@ -233,11 +247,47 @@ namespace Server
                 if (isFound == true) break;
             }
         }
-
-
-        public void receiveOrder(Client client)
+        public void getPayment(Client client, string request, ORDER order)
         {
-            ORDER order = new ORDER();
+            List<ORDER> orderList = new List<ORDER>();
+            getOrderFromDatabase(ref orderList);
+            if (request[2] == '1')
+            {
+                order.payment = "cash";
+                order.bankCard = null;
+                order.isPayed = true;
+                client.sw.WriteLine("1");
+            }
+            else if (request[2] == '0')
+            {
+                order.payment = "banking";
+                order.bankCard = client.sr.ReadLine(); 
+                if (isCardValid(order.bankCard, order.totalMoney) == false)
+                {
+                    order.isPayed = false;
+                    client.sw.WriteLine("0");
+                }
+                else
+                {
+                    order.isPayed = true;
+                    client.sw.WriteLine("1");
+                }
+            }
+            foreach(ORDER Order in orderList)
+            {
+                if (Order.id == order.id)
+                {
+                    Order.payment = order.payment;
+                    Order.bankCard = order.bankCard;
+                    Order.isPayed = order.isPayed;
+                    break;
+                }
+            }
+            exportOrderToDatabase(orderList);
+        }
+        public void receiveOrder(Client client,ref ORDER order)
+        {
+            order = new ORDER();
             List<ORDER> orderList = new List<ORDER>();
             int numberOfDish = Int32.Parse(client.sr.ReadLine());
             getOrderFromDatabase(ref orderList);
@@ -297,9 +347,10 @@ namespace Server
                 DockPanel whole = new DockPanel();
                
                 Button tableNum = new Button();
-                tableNum.BorderThickness = new Thickness(0, 0, 0, 0);
+                tableNum.BorderThickness = new Thickness(0, 0, 2, 0);
                 tableNum.Width = 70;
                 tableNum.FontSize = 37;
+                tableNum.Content = "7";
 
                 StackPanel viewDish = new StackPanel();
                 viewDish.Width = 500;
@@ -413,27 +464,37 @@ namespace Server
 
             }
         }
-
         public void recvRequest(Client client)
         {
-            string request;
-            request = client.sr.ReadLine();
-            Console.WriteLine(request);
-            if (request[0] == '5')
+            ORDER order = null;
+            while (client.client.Connected)
             {
-                receiveOrder(client);
-
-               
+                try
+                {
+                    string request;
+                    request = client.sr.ReadLine();
+                    Console.WriteLine(request);
+                    if (request[0] == '5')
+                    {
+                        receiveOrder(client, ref order);
+                    }
+                    else if (request[0] == '6')
+                    {
+                        getPayment(client, request, order);
+                    }
+                    else
+                    {
+                        if (request[2] == '0')
+                            sendBackgroundAndMenu(client, request);
+                        else
+                            sendFoodImageAndDesciption(client, request);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Client has disconnected!");
+                }
             }
-            else
-            {
-
-                if (request[2] == '0')
-                    sendBackgroundAndMenu(client, request);
-                else
-                    sendFoodImageAndDesciption(client, request);
-            }
-            //sendPicAndMenu(client.sw, stream, request);
 
         }
 
@@ -496,6 +557,8 @@ namespace Server
         public List<DISH_ORDER> dishOrder { get; set; }
         public int totalMoney { get; set; }
         public bool isPayed { get; set; }
+        public string payment { get; set; }
+        public string bankCard { get; set; }
         public ORDER()
         {
             totalMoney = 0;
