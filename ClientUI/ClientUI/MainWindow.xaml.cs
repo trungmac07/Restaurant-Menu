@@ -885,6 +885,24 @@ namespace ClientUI
                 return;
             }
 
+            if (client.order.totalMoney == 0)
+            {
+                if(MessageBox.Show("Do you have a bill before ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+
+                    string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please type in your bill ID", "Bill ID", "HKT#");
+                    if (UserAnswer != null && UserAnswer != "")
+                    {
+                        
+
+
+                    }
+                    return;
+                }
+                
+
+            }
+
             //Ha`
             client.requestOrder();
             
