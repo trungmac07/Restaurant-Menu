@@ -231,6 +231,18 @@ namespace Client
                 MessageBox.Show("Fail to pay your bill");
             }
         }
+        public void sendBillID(string str)
+        {
+            sw.WriteLine(str);
+            sw.Flush();
+        }
+        public bool recvBillID()
+        {
+            if (sr.ReadLine() == "1")
+                return true;
+            else
+                return false;
+        }
     }
 
 

@@ -893,14 +893,16 @@ namespace ClientUI
                     string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please type in your bill ID", "Bill ID", "HKT#");
                     if (UserAnswer != null && UserAnswer != "")
                     {
-                        
-
-
+                        client.sendBillID(UserAnswer);
+                        while(client.recvBillID() == false)
+                        {
+                            MessageBox.Show("Can't find your bill ID");
+                            UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please type in your bill ID", "Bill ID", "HKT#");
+                            client.sendBillID(UserAnswer);
+                        }
                     }
                     return;
                 }
-                
-
             }
 
             //Ha`
