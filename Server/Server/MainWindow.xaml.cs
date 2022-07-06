@@ -474,7 +474,8 @@ namespace Server
                 {
                     sw.WriteLine("1");
                     sw.Flush();
-                    sendOrderToClient(client, order);
+                    //sendOrderToClient(client, order);
+
                     return true;
                 }
             }

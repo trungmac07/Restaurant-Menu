@@ -923,20 +923,19 @@ namespace ClientUI
 
             if (client.order.totalMoney == 0)
             {
-                if(MessageBox.Show("Do you have a bill before ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Do you have a bill before ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
 
                     string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please type in your bill ID", "Bill ID", "HKT#");
                     if (UserAnswer != null && UserAnswer != "")
                     {
                         client.sendBillID(UserAnswer);
-                        if(client.recvBillID() == false )
+                        if (client.recvBillID() == false)
                         {
                             MessageBox.Show("Can't find your bill ID");
-                           
+                            return;
                         }
                     }
-                    return;
                 }
             }
 
