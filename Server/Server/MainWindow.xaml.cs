@@ -77,7 +77,7 @@ namespace Server
             //sw.Flush();
 
         }
-        public bool isCardValid(BANK_CARD clientCard)
+        public static bool isCardValid(string clientCard, int money)
         {
             List<BANK_CARD> cardList;
             var jsonText = File.ReadAllText("../../../BANK_CARD.json");
@@ -85,13 +85,28 @@ namespace Server
 
             foreach (var card in cardList)
             {
-                if (card.cardNumber == clientCard.cardNumber)
+                if (card.cardNumber == clientCard)
                 {
-                    if (card.money <= 0)
+                    if (card.money < money)
                     {
                         return false;
                     }
-                    else return true;
+                    else
+                    {
+                        card.money -= money;
+                        File.WriteAllText("../../../BANK_CARD.json", string.Empty);
+                        File.WriteAllText("../../../BANK_CARD.json", "[");
+                        int count = 0;
+                        foreach (var Card in cardList)
+                        {
+                            if (count != 0) File.AppendAllText("../../../BANK_CARD.json", ",");
+                            File.AppendAllText("../../../BANK_CARD.json", JsonConvert.SerializeObject(Card));
+                            count++;
+                        }
+                        File.AppendAllText("../../../BANK_CARD.json", "]");
+                        return true;
+
+                    }
                 }
             }
             return false;
@@ -209,11 +224,47 @@ namespace Server
                 if (isFound == true) break;
             }
         }
-
-        
-        public static void receiveOrder(StreamReader sr, StreamWriter sw)
+        public static void getPayment(StreamReader sr, StreamWriter sw, string request, ORDER order)
         {
-            ORDER order = new ORDER();
+            List<ORDER> orderList = new List<ORDER>();
+            getOrderFromDatabase(ref orderList);
+            if (request[2] == '1')
+            {
+                order.payment = "cash";
+                order.bankCard = null;
+                order.isPayed = true;
+                sw.WriteLine("1");
+            }
+            else if (request[2] == '0')
+            {
+                order.payment = "banking";
+                order.bankCard = sr.ReadLine(); 
+                if (isCardValid(order.bankCard, order.totalMoney) == false)
+                {
+                    order.isPayed = false;
+                    sw.WriteLine("0");
+                }
+                else
+                {
+                    order.isPayed = true;
+                    sw.WriteLine("1");
+                }
+            }
+            foreach(ORDER Order in orderList)
+            {
+                if (Order.id == order.id)
+                {
+                    Order.payment = order.payment;
+                    Order.bankCard = order.bankCard;
+                    Order.isPayed = order.isPayed;
+                    break;
+                }
+            }
+            exportOrderToDatabase(orderList);
+        }
+        public static void receiveOrder(StreamReader sr, StreamWriter sw, ref ORDER order)
+        {
+            order = new ORDER();
             List<ORDER> orderList = new List<ORDER>();
             int numberOfDish = Int32.Parse(sr.ReadLine());
             getOrderFromDatabase(ref orderList);
@@ -249,22 +300,8 @@ namespace Server
             orderList.Add(order);
             exportOrderToDatabase(orderList);
             sendOrderToClient(sw, order);
-          
         }
-        public static void ClientLoop(TcpClient client, StreamReader sr, StreamWriter sw, NetworkStream stream)
-        {
-            while (client.Connected)
-            {
-                try
-                {
-                    recvRequest(sr, sw, stream);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Client has disconnected!");
-                }
-            }
-        }
+        
         public static void ServerInit()
         {
             const int serverPort = 6969;
@@ -281,7 +318,7 @@ namespace Server
                 StreamWriter sw = new StreamWriter(client.GetStream());
                 try
                 {
-                    Thread newThread = new Thread(() => ClientLoop(client, sr, sw, stream));
+                    Thread newThread = new Thread(() => recvRequest(client, sr, sw, stream));
                     newThread.Start();
                 }
                 catch (Exception ex)
@@ -291,24 +328,37 @@ namespace Server
 
             }
         }
-        public static void recvRequest(StreamReader sr, StreamWriter sw, NetworkStream stream)
+        public static void recvRequest(TcpClient client, StreamReader sr, StreamWriter sw, NetworkStream stream)
         {
-            string request;
-            request = sr.ReadLine();
-            Console.WriteLine(request);
-            if (request[0] == '5')
-            { 
-                receiveOrder(sr, sw);
-               
-            }
-            else
+            ORDER order = null;
+            while (client.Connected)
             {
-                if (request[2] == '0')
-                    sendBackgroundAndMenu(sw, stream, request);
-                else
-                    sendFoodImageAndDesciption(sw, stream, request);
+                try
+                {
+                    string request;
+                    request = sr.ReadLine();
+                    Console.WriteLine(request);
+                    if (request[0] == '5')
+                    {
+                        receiveOrder(sr, sw, ref order);
+                    }
+                    else if (request[0] == '6')
+                    {
+                        getPayment(sr, sw, request, order);
+                    }
+                    else
+                    {
+                        if (request[2] == '0')
+                            sendBackgroundAndMenu(sw, stream, request);
+                        else
+                            sendFoodImageAndDesciption(sw, stream, request);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Client has disconnected!");
+                }
             }
-            //sendPicAndMenu(sw, stream, request);
 
         }
         public void Run(object sender, RoutedEventArgs e)
@@ -356,7 +406,7 @@ namespace Server
     }
 
     [Serializable]
-    class ORDER
+    public class ORDER
     {
         public string id { get; set; }
         public string clientName { get; set; }
@@ -364,6 +414,8 @@ namespace Server
         public List<DISH_ORDER> dishOrder { get; set; }
         public int totalMoney { get; set; }
         public bool isPayed { get; set; }
+        public string payment { get; set; }
+        public string bankCard { get; set; }
         public ORDER()
         {
             totalMoney = 0;
