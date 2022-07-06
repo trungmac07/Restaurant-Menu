@@ -96,7 +96,6 @@ namespace Server
             //client.sw.Flush();
 
         }
-
         public bool isCardValid(string clientCard, int money)
         {
             List<BANK_CARD> cardList;
@@ -133,7 +132,6 @@ namespace Server
         }
 
 
-
         void exportOrderToDatabase(List<ORDER> orderList)
         {
             File.WriteAllText("../../../ORDERS.json", string.Empty);
@@ -147,7 +145,6 @@ namespace Server
             }
             File.AppendAllText("../../../ORDERS.json", "]");
         }
-
 
         void getOrderFromDatabase(ref List<ORDER> orderList)
         {

@@ -249,6 +249,7 @@ namespace Client
         {
             if (sr.ReadLine() == "1")
                 return true;
+
             else
                 return false;
         }

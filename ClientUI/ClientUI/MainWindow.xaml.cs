@@ -930,11 +930,10 @@ namespace ClientUI
                     if (UserAnswer != null && UserAnswer != "")
                     {
                         client.sendBillID(UserAnswer);
-                        while(client.recvBillID() == false && MessageBox.Show("Do you have a bill before ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                        if(client.recvBillID() == false )
                         {
                             MessageBox.Show("Can't find your bill ID");
-                            UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please type in your bill ID", "Bill ID", "HKT#");
-                            client.sendBillID(UserAnswer);
+                           
                         }
                     }
                     return;
