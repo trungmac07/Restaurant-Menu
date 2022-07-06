@@ -107,7 +107,7 @@ namespace Client
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message + " 123");
+                        MessageBox.Show(ex.Message);
                     }
 
                 }
@@ -213,10 +213,16 @@ namespace Client
                 sw.WriteLine(bankID);
                 sw.Flush();
             }
+            afterPayment();
+            
         }
         public void afterPayment()
         {
-            if(sr.ReadLine() == "1")
+         
+            string recv = sr.ReadLine();
+
+            MessageBox.Show(recv);
+            if (recv == "1")
             {
                 MessageBox.Show("Successfully paid your bill");
             }

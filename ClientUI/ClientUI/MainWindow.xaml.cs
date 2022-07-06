@@ -1141,8 +1141,7 @@ namespace ClientUI
                
                 if (this.FindName("stk") != null)
                     this.UnregisterName("stk");
-                
-                client.afterPayment();
+         
             }
         }
         void cashPay(object sender, RoutedEventArgs e)
@@ -1150,11 +1149,12 @@ namespace ClientUI
             MessageBox.Show("Cam on nha cuc cung <3");
             client.sendPayMent("1", "");
             listViewMenu.IsEnabled = true;
-            
+          
             listViewMenu.Visibility = Visibility.Visible;
             if (this.FindName("stk") != null)
                 this.UnregisterName("stk");
             bill(sender, null);
+            
         }
 
 

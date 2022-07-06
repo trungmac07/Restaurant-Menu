@@ -253,10 +253,13 @@ namespace Server
             getOrderFromDatabase(ref orderList);
             if (request[2] == '1')
             {
+                
                 order.payment = "cash";
                 order.bankCard = null;
                 order.isPayed = true;
+
                 client.sw.WriteLine("1");
+                client.sw.Flush();
             }
             else if (request[2] == '0')
             {
@@ -266,11 +269,13 @@ namespace Server
                 {
                     order.isPayed = false;
                     client.sw.WriteLine("0");
+                    client.sw.Flush();
                 }
                 else
                 {
                     order.isPayed = true;
                     client.sw.WriteLine("1");
+                    client.sw.Flush();
                 }
             }
             foreach(ORDER Order in orderList)
@@ -495,6 +500,7 @@ namespace Server
                 catch (Exception ex)
                 {
                     Console.WriteLine("Client has disconnected!");
+                    
                 }
             }
 
