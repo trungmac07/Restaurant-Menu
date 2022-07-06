@@ -29,7 +29,7 @@ namespace ClientUI
 
             InitializeComponent();  //Vay thi chay bth
             client = new Client.Client();
-            myOrder = new Client.ORDER();
+            client.order = new Client.ORDER();
             //client.recvPic();
             haveBill = false;
 
@@ -132,9 +132,10 @@ namespace ClientUI
             Button back = new Button();
             back.Content = "Back";
             back.Foreground = new SolidColorBrush(Colors.Black);
-            back.Height = 50;
+            back.Height = 45;
             back.Width = 100;
-            back.FontSize = 37;
+            back.FontSize = 35;
+            back.Margin = new Thickness(0, 0, 0, 10);
             back.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
             back.Background = new SolidColorBrush(Colors.Gold);
             back.Click += backToMenu;
@@ -145,7 +146,7 @@ namespace ClientUI
             addfood.HorizontalContentAlignment = HorizontalAlignment.Center;
             addfood.Content = " Add Food\n\n" + (sender as TextBlock).Text;
             addfood.Foreground = new SolidColorBrush(Colors.Black);
-            addfood.Height = 50;
+            addfood.Height = 45;
             addfood.Width = 100;
             addfood.FontSize = 30;
             addfood.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
@@ -875,7 +876,7 @@ namespace ClientUI
             showMyList();
         }
 
-        Client.ORDER myOrder;
+        
         void sendOrderRequest(object sender, RoutedEventArgs e)
         {
             if (client.dic.Count == 0)
@@ -887,9 +888,11 @@ namespace ClientUI
             //Ha`
             client.requestOrder();
             
-            client.recvBill(ref myOrder);
+            client.recvBill();
+           
             haveBill = true;
             bill(null,null);
+            client.dic.Clear();
 
         }
 
@@ -918,7 +921,7 @@ namespace ClientUI
             StackPanel stackPanel = new StackPanel();
 
             bool pink = false;
-            foreach (var dish in myOrder.dishOrder)
+            foreach (var dish in client.order.dishOrder)
             {
 
                 StackPanel info = new StackPanel();
@@ -1000,7 +1003,7 @@ namespace ClientUI
             date.Width = 475;
             date.FontSize = 17;
             date.TextAlignment = TextAlignment.Center;
-            date.Text = myOrder.dateTime;
+            date.Text = client.order.dateTime;
 
             Button line = new Button();
             line.Margin = new Thickness(0, 30, 0, 0);
@@ -1017,7 +1020,7 @@ namespace ClientUI
             totalBill.TextAlignment = TextAlignment.Right;
             totalBill.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans ms");
             totalBill.FontWeight = FontWeights.Bold;
-            totalBill.Text = "TOTAL: " + myOrder.totalMoney.ToString() + " VND";
+            totalBill.Text = "TOTAL: " + client.order.totalMoney.ToString() + " VND";
 
             Button line2 = new Button();
             line2.Margin = new Thickness(0, 0, 0, 0);
@@ -1086,7 +1089,9 @@ namespace ClientUI
             bankId.TextAlignment = TextAlignment.Center;
             bankId.Visibility = Visibility.Collapsed;
             bankId.KeyDown += new KeyEventHandler(typeBankingId);
-            this.RegisterName(bankId.Name, bankId);
+
+            if(this.FindName("stk") == null)
+                this.RegisterName(bankId.Name, bankId);
 
 
             stackPanel1.Children.Add(restaurantName);
@@ -1102,22 +1107,23 @@ namespace ClientUI
 
             menuArea.Children.Add(stackPanel1);
             //hien bill
-            Console.WriteLine(myOrder.dateTime);
-            Console.WriteLine(myOrder.numofDishOrders);
-            for (int i = 0; i < myOrder.numofDishOrders; i++)
+            Console.WriteLine(client.order.dateTime);
+            Console.WriteLine(client.order.numofDishOrders);
+            for (int i = 0; i < client.order.numofDishOrders; i++)
             {
-                Console.WriteLine(myOrder.dishOrder[i].dish.name);
-                Console.WriteLine(myOrder.dishOrder[i].dish.price);
-                Console.WriteLine(myOrder.dishOrder[i].numberOfDishes);
+                Console.WriteLine(client.order.dishOrder[i].dish.name);
+                Console.WriteLine(client.order.dishOrder[i].dish.price);
+                Console.WriteLine(client.order.dishOrder[i].numberOfDishes);
 
             }
-            Console.WriteLine(myOrder.totalMoney);
+            Console.WriteLine(client.order.totalMoney);
         }
 
         void banking(object sender, RoutedEventArgs e)
         {
             TextBox bankNum = (this.FindName("stk") as TextBox);
-            bankNum.Visibility = Visibility.Visible;
+            if(bankNum != null)
+                bankNum.Visibility = Visibility.Visible;
             
         }
 
@@ -1131,7 +1137,7 @@ namespace ClientUI
             {
                 string bankId = (sender as TextBox).Text;
                 client.sendPayMent("0", bankId);
-                this.UnregisterName("stk");
+                
                
                 if (this.FindName("stk") != null)
                     this.UnregisterName("stk");
@@ -1143,10 +1149,11 @@ namespace ClientUI
             MessageBox.Show("Cam on nha cuc cung <3");
             client.sendPayMent("1","");
             listViewMenu.IsEnabled = true;
-            this.UnregisterName("stk");
+            
             listViewMenu.Visibility = Visibility.Visible;
             if (this.FindName("stk") != null)
                 this.UnregisterName("stk");
+            bill(sender, null);
         }
 
         

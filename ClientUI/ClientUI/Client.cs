@@ -29,9 +29,8 @@ namespace Client
         StreamWriter sw;
         List<DISH> list;
        
-        public
-        Dictionary<KeyValuePair<string, int>, int> dic;
-
+        public Dictionary<KeyValuePair<string, int>, int> dic;
+        public ORDER order;
         public
         Client()
         {
@@ -40,7 +39,7 @@ namespace Client
             sr = new StreamReader(stream);
             sw = new StreamWriter(stream);
             dic = new Dictionary<KeyValuePair<string, int>, int>();
-      
+            order = new ORDER();
         }
 
         ~Client()
@@ -62,8 +61,9 @@ namespace Client
         public List<string> recvMenu()
         {
             List<string> menuList = new List<string>();
-            string response;
-            var numberOfFood = Int32.Parse(sr.ReadLine());
+            string response = sr.ReadLine();
+
+            var numberOfFood = Int32.Parse(response);
             for (int i = 0; i < numberOfFood; i++)
             {
                 // Get content
@@ -186,7 +186,7 @@ namespace Client
                 sw.Flush();
             }
         }
-        public void recvBill(ref ORDER order)
+        public void recvBill()
         {
             order.dateTime = sr.ReadLine();
             order.numofDishOrders = Int32.Parse(sr.ReadLine());
