@@ -936,7 +936,6 @@ namespace ClientUI
                             UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please type in your bill ID", "Bill ID", "HKT#");
                             client.sendBillID(UserAnswer);
                         }
-
                     }
                     return;
                 }
