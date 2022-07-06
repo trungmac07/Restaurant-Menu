@@ -28,7 +28,7 @@ namespace Client
         StreamReader sr;
         StreamWriter sw;
         List<DISH> list;
-       
+
         public
         Dictionary<KeyValuePair<string, int>, int> dic;
 
@@ -40,7 +40,7 @@ namespace Client
             sr = new StreamReader(stream);
             sw = new StreamWriter(stream);
             dic = new Dictionary<KeyValuePair<string, int>, int>();
-      
+
         }
 
         ~Client()
@@ -90,9 +90,9 @@ namespace Client
             int n = Int32.Parse(sr.ReadLine());         //Reveice size of image
             //MessageBox.Show(n.ToString());
             byte[] buffer = new byte[n];
-            
+
             stream.Read(buffer, 0, n);
-            
+
             try
             {
                 using (var Nstream = new MemoryStream(buffer, 0, n))
@@ -109,7 +109,7 @@ namespace Client
                     {
                         MessageBox.Show(ex.Message + " 123");
                     }
-                    
+
                 }
 
 
@@ -119,7 +119,7 @@ namespace Client
                 MessageBox.Show(ex.Message);
             }
 
-         
+
         }
 
 
@@ -160,8 +160,8 @@ namespace Client
             string name = dish.name;
             int price = dish.price;
             var idx = new KeyValuePair<string, int>(name, price);
-            
-            if(dic.ContainsKey(idx))
+
+            if (dic.ContainsKey(idx))
                 dic[idx] += 1;
             else
                 dic.Add(idx, 1);
@@ -176,7 +176,7 @@ namespace Client
             sw.Flush();
             sw.WriteLine(dic.Count);// so luong cua x trong dic 
             sw.Flush();
-            foreach(var x in dic)
+            foreach (var x in dic)
             {
                 sw.WriteLine(x.Key.Key);//ten mon
                 sw.Flush();
@@ -208,7 +208,7 @@ namespace Client
         {
             sw.WriteLine("6 " + type);
             sw.Flush();
-            if(type == "0")
+            if (type == "0")
             {
                 sw.WriteLine(bankID);
                 sw.Flush();
