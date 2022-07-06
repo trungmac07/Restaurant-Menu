@@ -96,7 +96,7 @@ namespace Server
             //client.sw.Flush();
 
         }
-        public static bool isCardValid(string clientCard, int money)
+        public bool isCardValid(string clientCard, int money)
         {
             List<BANK_CARD> cardList;
             var jsonText = File.ReadAllText("../../../BANK_CARD.json");
