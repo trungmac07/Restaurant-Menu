@@ -183,8 +183,8 @@ namespace Server
             }
             client.sw.WriteLine(client.order.totalMoney);
             client.sw.Flush();
-            client.sw.WriteLine(client.order.payment);
-            client.sw.Flush();
+            //client.sw.WriteLine(client.order.payment);
+            //client.sw.Flush();
         }
 
 
@@ -348,7 +348,6 @@ namespace Server
         }
         public void receiveExistedOrder(ref Client client)
         {
-
             List<ORDER> orderList = new List<ORDER>();
             int numberOfDish = Int32.Parse(client.sr.ReadLine());
             getOrderFromDatabase(ref orderList);
