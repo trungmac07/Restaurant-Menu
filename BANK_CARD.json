@@ -1,0 +1,18 @@
+[
+  {
+    "cardNumber": "1234567890",
+    "money": 100000
+  },
+  {
+    "cardNumber": "7123456789",
+    "money": 0
+  },
+  {
+    "cardNumber": "3123456789",
+    "money": 600000
+  },
+  {
+    "cardNumber": "6123456789",
+    "money": 100
+  }
+]
