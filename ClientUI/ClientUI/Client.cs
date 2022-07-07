@@ -62,6 +62,7 @@ namespace Client
         }
         public List<string> recvMenu()
         {
+            Console.WriteLine("MENUUUU");
             List<string> menuList = new List<string>();
             string response = sr.ReadLine();
 
