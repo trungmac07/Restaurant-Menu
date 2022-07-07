@@ -17,7 +17,6 @@ using System.Diagnostics;
 using Newtonsoft.Json;
 using System.Drawing;
 
-//widTh 340
 namespace Client
 {
     class Client

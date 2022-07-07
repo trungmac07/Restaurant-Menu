@@ -67,7 +67,19 @@
             <DockPanel.Background>
                 <ImageBrush x:Name="myBrush" ImageSource="./Icon/welcome.jpg"></ImageBrush>
             </DockPanel.Background>
-           
+            <StackPanel Margin="0,250" Height="269">
+                <TextBlock Height ="20" Text="H" FontSize="18" FontFamily="{StaticResource comic}"></TextBlock>
+                <TextBlock Height ="20" Text="Pi" FontSize="18" FontFamily="{StaticResource comic}"></TextBlock>
+                <TextBlock Height ="20" Text="M" FontSize="18" FontFamily="{StaticResource comic}"></TextBlock>
+                <TextBlock Height ="20" Text="W" FontSize="18" FontFamily="{StaticResource comic}"></TextBlock>
+                <TextBlock Height ="20" Text="Ci" FontSize="18" FontFamily="{StaticResource comic}"></TextBlock>
+                <TextBlock Height ="20" Text="..." FontSize="18" FontFamily="{StaticResource comic}"></TextBlock>
+                <TextBlock Height ="20" Text="H" FontSize="18" FontFamily="{StaticResource comic}"></TextBlock>
+                <TextBlock Height ="20" Text="Ji" FontSize="18" FontFamily="{StaticResource comic}"></TextBlock>
+
+
+            </StackPanel>
+
             <!--<DockPanel.Background>
                 <ImageBrush ImageSource="C:/Users/Trung/Desktop/5-01-01-01.png" />
             </DockPanel.Background>

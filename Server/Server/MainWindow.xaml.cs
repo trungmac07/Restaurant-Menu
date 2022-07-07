@@ -19,6 +19,8 @@ using System.Drawing;
 using System.Net;
 
 
+
+
 namespace Server
 {
     /// <summary>
@@ -26,6 +28,7 @@ namespace Server
     /// </summary>
     public class Client
     {
+       
 
         public TcpClient client;
         public NetworkStream stream;
@@ -54,6 +57,15 @@ namespace Server
         public bool isStart;
         public string[] DatabasePath = { "../../../MAIN_DISHES.json", "../../../SOUP.json", "../../../DESSERT.json", "../../../DRINKS.json" };
 
+        int[] space = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                        1, 1, 1, 1, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 2, 4, 3, 3, 2, 3, 3, 3, 3, 3, 3, 4, 3, 3, 
+                        3, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 
+                        2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
         void getMenuFromDatabase(string filePath, ref List<FOOD> menuList)
         {
@@ -79,7 +91,19 @@ namespace Server
                 client.sw.Flush();
                 foreach (var item in menuItem.foodList)
                 {
+                    
+                    int count = 0;
+                    for (int i = 0; i < item.name.Length; ++i)
+                        count += space[item.name[i]];
+                    string price = item.price.ToString();
+                    for (int i = 0; i < price.Length; ++i)
+                        count += space[price[i]-48];
+
                     string s = item.name;
+                    for (int i = 0; i < 61 - count; ++i)
+                        s += '.';
+                    s += price;
+                    /*string s = item.name;
                     Font font1 = new Font("SVN-Bali Script", 18);
                     SizeF stringSize = new SizeF();
                     using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(new Bitmap(1, 1)))
@@ -95,7 +119,7 @@ namespace Server
                         }
                         if (stringSize.Width >= 360) break;
                     }
-                    s += item.price;
+                    s += item.price;*/
                     client.sw.WriteLine(s);
                     client.sw.Flush();
                 }
