@@ -31,6 +31,13 @@ namespace Server
         public NetworkStream stream;
         public StreamReader sr;
         public StreamWriter sw;
+        public ORDER order;
+        public DateTime timeClock;
+        public Client()
+        {
+            order = null;
+            timeClock = DateTime.Now;
+        }
 
         public void setStream()
         {
@@ -152,13 +159,13 @@ namespace Server
             orderList = JsonConvert.DeserializeObject<List<ORDER>>(jsonText);
         }
 
-        void sendOrderToClient(Client client, ORDER order)
+        void sendOrderToClient(Client client)
         {
-            client.sw.WriteLine(order.dateTime);
+            client.sw.WriteLine(client.order.dateTime);
             client.sw.Flush();
-            client.sw.WriteLine(order.dishOrder.Count);
+            client.sw.WriteLine(client.order.dishOrder.Count);
             client.sw.Flush();
-            foreach (var dishItem in order.dishOrder)
+            foreach (var dishItem in client.order.dishOrder)
             {
                 client.sw.WriteLine(dishItem.dish.name);
                 client.sw.Flush();
@@ -169,7 +176,7 @@ namespace Server
                 client.sw.WriteLine(dishItem.totalMoney);
                 client.sw.Flush();
             }
-            client.sw.WriteLine(order.totalMoney);
+            client.sw.WriteLine(client.order.totalMoney);
             client.sw.Flush();
         }
 
@@ -247,7 +254,7 @@ namespace Server
                 if (isFound == true) break;
             }
         }
-        public void getPayment(Client client, string request, ORDER order)
+        public void getPayment(Client client, string request, ref ORDER order)
         {
             List<ORDER> orderList = new List<ORDER>();
             getOrderFromDatabase(ref orderList);
@@ -290,25 +297,25 @@ namespace Server
             }
             exportOrderToDatabase(orderList);
         }
-        public void receiveOrder(Client client,ref ORDER order)
+        public void receiveNewOrder(ref Client client)
         {
-            order = new ORDER();
+            client.order = new ORDER();
             List<ORDER> orderList = new List<ORDER>();
             int numberOfDish = Int32.Parse(client.sr.ReadLine());
             getOrderFromDatabase(ref orderList);
             if (orderList != null)
             {
                 Console.WriteLine(orderList.Count);
-                order.id = "HKT#" + (orderList.Count + 1).ToString();
+                client.order.id = "HKT#" + (orderList.Count + 1).ToString();
             }
             else
             {
                 orderList = new List<ORDER>();
-                order.id = "HKT#1";
+                client.order.id = "HKT#1";
             }
 
-            order.dateTime = DateTime.Now;
-            order.dishOrder = new List<DISH_ORDER>();
+            client.order.dateTime = DateTime.Now;
+            client.order.dishOrder = new List<DISH_ORDER>();
             Console.WriteLine(numberOfDish);
             for (int i = 0; i < numberOfDish; i++)
             {
@@ -321,15 +328,60 @@ namespace Server
                 newDish.numberOfDishes = Int32.Parse(client.sr.ReadLine());
                 Console.WriteLine(newDish.numberOfDishes);
                 newDish.totalMoney = newDish.numberOfDishes * newDish.dish.price;
-                order.dishOrder.Add(newDish);
-                order.totalMoney += newDish.totalMoney;
+                client.order.dishOrder.Add(newDish);
+                client.order.totalMoney += newDish.totalMoney;
             }
-            orderList.Add(order);
+            orderList.Add(client.order);
             exportOrderToDatabase(orderList);
-            sendOrderToClient(client, order);
+            sendOrderToClient(client);
 
 
-            drawUI(order);
+            //drawUI(order);
+
+        }
+        public void receiveExistedOrder(ref Client client)
+        {
+            DateTime timePast = DateTime.Now;
+            if (timePast.AddHours(-2) > client.timeClock)
+            {
+                client.timeClock = DateTime.Now;
+                client.sw.WriteLine("0");
+                client.sw.Flush();
+                return;
+            }
+            List<ORDER> orderList = new List<ORDER>();
+            int numberOfDish = Int32.Parse(client.sr.ReadLine());
+            getOrderFromDatabase(ref orderList);
+
+            Console.WriteLine(client.order.id);
+            foreach (ORDER oRDER in orderList)
+            {
+                if (oRDER.id == client.order.id)
+                {
+                    for (int i = 0; i < numberOfDish; i++)
+                    {
+                        var newDish = new DISH_ORDER();
+                        newDish.dish = new DISH();
+                        newDish.dish.name = client.sr.ReadLine();
+                        Console.WriteLine(newDish.dish.name);
+                        newDish.dish.price = Int32.Parse(client.sr.ReadLine());
+                        Console.WriteLine(newDish.dish.price);
+                        newDish.numberOfDishes = Int32.Parse(client.sr.ReadLine());
+                        Console.WriteLine(newDish.numberOfDishes);
+                        newDish.totalMoney = newDish.numberOfDishes * newDish.dish.price;
+                        client.order.dishOrder.Add(newDish);
+                        oRDER.dishOrder.Add(newDish);
+                        client.order.totalMoney += newDish.totalMoney;
+                        oRDER.totalMoney += newDish.totalMoney;
+                    }
+                    exportOrderToDatabase(orderList);
+                    Console.WriteLine("Exported to database");
+                    sendOrderToClient(client);
+                    Console.WriteLine("sended order to client");
+                    break;
+                }
+            }
+            //drawUI(order);
 
         }
         bool drawColor = true;
@@ -432,10 +484,7 @@ namespace Server
             TcpListener listener = new TcpListener(System.Net.IPAddress.Any, serverPort);
             listener.Start();
 
-       
-
             List<Client> clientList = new List<Client>();
-
 
             while (true)
             {
@@ -454,7 +503,6 @@ namespace Server
                         System.Windows.Threading.Dispatcher.Run();
                     });
                     newThread.SetApartmentState(ApartmentState.STA);
-
                     newThread.Start();
                 }
                 catch (Exception ex)
@@ -464,18 +512,19 @@ namespace Server
 
             }
         }
-        public bool getBillID(Client client, string billID, StreamWriter sw)
+        public bool getBillID(ref Client client, string billID, StreamWriter sw)
         {
             List<ORDER> orderList = new List<ORDER>();
             getOrderFromDatabase(ref orderList);
-            foreach (ORDER order in orderList)
+            foreach (ORDER Order in orderList)
             {
-                if (order.id == billID)
+                if (Order.id == billID)
                 {
                     sw.WriteLine("1");
                     sw.Flush();
+                    client.order = Order;
+                    Console.WriteLine(client.order.id);
                     //sendOrderToClient(client, order);
-
                     return true;
                 }
             }
@@ -485,7 +534,6 @@ namespace Server
         }
         public void recvRequest(Client client)
         {
-            ORDER order = null;
             while (client.client.Connected)
             {
                 try
@@ -495,16 +543,24 @@ namespace Server
                     Console.WriteLine(request);
                     if (request[0] == '5')
                     {
-                        receiveOrder(client, ref order);
+                        if (client.order == null)
+                        {
+                            receiveNewOrder(ref client);
+                        }
+                        else
+                        {
+                            Console.WriteLine(client.order.id);
+                            receiveExistedOrder(ref client);
+                        }
                     }
                     else if (request[0] == '6')
                     {
-                        getPayment(client, request, order);
+                        getPayment(client, request, ref client.order);
                     }
                     else if (request[0] == '7')
                     {
                         string billID = client.sr.ReadLine();
-                        getBillID(client, billID, client.sw);
+                        getBillID(ref client, billID, client.sw);
                     }    
                     else
                     {
@@ -577,7 +633,7 @@ namespace Server
     public class ORDER
     {
         public string id { get; set; }
-        public DateTime dateTime { get; set; }
+        public System.DateTime dateTime { get; set; }
         public List<DISH_ORDER> dishOrder { get; set; }
         public int totalMoney { get; set; }
         public bool isPayed { get; set; }
