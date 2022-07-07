@@ -55,10 +55,7 @@ namespace Server
         public bool isStart;
         public string[] DatabasePath = { "../../../MAIN_DISHES.json", "../../../SOUP.json", "../../../DESSERT.json", "../../../DRINKS.json" };
 
-<<<<<<< HEAD
 
-=======
->>>>>>> e682fb2676b3a3431fa484a3c2f2aa286269a758
         int[] space = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                         1, 1, 1, 1, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 2, 4, 3, 3, 2, 3, 3, 3, 3, 3, 3, 4, 3, 3,
@@ -188,8 +185,8 @@ namespace Server
             }
             client.sw.WriteLine(client.order.totalMoney);
             client.sw.Flush();
-            client.sw.WriteLine(client.order.payment);
-            client.sw.Flush();
+            //client.sw.WriteLine(client.order.payment);
+            //client.sw.Flush();
         }
 
 
