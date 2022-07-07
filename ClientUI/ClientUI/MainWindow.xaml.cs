@@ -961,7 +961,6 @@ namespace ClientUI
 
             //Ha`
             client.requestOrder();
-
             client.recvBill();
 
             haveBill = true;
@@ -1244,7 +1243,6 @@ namespace ClientUI
             }
             Console.WriteLine(client.order.totalMoney);*/
         }
-
         void banking(object sender, RoutedEventArgs e)
         {
             TextBox bankNum = (this.FindName("stk") as TextBox);
@@ -1252,7 +1250,6 @@ namespace ClientUI
                 bankNum.Visibility = Visibility.Visible;
 
         }
-
         void sendBankingId()
         {
             MessageBox.Show("SENDED");

@@ -196,6 +196,7 @@ namespace Client
         public void recvBill()
         {
             ORDER newOrder = new ORDER();
+            newOrder.id = sr.ReadLine();
             newOrder.dateTime = sr.ReadLine();
             newOrder.numofDishOrders = Int32.Parse(sr.ReadLine());
             for (int i = 0; i < newOrder.numofDishOrders; i++)
