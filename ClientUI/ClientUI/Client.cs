@@ -253,20 +253,7 @@ namespace Client
             else
                 return false;
         }
-        public void sendBillID(string str)
-        {
-            sw.WriteLine("7");//Cho server biet la dang send bill ID
-            sw.Flush();
-            sw.WriteLine(str);
-            sw.Flush();
-        }
-        public bool recvBillID()
-        {
-            if (sr.ReadLine() == "1")
-                return true;
-            else
-                return false;
-        }
+       
     }
 
 
