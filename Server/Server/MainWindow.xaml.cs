@@ -164,8 +164,6 @@ namespace Server
 
         void sendOrderToClient(Client client)
         {
-            client.sw.WriteLine(client.order.id);
-            client.sw.Flush();
             client.sw.WriteLine(client.order.dateTime);
             client.sw.Flush();
             client.sw.WriteLine(client.order.dishOrder.Count);
@@ -182,6 +180,8 @@ namespace Server
                 client.sw.Flush();
             }
             client.sw.WriteLine(client.order.totalMoney);
+            client.sw.Flush();
+            client.sw.WriteLine(client.order.payment);
             client.sw.Flush();
         }
 
@@ -341,23 +341,29 @@ namespace Server
             sendOrderToClient(client);
 
 
-            //drawUI(order);
+            drawUI(client.order);
 
         }
         public void receiveExistedOrder(ref Client client)
         {
-            
+            DateTime timePast = DateTime.Now;
+            if (timePast.AddHours(-2) > client.order.dateTime)
+            {
+                client.timeClock = DateTime.Now;
+                client.sw.WriteLine("0");
+                client.sw.Flush();
+                return;
+            }
+            client.sw.WriteLine("1");
             List<ORDER> orderList = new List<ORDER>();
             int numberOfDish = Int32.Parse(client.sr.ReadLine());
             getOrderFromDatabase(ref orderList);
 
             Console.WriteLine(client.order.id);
-            Console.WriteLine(numberOfDish);
             foreach (ORDER oRDER in orderList)
             {
                 if (oRDER.id == client.order.id)
                 {
-                    int lastMoney = oRDER.totalMoney;
                     for (int i = 0; i < numberOfDish; i++)
                     {
                         var newDish = new DISH_ORDER();
@@ -375,13 +381,12 @@ namespace Server
                         oRDER.totalMoney += newDish.totalMoney;
                     }
                     exportOrderToDatabase(orderList);
+                    Console.WriteLine("Exported to database");
                     sendOrderToClient(client);
-                    client.sw.WriteLine(lastMoney - client.order.totalMoney);
-                    client.sw.Flush();
+                    Console.WriteLine("sended order to client");
                     break;
                 }
             }
-            Console.WriteLine("Order sended");
             //drawUI(order);
 
         }
@@ -525,16 +530,6 @@ namespace Server
                     sw.Flush();
                     client.order = Order;
                     Console.WriteLine(client.order.id);
-                    DateTime timePast = DateTime.Now;
-                    if (timePast.AddHours(-2) > client.order.dateTime)
-                    {
-                        client.timeClock = DateTime.Now;
-                        client.sw.WriteLine("0");
-                        client.sw.Flush();
-                        return false;
-                    }
-                    client.sw.WriteLine("1");
-                    client.sw.Flush();
                     //sendOrderToClient(client, order);
                     return true;
                 }
