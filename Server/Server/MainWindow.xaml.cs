@@ -181,6 +181,8 @@ namespace Server
             }
             client.sw.WriteLine(client.order.totalMoney);
             client.sw.Flush();
+            client.sw.WriteLine(client.order.payment);
+            client.sw.Flush();
         }
 
 
