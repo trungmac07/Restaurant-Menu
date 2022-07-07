@@ -28,8 +28,6 @@ namespace Server
     /// </summary>
     public class Client
     {
-       
-
         public TcpClient client;
         public NetworkStream stream;
         public StreamReader sr;
@@ -103,29 +101,10 @@ namespace Server
                     for (int i = 0; i < 61 - count; ++i)
                         s += '.';
                     s += price;
-                    /*string s = item.name;
-                    Font font1 = new Font("SVN-Bali Script", 18);
-                    SizeF stringSize = new SizeF();
-                    using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(new Bitmap(1, 1)))
-                    {
-                        stringSize = graphics.MeasureString(s, font1);
-                    }
-                    while (stringSize.Width < 250)
-                    {
-                        s += '.';
-                        using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(new Bitmap(1, 1)))
-                        {
-                            stringSize = graphics.MeasureString(s + item.price, font1);
-                        }
-                        if (stringSize.Width >= 360) break;
-                    }
-                    s += item.price;*/
                     client.sw.WriteLine(s);
                     client.sw.Flush();
                 }
             }
-            //client.sw.Flush();
-
         }
         public bool isCardValid(string clientCard, int money)
         {
@@ -366,13 +345,14 @@ namespace Server
         public void receiveExistedOrder(ref Client client)
         {
             DateTime timePast = DateTime.Now;
-            if (timePast.AddHours(-2) > client.timeClock)
+            if (timePast.AddHours(-2) > client.order.dateTime)
             {
                 client.timeClock = DateTime.Now;
                 client.sw.WriteLine("0");
                 client.sw.Flush();
                 return;
             }
+            client.sw.WriteLine("1");
             List<ORDER> orderList = new List<ORDER>();
             int numberOfDish = Int32.Parse(client.sr.ReadLine());
             getOrderFromDatabase(ref orderList);
