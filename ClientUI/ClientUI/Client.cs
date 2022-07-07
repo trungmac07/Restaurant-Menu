@@ -30,8 +30,8 @@ namespace Client
        
         public Dictionary<KeyValuePair<string, int>, int> dic;
         public Dictionary<KeyValuePair<string, int>, ImageBrush> pic;
+        public List <ORDER> order;
 
-        public ORDER order;
         public
         Client()
         {
@@ -41,7 +41,8 @@ namespace Client
             sw = new StreamWriter(stream);
             dic = new Dictionary<KeyValuePair<string, int>, int>();
             pic = new Dictionary<KeyValuePair<string, int>, ImageBrush>();
-            order = new ORDER();
+            order = new List<ORDER>();
+            
         }
 
         ~Client()
@@ -62,7 +63,6 @@ namespace Client
         }
         public List<string> recvMenu()
         {
-            Console.WriteLine("MENUUUU");
             List<string> menuList = new List<string>();
             string response = sr.ReadLine();
 
@@ -195,10 +195,10 @@ namespace Client
         }
         public void recvBill()
         {
-            order.id = sr.ReadLine();
-            order.dateTime = sr.ReadLine();
-            order.numofDishOrders = Int32.Parse(sr.ReadLine());
-            for (int i = 0; i < order.numofDishOrders; i++)
+            ORDER newOrder = new ORDER();
+            newOrder.dateTime = sr.ReadLine();
+            newOrder.numofDishOrders = Int32.Parse(sr.ReadLine());
+            for (int i = 0; i < newOrder.numofDishOrders; i++)
             {
                 DISH_ORDER a = new DISH_ORDER();
                 a.dish = new DISH();
@@ -206,12 +206,22 @@ namespace Client
                 a.dish.price = Int32.Parse(sr.ReadLine());
                 a.numberOfDishes = Int32.Parse(sr.ReadLine());
                 a.totalMoney = Int32.Parse(sr.ReadLine());
-                if (order.dishOrder == null)
-                    order.dishOrder = new List<DISH_ORDER>();
-                order.dishOrder.Add(a);
+                if (newOrder.dishOrder == null)
+                    newOrder.dishOrder = new List<DISH_ORDER>();
+                newOrder.dishOrder.Add(a);
             }
-            order.totalMoney = Int32.Parse(sr.ReadLine());
+            newOrder.totalMoney = Int32.Parse(sr.ReadLine());
+            order.Add(newOrder);
         }
+
+        public int totalMoneyAllBill()
+        {
+            int sum = 0;
+            for(int i = 0; i < order.Count; i++)
+                sum += order[i].totalMoney;
+            return sum;
+        }
+
         public void sendPayMent(string type, string bankID)
         {
             sw.WriteLine("6 " + type);
