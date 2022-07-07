@@ -55,7 +55,6 @@ namespace Server
         public bool isStart;
         public string[] DatabasePath = { "../../../MAIN_DISHES.json", "../../../SOUP.json", "../../../DESSERT.json", "../../../DRINKS.json" };
 
-
         int[] space = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                         1, 1, 1, 1, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 2, 4, 3, 3, 2, 3, 3, 3, 3, 3, 3, 4, 3, 3,
@@ -65,7 +64,6 @@ namespace Server
                         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-
 
         void getMenuFromDatabase(string filePath, ref List<FOOD> menuList)
         {
@@ -188,9 +186,6 @@ namespace Server
             //client.sw.WriteLine(client.order.payment);
             //client.sw.Flush();
         }
-
-
-
         public byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
             using (var ms = new MemoryStream())
@@ -322,7 +317,6 @@ namespace Server
                 orderList = new List<ORDER>();
                 client.order.id = "HKT#1";
             }
-
             client.order.dateTime = DateTime.Now;
             client.order.dishOrder = new List<DISH_ORDER>();
             Console.WriteLine(numberOfDish);
@@ -343,15 +337,37 @@ namespace Server
             orderList.Add(client.order);
             exportOrderToDatabase(orderList);
             sendOrderToClient(client);
-
-
             //drawUI(order);
 
         }
+        void sendNewOrderToClient(Client client, ORDER order, int lastMoney)
+        {
+            client.sw.WriteLine(client.order.id);
+            client.sw.Flush();
+            client.sw.WriteLine(client.order.dateTime);
+            client.sw.Flush();
+            client.sw.WriteLine(client.order.dishOrder.Count);
+            client.sw.Flush();
+            foreach (var dishItem in client.order.dishOrder)
+            {
+                client.sw.WriteLine(dishItem.dish.name);
+                client.sw.Flush();
+                client.sw.WriteLine(dishItem.dish.price);
+                client.sw.Flush();
+                client.sw.WriteLine(dishItem.numberOfDishes);
+                client.sw.Flush();
+                client.sw.WriteLine(dishItem.totalMoney);
+                client.sw.Flush();
+            }
+            client.sw.WriteLine(client.order.totalMoney);
+            client.sw.Flush();
+            client.sw.WriteLine(lastMoney - order.totalMoney);
+            client.sw.Flush();
+        }
         public void receiveExistedOrder(ref Client client)
         {
-
             List<ORDER> orderList = new List<ORDER>();
+            ORDER newOrder = new ORDER();
             int numberOfDish = Int32.Parse(client.sr.ReadLine());
             getOrderFromDatabase(ref orderList);
 
@@ -361,7 +377,6 @@ namespace Server
             {
                 if (oRDER.id == client.order.id)
                 {
-                    int lastMoney = oRDER.totalMoney;
                     for (int i = 0; i < numberOfDish; i++)
                     {
                         var newDish = new DISH_ORDER();
@@ -375,13 +390,14 @@ namespace Server
                         newDish.totalMoney = newDish.numberOfDishes * newDish.dish.price;
                         client.order.dishOrder.Add(newDish);
                         oRDER.dishOrder.Add(newDish);
+                        newOrder.dishOrder.Add(newDish);
                         client.order.totalMoney += newDish.totalMoney;
                         oRDER.totalMoney += newDish.totalMoney;
+                        newOrder.totalMoney += newDish.totalMoney;
                     }
+                    int lastMoney = client.order.totalMoney;
                     exportOrderToDatabase(orderList);
-                    sendOrderToClient(client);
-                    client.sw.WriteLine(lastMoney - client.order.totalMoney);
-                    client.sw.Flush();
+                    sendNewOrderToClient(client, newOrder, lastMoney);
                     break;
                 }
             }
