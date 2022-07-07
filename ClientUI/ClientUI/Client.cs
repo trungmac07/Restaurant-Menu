@@ -253,7 +253,6 @@ namespace Client
             else
                 return false;
         }
-       
     }
 
 
