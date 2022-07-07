@@ -55,14 +55,14 @@ namespace Server
         public bool isStart;
         public string[] DatabasePath = { "../../../MAIN_DISHES.json", "../../../SOUP.json", "../../../DESSERT.json", "../../../DRINKS.json" };
 
-        int[] space = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-                        1, 1, 1, 1, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 2, 4, 3, 3, 2, 3, 3, 3, 3, 3, 3, 4, 3, 3, 
-                        3, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 
-                        2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+        int[] space = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                        1, 1, 1, 1, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 2, 4, 3, 3, 2, 3, 3, 3, 3, 3, 3, 4, 3, 3,
+                        3, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3,
+                        2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
         void getMenuFromDatabase(string filePath, ref List<FOOD> menuList)
@@ -89,13 +89,13 @@ namespace Server
                 client.sw.Flush();
                 foreach (var item in menuItem.foodList)
                 {
-                    
+
                     int count = 0;
                     for (int i = 0; i < item.name.Length; ++i)
                         count += space[item.name[i]];
                     string price = item.price.ToString();
                     for (int i = 0; i < price.Length; ++i)
-                        count += space[price[i]-48];
+                        count += space[price[i] - 48];
 
                     string s = item.name;
                     for (int i = 0; i < 61 - count; ++i)
@@ -164,6 +164,8 @@ namespace Server
 
         void sendOrderToClient(Client client)
         {
+            client.sw.WriteLine(client.order.id);
+            client.sw.Flush();
             client.sw.WriteLine(client.order.dateTime);
             client.sw.Flush();
             client.sw.WriteLine(client.order.dishOrder.Count);
@@ -265,7 +267,7 @@ namespace Server
             getOrderFromDatabase(ref orderList);
             if (request[2] == '1')
             {
-                
+
                 order.payment = "cash";
                 order.bankCard = null;
                 order.isPayed = true;
@@ -276,7 +278,7 @@ namespace Server
             else if (request[2] == '0')
             {
                 order.payment = "banking";
-                order.bankCard = client.sr.ReadLine(); 
+                order.bankCard = client.sr.ReadLine();
                 if (isCardValid(order.bankCard, order.totalMoney) == false)
                 {
                     order.isPayed = false;
@@ -290,7 +292,7 @@ namespace Server
                     client.sw.Flush();
                 }
             }
-            foreach(ORDER Order in orderList)
+            foreach (ORDER Order in orderList)
             {
                 if (Order.id == order.id)
                 {
@@ -341,29 +343,23 @@ namespace Server
             sendOrderToClient(client);
 
 
-            drawUI(client.order);
+            //drawUI(order);
 
         }
         public void receiveExistedOrder(ref Client client)
         {
-            DateTime timePast = DateTime.Now;
-            if (timePast.AddHours(-2) > client.order.dateTime)
-            {
-                client.timeClock = DateTime.Now;
-                client.sw.WriteLine("0");
-                client.sw.Flush();
-                return;
-            }
-            client.sw.WriteLine("1");
+
             List<ORDER> orderList = new List<ORDER>();
             int numberOfDish = Int32.Parse(client.sr.ReadLine());
             getOrderFromDatabase(ref orderList);
 
             Console.WriteLine(client.order.id);
+            Console.WriteLine(numberOfDish);
             foreach (ORDER oRDER in orderList)
             {
                 if (oRDER.id == client.order.id)
                 {
+                    int lastMoney = oRDER.totalMoney;
                     for (int i = 0; i < numberOfDish; i++)
                     {
                         var newDish = new DISH_ORDER();
@@ -381,12 +377,13 @@ namespace Server
                         oRDER.totalMoney += newDish.totalMoney;
                     }
                     exportOrderToDatabase(orderList);
-                    Console.WriteLine("Exported to database");
                     sendOrderToClient(client);
-                    Console.WriteLine("sended order to client");
+                    client.sw.WriteLine(lastMoney - client.order.totalMoney);
+                    client.sw.Flush();
                     break;
                 }
             }
+            Console.WriteLine("Order sended");
             //drawUI(order);
 
         }
@@ -397,15 +394,15 @@ namespace Server
             {
 
 
-                
+
                 Border motherBorder = new Border();
                 motherBorder.Width = 670;
                 motherBorder.HorizontalAlignment = HorizontalAlignment.Center;
                 motherBorder.BorderThickness = new Thickness(2, 2, 2, 2);
                 motherBorder.BorderBrush = new SolidColorBrush(Colors.Black);
-                
+
                 DockPanel whole = new DockPanel();
-               
+
                 Button tableNum = new Button();
                 tableNum.BorderThickness = new Thickness(0, 0, 2, 0);
                 tableNum.Width = 70;
@@ -416,14 +413,14 @@ namespace Server
                 viewDish.Width = 500;
                 if (drawColor == true)
                     whole.Background = new SolidColorBrush(Colors.LightBlue);
-                
+
                 whole.Children.Add(tableNum);
 
                 foreach (var dish in dishOrder.dishOrder)
                 {
                     DockPanel dock = new DockPanel();
 
-                   
+
 
                     TextBlock name = new TextBlock();
                     name.Height = 45;
@@ -448,7 +445,7 @@ namespace Server
                         MessageBox.Show(ex.Message);
                     }
 
-                  
+
                     dock.Children.Add(name);
                     dock.Children.Add(done);
 
@@ -530,6 +527,16 @@ namespace Server
                     sw.Flush();
                     client.order = Order;
                     Console.WriteLine(client.order.id);
+                    DateTime timePast = DateTime.Now;
+                    if (timePast.AddHours(-2) > client.order.dateTime)
+                    {
+                        client.timeClock = DateTime.Now;
+                        client.sw.WriteLine("0");
+                        client.sw.Flush();
+                        return false;
+                    }
+                    client.sw.WriteLine("1");
+                    client.sw.Flush();
                     //sendOrderToClient(client, order);
                     return true;
                 }
@@ -567,7 +574,7 @@ namespace Server
                     {
                         string billID = client.sr.ReadLine();
                         getBillID(ref client, billID, client.sw);
-                    }    
+                    }
                     else
                     {
                         if (request[2] == '0')
@@ -579,7 +586,7 @@ namespace Server
                 catch (Exception ex)
                 {
                     Console.WriteLine("Client has disconnected!");
-                    
+
                 }
             }
 
