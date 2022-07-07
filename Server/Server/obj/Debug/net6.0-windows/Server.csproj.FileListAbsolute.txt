@@ -66,4 +66,3 @@ E:\Code\Project\Socket\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\ref
 E:\Code\Project\Socket\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.pdb
 E:\Code\Project\Socket\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\Server.genruntimeconfig.cache
 E:\Code\Project\Socket\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\ref\Server.dll
-E:\Code\Project\Socket-Project\SOCKET-PROJECT\Server\Server\obj\Debug\net6.0-windows\Server_MarkupCompile.lref
