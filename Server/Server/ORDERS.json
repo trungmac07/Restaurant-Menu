@@ -1,1 +1,288 @@
-[{"id":"HKT#1","dateTime":"2022-07-06T21:22:59.2247602+07:00","dishOrder":[{"dish":{"name":"Egg fried rice","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Banana","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"7-up","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000},{"dish":{"name":"Watermelon","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000},{"dish":{"name":"Pineapple Juice","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000},{"dish":{"name":"Egg fried rice","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000}],"totalMoney":1340000,"isPayed":true,"payment":"cash","bankCard":null},{"id":"HKT#2","dateTime":"2022-07-07T09:05:53.525793+07:00","dishOrder":[{"dish":{"name":"Veg Corn Soup","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000}],"totalMoney":200000,"isPayed":true,"payment":"cash","bankCard":null},{"id":"HKT#3","dateTime":"2022-07-07T14:39:23.3057611+07:00","dishOrder":[{"dish":{"name":"Guava Juice","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000},{"dish":{"name":"Papaya","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000}],"totalMoney":300000,"isPayed":true,"payment":"cash","bankCard":null},{"id":"HKT#4","dateTime":"2022-07-07T15:41:58.0029635+07:00","dishOrder":[{"dish":{"name":"Watermelon","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000},{"dish":{"name":"Blueberry Juice","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":1000000,"isPayed":true,"payment":"cash","bankCard":null},{"id":"HKT#5","dateTime":"2022-07-07T15:45:29.2319263+07:00","dishOrder":[{"dish":{"name":"Papaya","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000}],"totalMoney":360000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#6","dateTime":"2022-07-07T15:45:38.607495+07:00","dishOrder":[{"dish":{"name":"Yams soup","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":400000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#7","dateTime":"2022-07-07T15:46:04.8463326+07:00","dishOrder":[{"dish":{"name":"Watermelon","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000}],"totalMoney":200000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#8","dateTime":"2022-07-07T15:46:34.2002852+07:00","dishOrder":[{"dish":{"name":"Blueberry Juice","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":400000,"isPayed":true,"payment":"cash","bankCard":null},{"id":"HKT#9","dateTime":"2022-07-07T15:46:58.0076263+07:00","dishOrder":[{"dish":{"name":"Papaya","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000},{"dish":{"name":"Crocodile Steak","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000},{"dish":{"name":"Durian","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000},{"dish":{"name":"Bitter Melon Soup","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000},{"dish":{"name":"Lemon Juice","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000},{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000}],"totalMoney":1060000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#10","dateTime":"2022-07-07T15:47:20.329932+07:00","dishOrder":[{"dish":{"name":"Grape","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000},{"dish":{"name":"Mushroom Soup","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000},{"dish":{"name":"Strawberry","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000},{"dish":{"name":"Lobster Thermidor","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000}],"totalMoney":560000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#11","dateTime":"2022-07-07T15:49:12.1412069+07:00","dishOrder":[{"dish":{"name":"Watermelon","price":200000,"description":null},"numberOfDishes":4,"totalMoney":800000},{"dish":{"name":"7-up","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000},{"dish":{"name":"Diced Beef","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000}],"totalMoney":1400000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#12","dateTime":"2022-07-07T15:50:51.3431888+07:00","dishOrder":[{"dish":{"name":"Grape","price":120000,"description":null},"numberOfDishes":3,"totalMoney":360000},{"dish":{"name":"Lemon Juice","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Tomato Soup","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000}],"totalMoney":1120000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#13","dateTime":"2022-07-07T15:52:24.8511414+07:00","dishOrder":[{"dish":{"name":"Lobster Rolls","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000},{"dish":{"name":"Lobster Thermidor","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000},{"dish":{"name":"7-up","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000},{"dish":{"name":"Lemon Juice","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000},{"dish":{"name":"Fruit Crepe","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000},{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000}],"totalMoney":940000,"isPayed":true,"payment":"cash","bankCard":null},{"id":"HKT#14","dateTime":"2022-07-07T16:17:17.5283186+07:00","dishOrder":[{"dish":{"name":"Papaya","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000},{"dish":{"name":"Chicken Steak","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":760000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#15","dateTime":"2022-07-07T16:18:08.9323731+07:00","dishOrder":[{"dish":{"name":"Watermelon","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Mushroom Spaghetti","price":120000,"description":null},"numberOfDishes":3,"totalMoney":360000},{"dish":{"name":"Guava Juice","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000}],"totalMoney":1000000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#16","dateTime":"2022-07-07T16:20:10.8488462+07:00","dishOrder":[{"dish":{"name":"Watermelon","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000},{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Lobster Rolls","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Watermelon Juice","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000}],"totalMoney":1440000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#17","dateTime":"2022-07-07T16:25:16.5982656+07:00","dishOrder":[{"dish":{"name":"Pork Pho","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":400000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#18","dateTime":"2022-07-07T16:25:49.3624827+07:00","dishOrder":[{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Durian","price":180000,"description":null},"numberOfDishes":3,"totalMoney":540000},{"dish":{"name":"Diced Beef","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Sting","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Bitter Melon Soup","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":1660000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#19","dateTime":"2022-07-07T16:26:29.036351+07:00","dishOrder":[{"dish":{"name":"Beef Pho","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000},{"dish":{"name":"Banana","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Lobster Thermidor","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":1400000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#20","dateTime":"2022-07-07T16:32:36.4595048+07:00","dishOrder":[{"dish":{"name":"Guava Juice","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Crocodile Steak","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000}],"totalMoney":600000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#21","dateTime":"2022-07-07T16:34:03.5266669+07:00","dishOrder":[{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000},{"dish":{"name":"Stawberry Cake","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":520000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#22","dateTime":"2022-07-07T16:34:27.9936996+07:00","dishOrder":[{"dish":{"name":"Watermelon","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000},{"dish":{"name":"Bitter Melon Soup","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Strawberry","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Lobster Thermidor","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":1640000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#23","dateTime":"2022-07-07T16:35:35.5097893+07:00","dishOrder":[{"dish":{"name":"Watermelon Juice","price":180000,"description":null},"numberOfDishes":3,"totalMoney":540000},{"dish":{"name":"Tomato Soup","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000}],"totalMoney":900000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#24","dateTime":"2022-07-07T16:36:37.1113847+07:00","dishOrder":[{"dish":{"name":"Watermelon","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Lobster Thermidor","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":800000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#25","dateTime":"2022-07-07T16:37:27.1921174+07:00","dishOrder":[{"dish":{"name":"Grape","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Crocodile Steak","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000},{"dish":{"name":"Mushroom Soup","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000}],"totalMoney":840000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#26","dateTime":"2022-07-07T16:38:06.7806147+07:00","dishOrder":[{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Grape","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Crocodile Steak","price":180000,"description":null},"numberOfDishes":3,"totalMoney":540000}],"totalMoney":1020000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#27","dateTime":"2022-07-07T16:38:26.2243058+07:00","dishOrder":[{"dish":{"name":"Peach","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Diced Beef","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Bitter Melon Soup","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":1040000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#28","dateTime":"2022-07-07T16:38:42.4483473+07:00","dishOrder":[{"dish":{"name":"Beef Pho","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000},{"dish":{"name":"Blueberry Cake","price":120000,"description":null},"numberOfDishes":3,"totalMoney":360000},{"dish":{"name":"Strawberry","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000}],"totalMoney":1200000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#29","dateTime":"2022-07-07T16:39:16.4896194+07:00","dishOrder":[{"dish":{"name":"Pork Pho","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":400000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#30","dateTime":"2022-07-07T16:39:35.5240851+07:00","dishOrder":[{"dish":{"name":"Pork Pho","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000}],"totalMoney":600000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#31","dateTime":"2022-07-07T16:40:14.5210359+07:00","dishOrder":[{"dish":{"name":"Pork Pho","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Mirinda","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":800000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#32","dateTime":"2022-07-07T16:40:49.0943911+07:00","dishOrder":[{"dish":{"name":"Watermelon","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Diced Beef","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Lobster Thermidor","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":1040000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#33","dateTime":"2022-07-07T16:41:35.1121326+07:00","dishOrder":[{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"7-up","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000}],"totalMoney":420000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#34","dateTime":"2022-07-07T16:41:52.6541672+07:00","dishOrder":[{"dish":{"name":"Grape","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000}],"totalMoney":240000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#35","dateTime":"2022-07-07T16:42:08.0825317+07:00","dishOrder":[{"dish":{"name":"7-up","price":180000,"description":null},"numberOfDishes":3,"totalMoney":540000}],"totalMoney":540000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#36","dateTime":"2022-07-07T16:45:30.8035362+07:00","dishOrder":[{"dish":{"name":"Mirinda","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"7-up","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000},{"dish":{"name":"Bitter Melon Soup","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":1160000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#37","dateTime":"2022-07-07T16:46:20.7639277+07:00","dishOrder":[{"dish":{"name":"Pork Pho","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Guava Juice","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000}],"totalMoney":520000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#38","dateTime":"2022-07-07T16:46:46.6521191+07:00","dishOrder":[{"dish":{"name":"Papaya","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000},{"dish":{"name":"Blueberry Juice","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":760000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#39","dateTime":"2022-07-07T16:58:15.7382118+07:00","dishOrder":[{"dish":{"name":"Grape","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Pork Pho","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000}],"totalMoney":440000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#40","dateTime":"2022-07-07T16:58:29.0288284+07:00","dishOrder":[{"dish":{"name":"Peach","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Fish Fingers","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":800000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#41","dateTime":"2022-07-07T16:58:53.8765362+07:00","dishOrder":[{"dish":{"name":"Pork Pho","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Centella","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000}],"totalMoney":520000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#42","dateTime":"2022-07-07T16:59:27.9546257+07:00","dishOrder":[{"dish":{"name":"Grape","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Mushroom Spaghetti","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000}],"totalMoney":360000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#43","dateTime":"2022-07-07T16:59:54.0338269+07:00","dishOrder":[{"dish":{"name":"Watermelon","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000},{"dish":{"name":"Avocado","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000}],"totalMoney":720000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#44","dateTime":"2022-07-07T17:00:11.3825015+07:00","dishOrder":[{"dish":{"name":"Papaya","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000}],"totalMoney":180000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#45","dateTime":"2022-07-07T17:04:04.8448128+07:00","dishOrder":[{"dish":{"name":"Grape","price":120000,"description":null},"numberOfDishes":3,"totalMoney":360000},{"dish":{"name":"Lobster Thermidor","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Blueberry Juice","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":1160000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#46","dateTime":"2022-07-07T17:04:27.4541185+07:00","dishOrder":[{"dish":{"name":"Grape","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Pumpkin Soup","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Lobster Thermidor","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":1040000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#47","dateTime":"2022-07-07T17:04:43.1954805+07:00","dishOrder":[{"dish":{"name":"Papaya","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":400000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#48","dateTime":"2022-07-07T17:05:02.1486595+07:00","dishOrder":[{"dish":{"name":"Watermelon","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Crocodile Steak","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000}],"totalMoney":760000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#49","dateTime":"2022-07-07T17:05:23.3979706+07:00","dishOrder":[{"dish":{"name":"Creamy Spaghetti","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000},{"dish":{"name":"Pumpkin Soup","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Veg Corn Soup","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":1400000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#50","dateTime":"2022-07-07T17:07:37.1589993+07:00","dishOrder":[{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Vanilla Cake","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Lamb Steak","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Chicken Fried Rice","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000}],"totalMoney":1240000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#51","dateTime":"2022-07-07T17:08:30.3609382+07:00","dishOrder":[{"dish":{"name":"Crocodile Steak","price":180000,"description":null},"numberOfDishes":3,"totalMoney":540000},{"dish":{"name":"Stawberry Cake","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000},{"dish":{"name":"Strawberry","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000}],"totalMoney":1260000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#52","dateTime":"2022-07-07T17:10:12.6068185+07:00","dishOrder":[{"dish":{"name":"Watermelon","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Fanta","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":800000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#53","dateTime":"2022-07-07T17:47:07.0632238+07:00","dishOrder":[{"dish":{"name":"Ground Beef Spaghetti","price":180000,"description":null},"numberOfDishes":73,"totalMoney":13140000},{"dish":{"name":"Lamb Steak","price":200000,"description":null},"numberOfDishes":100,"totalMoney":20000000},{"dish":{"name":"Crocodile Steak","price":180000,"description":null},"numberOfDishes":16,"totalMoney":2880000},{"dish":{"name":"Ebi Fry","price":120000,"description":null},"numberOfDishes":14,"totalMoney":1680000},{"dish":{"name":"Seafood Noodles","price":180000,"description":null},"numberOfDishes":18,"totalMoney":3240000},{"dish":{"name":"Seaweed Soup","price":200000,"description":null},"numberOfDishes":7,"totalMoney":1400000},{"dish":{"name":"Crab Soup","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000},{"dish":{"name":"Kimchi Soup","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000},{"dish":{"name":"Fruit Salad","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000},{"dish":{"name":"Stawberry Cake","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000},{"dish":{"name":"Mint","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000},{"dish":{"name":"Watermelon Juice","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000},{"dish":{"name":"Fanta","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000},{"dish":{"name":"Strawberry","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000},{"dish":{"name":"Carrot","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000},{"dish":{"name":"Centella","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000},{"dish":{"name":"Lavie","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000}],"totalMoney":44720000,"isPayed":true,"payment":"cash","bankCard":null},{"id":"HKT#54","dateTime":"2022-07-07T17:59:04.9339545+07:00","dishOrder":[{"dish":{"name":"Blueberry Juice","price":200000,"description":null},"numberOfDishes":99,"totalMoney":19800000},{"dish":{"name":"Pork Pho","price":200000,"description":null},"numberOfDishes":99,"totalMoney":19800000},{"dish":{"name":"Fried Salmon","price":200000,"description":null},"numberOfDishes":99,"totalMoney":19800000},{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":99,"totalMoney":11880000},{"dish":{"name":"Kimchi Soup","price":200000,"description":null},"numberOfDishes":99,"totalMoney":19800000},{"dish":{"name":"Blueberry Cake","price":120000,"description":null},"numberOfDishes":99,"totalMoney":11880000},{"dish":{"name":"Lavie","price":200000,"description":null},"numberOfDishes":4,"totalMoney":800000},{"dish":{"name":"Tomato","price":180000,"description":null},"numberOfDishes":4,"totalMoney":720000},{"dish":{"name":"Strawberry","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Guava Juice","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Beef Pho","price":200000,"description":null},"numberOfDishes":4,"totalMoney":800000},{"dish":{"name":"Vegetable Soup","price":120000,"description":null},"numberOfDishes":3,"totalMoney":360000}],"totalMoney":106120000,"isPayed":true,"payment":"cash","bankCard":null},{"id":"HKT#55","dateTime":"2022-07-07T18:00:22.5737795+07:00","dishOrder":[{"dish":{"name":"Blueberry Juice","price":200000,"description":null},"numberOfDishes":5,"totalMoney":1000000},{"dish":{"name":"Papaya","price":180000,"description":null},"numberOfDishes":4,"totalMoney":720000},{"dish":{"name":"Diced Beef","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Guava Juice","price":120000,"description":null},"numberOfDishes":3,"totalMoney":360000},{"dish":{"name":"Kimchi Soup","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000}],"totalMoney":2920000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#56","dateTime":"2022-07-07T18:01:16.6343115+07:00","dishOrder":[{"dish":{"name":"Papaya","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000},{"dish":{"name":"Guava Juice","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000}],"totalMoney":600000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#57","dateTime":"2022-07-07T18:01:31.2918867+07:00","dishOrder":[{"dish":{"name":"Yams soup","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000}],"totalMoney":200000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#58","dateTime":"2022-07-07T18:02:16.2933128+07:00","dishOrder":[{"dish":{"name":"Papaya","price":180000,"description":null},"numberOfDishes":3,"totalMoney":540000},{"dish":{"name":"Beef Pho","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000},{"dish":{"name":"Diced Beef","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Tomato","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000},{"dish":{"name":"7-up","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000}],"totalMoney":1340000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#59","dateTime":"2022-07-07T18:02:51.6557502+07:00","dishOrder":[{"dish":{"name":"Guava Juice","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Blueberry Cake","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Lobster Thermidor","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000}],"totalMoney":920000,"isPayed":true,"payment":"cash","bankCard":null},{"id":"HKT#60","dateTime":"2022-07-07T18:03:44.5597448+07:00","dishOrder":[{"dish":{"name":"Blueberry Juice","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Banana","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000}],"totalMoney":840000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#61","dateTime":"2022-07-07T18:05:11.4859291+07:00","dishOrder":[{"dish":{"name":"Blueberry Juice","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Fried Salmon","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Lobster Thermidor","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000}],"totalMoney":1240000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#62","dateTime":"2022-07-07T18:06:04.3555104+07:00","dishOrder":[{"dish":{"name":"Papaya","price":180000,"description":null},"numberOfDishes":2,"totalMoney":360000}],"totalMoney":360000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#63","dateTime":"2022-07-07T18:06:38.8194919+07:00","dishOrder":[{"dish":{"name":"Peach","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Sting","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000}],"totalMoney":520000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#64","dateTime":"2022-07-07T18:07:09.2000379+07:00","dishOrder":[{"dish":{"name":"Peach","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000},{"dish":{"name":"Lemon Juice","price":200000,"description":null},"numberOfDishes":1,"totalMoney":200000}],"totalMoney":600000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#65","dateTime":"2022-07-07T18:07:21.0389622+07:00","dishOrder":[{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":1,"totalMoney":120000}],"totalMoney":120000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#66","dateTime":"2022-07-07T18:07:46.6146573+07:00","dishOrder":[{"dish":{"name":"Papaya","price":180000,"description":null},"numberOfDishes":1,"totalMoney":180000}],"totalMoney":180000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#67","dateTime":"2022-07-07T18:08:28.756725+07:00","dishOrder":[{"dish":{"name":"Papaya","price":180000,"description":null},"numberOfDishes":3,"totalMoney":540000},{"dish":{"name":"Strawberry","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000}],"totalMoney":780000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#68","dateTime":"2022-07-07T18:08:52.1398283+07:00","dishOrder":[{"dish":{"name":"Blueberry Juice","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000}],"totalMoney":600000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#69","dateTime":"2022-07-07T18:09:11.041998+07:00","dishOrder":[{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":2,"totalMoney":240000},{"dish":{"name":"Banana","price":200000,"description":null},"numberOfDishes":2,"totalMoney":400000}],"totalMoney":640000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#70","dateTime":"2022-07-07T18:09:42.4304261+07:00","dishOrder":[{"dish":{"name":"Grape","price":120000,"description":null},"numberOfDishes":8,"totalMoney":960000},{"dish":{"name":"Blueberry Juice","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000},{"dish":{"name":"Seafood Fried Rice","price":200000,"description":null},"numberOfDishes":45,"totalMoney":9000000}],"totalMoney":10560000,"isPayed":false,"payment":null,"bankCard":null},{"id":"HKT#71","dateTime":"2022-07-07T18:10:05.090912+07:00","dishOrder":[{"dish":{"name":"Chicken Pho","price":120000,"description":null},"numberOfDishes":4,"totalMoney":480000},{"dish":{"name":"Blueberry Cake","price":120000,"description":null},"numberOfDishes":3,"totalMoney":360000},{"dish":{"name":"Fried Salmon","price":200000,"description":null},"numberOfDishes":3,"totalMoney":600000}],"totalMoney":1440000,"isPayed":false,"payment":null,"bankCard":null}]
+[
+  
+  {
+    "id": "HKT#1",
+    "dateTime": "2022-07-06T21:22:59.2247602+07:00",
+    "dishOrder": [
+      {
+        "dish": {
+          "name": "Egg fried rice",
+          "price": 120000,
+          "description": null
+        },
+        "numberOfDishes": 2,
+        "totalMoney": 240000
+      },
+      {
+        "dish": {
+          "name": "Banana",
+          "price": 120000,
+          "description": null
+        },
+        "numberOfDishes": 2,
+        "totalMoney": 240000
+      },
+      {
+        "dish": {
+          "name": "7-up",
+          "price": 180000,
+          "description": null
+        },
+        "numberOfDishes": 2,
+        "totalMoney": 360000
+      },
+      {
+        "dish": {
+          "name": "Watermelon",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      },
+      {
+        "dish": {
+          "name": "Pineapple Juice",
+          "price": 180000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 180000
+      },
+      {
+        "dish": {
+          "name": "Egg fried rice",
+          "price": 120000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 120000
+      }
+    ],
+    "totalMoney": 1340000,
+    "isPayed": true,
+    "payment": "cash",
+    "bankCard": null
+  },
+  {
+    "id": "HKT#2",
+    "dateTime": "2022-07-07T09:05:53.525793+07:00",
+    "dishOrder": [
+      {
+        "dish": {
+          "name": "Veg Corn Soup",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      }
+    ],
+    "totalMoney": 200000,
+    "isPayed": true,
+    "payment": "cash",
+    "bankCard": null
+  },
+  {
+    "id": "HKT#3",
+    "dateTime": "2022-07-07T14:39:23.3057611+07:00",
+    "dishOrder": [
+      {
+        "dish": {
+          "name": "Guava Juice",
+          "price": 120000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 120000
+      },
+      {
+        "dish": {
+          "name": "Papaya",
+          "price": 180000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 180000
+      }
+    ],
+    "totalMoney": 300000,
+    "isPayed": true,
+    "payment": "cash",
+    "bankCard": null
+  },
+  {
+    "id": "HKT#4",
+    "dateTime": "2022-07-07T16:28:35.1912725+07:00",
+    "dishOrder": [
+      {
+        "dish": {
+          "name": "Banana",
+          "price": 120000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 120000
+      },
+      {
+        "dish": {
+          "name": "Pork Pho",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      },
+      {
+        "dish": {
+          "name": "Seafood Fried Rice",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      },
+      {
+        "dish": {
+          "name": "Egg fried rice",
+          "price": 120000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 120000
+      },
+      {
+        "dish": {
+          "name": "Watermelon",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      }
+    ],
+    "totalMoney": 840000,
+    "isPayed": true,
+    "payment": "cash",
+    "bankCard": null
+  },
+  {
+    "id": "HKT#5",
+    "dateTime": "2022-07-07T20:14:14.5377942+07:00",
+    "dishOrder": [
+      {
+        "dish": {
+          "name": "Pork Pho",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      },
+      {
+        "dish": {
+          "name": "Vanilla Cake",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      },
+      {
+        "dish": {
+          "name": "Lavie",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      }
+    ],
+    "totalMoney": 600000,
+    "isPayed": false,
+    "payment": null,
+    "bankCard": null
+  },
+  {
+    "id": "HKT#6",
+    "dateTime": "2022-07-07T20:16:11.3599914+07:00",
+    "dishOrder": [
+      {
+        "dish": {
+          "name": "Watermelon",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      },
+      {
+        "dish": {
+          "name": "Lemon Juice",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      },
+      {
+        "dish": {
+          "name": "Chicken Fried Rice",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      },
+      {
+        "dish": {
+          "name": "Crab Soup",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      },
+      {
+        "dish": {
+          "name": "Chicken Pho",
+          "price": 120000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 120000
+      },
+      {
+        "dish": {
+          "name": "Yams soup",
+          "price": 200000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 200000
+      },
+      {
+        "dish": {
+          "name": "Guava Juice",
+          "price": 120000,
+          "description": null
+        },
+        "numberOfDishes": 1,
+        "totalMoney": 120000
+      },
+      {
+        "dish": {
+          "name": "Guava Juice",
+          "price": 120000,
+          "description": null
+        },
+        "numberOfDishes": 3,
+        "totalMoney": 360000
+      }
+    ],
+    "totalMoney": 1600000,
+    "isPayed": true,
+    "payment": "cash",
+    "bankCard": null
+  }
+]
