@@ -831,7 +831,7 @@ namespace ClientUI
                 buttonMinus.Padding = new Thickness(0, -7, 0, 0);
                 x = new Button();
                 x.Height = 35;
-                x.Width = 25;
+                x.Width = 35;
                 x.Content = "X";
                 x.FontWeight = FontWeights.Bold;
                 x.Background = new SolidColorBrush(Colors.Red);
