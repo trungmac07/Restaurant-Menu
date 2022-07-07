@@ -339,7 +339,7 @@ namespace Server
             sendOrderToClient(client);
 
 
-            //drawUI(order);
+            drawUI(client.order);
 
         }
         public void receiveExistedOrder(ref Client client)
