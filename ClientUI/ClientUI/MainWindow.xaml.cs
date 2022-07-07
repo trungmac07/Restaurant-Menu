@@ -932,7 +932,6 @@ namespace ClientUI
                         client.sendBillID(UserAnswer);
                         if (client.recvBillID() == false)
                         {
-                            MessageBox.Show("Can't find your bill ID");
                             return;
                         }
                     }
@@ -941,9 +940,9 @@ namespace ClientUI
 
             //Ha`
             client.requestOrder();
-            
+
             client.recvBill();
-           
+
             haveBill = true;
             bill(null,null);
             client.dic.Clear();

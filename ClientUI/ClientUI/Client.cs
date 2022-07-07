@@ -246,11 +246,20 @@ namespace Client
         }
         public bool recvBillID()
         {
-            if (sr.ReadLine() == "1")
-                return true;
-
-            else
+            if (sr.ReadLine() == "0")
+            {
+                MessageBox.Show("Can't find your bill");
                 return false;
+            }
+            else
+            {
+                if (sr.ReadLine() == "0")
+                {
+                    MessageBox.Show("Your bill is out of date");
+                    return false;
+                }
+                else return true;
+            }
         }
     }
 
