@@ -1125,7 +1125,7 @@ namespace ClientUI
             StackPanel stackPanel1 = new StackPanel();
 
             TextBlock restaurantName = new TextBlock();
-            restaurantName.Margin = new Thickness(0, 20, 0, 10);
+            restaurantName.Margin = new Thickness(0, 20, 0, 0);
             restaurantName.Height = 57;
             restaurantName.Width = 475;
             restaurantName.FontSize = 47;
@@ -1142,6 +1142,16 @@ namespace ClientUI
             bill.Text = "~~BILL~~";
             bill.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
 
+            TextBlock id = new TextBlock();
+            id.Height = 25;
+            id.Margin = new Thickness(0, 0, 0, 10);
+            id.Width = 475;
+            id.FontSize = 23;
+            id.TextAlignment = TextAlignment.Center;
+            id.Text = client.id;
+            id.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#SVN-Bali Script");
+
+
             TextBlock date = new TextBlock();
             date.Height = 25;
             date.Width = 475;
@@ -1157,15 +1167,15 @@ namespace ClientUI
             line.BorderThickness = new Thickness(0, 0, 0, 0);
 
             TextBlock totalBill = new TextBlock();
-            totalBill.Margin = new Thickness(120, 40, 0, 10);
+            totalBill.Margin = new Thickness(120, 30, 0, 10);
             totalBill.Width = 350;
             totalBill.Height = 65;
             totalBill.FontSize = 21;
             totalBill.TextAlignment = TextAlignment.Left;
             totalBill.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans ms");
             totalBill.FontWeight = FontWeights.Bold;
-            totalBill.Text = "        TOTAL: " + client.totalAll + "vnd\n"
-                            + (sender == null ? "  Need to pay: " + client.order[^1].totalMoney + "vnd" : "");
+            totalBill.Text = "          TOTAL: " + client.totalAll + "vnd\n"
+                            + (sender == null ? "    Need to pay: " + client.order[^1].totalMoney + "vnd" : "");
 
             Button line2 = new Button();
             line2.Margin = new Thickness(0, 0, 0, 0);
@@ -1245,6 +1255,7 @@ namespace ClientUI
 
             stackPanel1.Children.Add(restaurantName);
             stackPanel1.Children.Add(bill);
+            stackPanel1.Children.Add(id);
             stackPanel1.Children.Add(date);
             stackPanel1.Children.Add(line);
             stackPanel1.Children.Add(totalBill);
