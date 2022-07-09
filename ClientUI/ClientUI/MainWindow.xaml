@@ -9,6 +9,7 @@
         mc:Ignorable="d" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" >
 
     <Window.Resources>
+
         <Style x:Key="changeColor" TargetType="TextBlock">
             <Style.Triggers>
                 <Trigger Property ="IsMouseOver" Value="True">
@@ -17,6 +18,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
        
     </Window.Resources>
 
@@ -67,7 +69,7 @@
             <DockPanel.Background>
                 <ImageBrush x:Name="myBrush" ImageSource="./Icon/welcome.jpg"></ImageBrush>
             </DockPanel.Background>
-          
+
             <!--<DockPanel.Background>
                 <ImageBrush ImageSource="C:/Users/Trung/Desktop/5-01-01-01.png" />
             </DockPanel.Background>
@@ -96,45 +98,77 @@
 
             <Grid x:Name="GridCursor" Margin="0 100 0 0" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
 
-            <ListView x:Name="listViewMenu" Margin="0 100" Background="Pink" Foreground="Black" FontFamily="Comic Sans MS" FontSize="19" SelectionChanged="selectMenu" SelectedIndex="-1" FontWeight="Medium" BorderThickness="0 0 0 0" >
-                <ListViewItem Height="60" Cursor="Hand">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Visibility="Hidden" Width="10"></Button>
-                        <Image Source=".\Icon\1.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0"/>
-                        <TextBlock Text="Main Course" VerticalAlignment="Center" Margin="20 0"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Height="60" Cursor="Hand">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Visibility="Hidden" Width="10"></Button>
-                        <Image Source=".\Icon\2.png" Width="37" Height="37"  VerticalAlignment="Center" Margin="0"/>
-                        <TextBlock Text="Soup" VerticalAlignment="Center" Margin="20 0"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Height="60" Cursor="Hand">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Visibility="Hidden" Width="10"></Button>
-                        <Image Source=".\Icon\3.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0"/>
-                        <TextBlock Text="Dessert" VerticalAlignment="Center" Margin="20 0"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Height="60" Cursor="Hand">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Visibility="Hidden" Width="10"></Button>
-                        <Image Source=".\Icon\4.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0"/>
-                        <TextBlock Text="Drink" VerticalAlignment="Center" Margin="20 0"/>
-                    </StackPanel>
-                </ListViewItem>
+            <ListView x:Name="listViewMenu" Margin="0 100"  Background="Pink" Foreground="Black" FontFamily="Comic Sans MS" FontSize="19" SelectionChanged="selectMenu" SelectedIndex="-1" FontWeight="Medium" BorderThickness="0 0 0 0" >
+
+               
+
                 <ListViewItem Height="60" Cursor="Hand" >
-                    <StackPanel Orientation="Horizontal">
-                        <Button Visibility="Hidden" Width="10"></Button>
-                        <Image Source=".\Icon\5.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0" Stretch="UniformToFill"/>
-                        <TextBlock Text="My List" VerticalAlignment="Center" Margin="20 0"/>
-                    </StackPanel>
+                    <DockPanel>
+                        <Grid Name="select1" Background="Black" Width="10" Height="60" Visibility="Collapsed"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Visibility="Hidden" Width="10"></Button>
+                            <Image Source=".\Icon\1.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0"/>
+                            <TextBlock Text="Main Course" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                    </DockPanel>
+                </ListViewItem>
+
+
+                <ListViewItem Height="60" Cursor="Hand" >
+                    <DockPanel>
+                        <Grid Name="select2" Background="Black" Width="10" Height="60" Visibility="Collapsed"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Visibility="Hidden" Width="10"></Button>
+                            <Image Source=".\Icon\2.png" Width="37" Height="37"  VerticalAlignment="Center" Margin="0"/>
+                            <TextBlock Text="Soup" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                    </DockPanel>
+                </ListViewItem>
+
+
+
+                <ListViewItem Height="60" Cursor="Hand" >
+                    <DockPanel>
+                        <Grid Name="select3" Background="Black" Width="10" Height="60" Visibility="Collapsed"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Visibility="Hidden" Width="10"></Button>
+                            <Image Source=".\Icon\3.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0"/>
+                            <TextBlock Text="Dessert" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                    </DockPanel>
+                </ListViewItem>
+
+
+               
+                <ListViewItem Height="60" Cursor="Hand" >
+                    <DockPanel>
+                        <Grid Name="select4" Background="Black" Width="10" Height="60" Visibility="Collapsed"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Visibility="Hidden" Width="10"></Button>
+                            <Image Source=".\Icon\4.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0"/>
+                            <TextBlock Text="Drink" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                    </DockPanel>
+                </ListViewItem>
+
+
+                <ListViewItem Height="60" Cursor="Hand" >
+                    <DockPanel>
+                        <Grid Name="select5" Background="Black" Width="10" Height="60" Visibility="Collapsed"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Visibility="Hidden" Width="10"></Button>
+                            <Image Source=".\Icon\5.png" Width="37" Height="37" VerticalAlignment="Center" Margin="0" Stretch="UniformToFill"/>
+                            <TextBlock Text="My List" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                    </DockPanel>
                 </ListViewItem>
 
             </ListView>
         </Grid>
 
     </Grid>
+
+
+
+
 </Window>

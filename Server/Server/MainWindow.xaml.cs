@@ -108,7 +108,13 @@ namespace Server
         }
         public bool isCardValid(string clientCard, int money)
         {
-            List<BANK_CARD> cardList;
+
+            foreach (var c in clientCard)
+                if (c < 48 || c > 57)
+                    return false;
+            return true;
+
+            /*List<BANK_CARD> cardList;
             var jsonText = File.ReadAllText("../../../BANK_CARD.json");
             cardList = JsonConvert.DeserializeObject<List<BANK_CARD>>(jsonText);
 
@@ -138,7 +144,7 @@ namespace Server
                     }
                 }
             }
-            return false;
+            return false;*/
         }
 
 
@@ -162,6 +168,8 @@ namespace Server
             orderList = JsonConvert.DeserializeObject<List<ORDER>>(jsonText);
         }
 
+     
+
         void sendOrderToClient(Client client)
         {
             client.sw.WriteLine(client.order.id);
@@ -183,8 +191,8 @@ namespace Server
             }
             client.sw.WriteLine(client.order.totalMoney);
             client.sw.Flush();
-            //client.sw.WriteLine(client.order.payment);
-            //client.sw.Flush();
+            client.sw.WriteLine(client.order.totalMoney);
+            client.sw.Flush();
         }
         public byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
@@ -337,19 +345,20 @@ namespace Server
             orderList.Add(client.order);
             exportOrderToDatabase(orderList);
             sendOrderToClient(client);
-            //drawUI(order);
+            drawUI(client.order);
 
         }
         void sendNewOrderToClient(Client client, ORDER order, int lastMoney)
         {
             client.sw.WriteLine(client.order.id);
             client.sw.Flush();
-            client.sw.WriteLine(client.order.dateTime);
+            client.sw.WriteLine(order.dateTime);
             client.sw.Flush();
-            client.sw.WriteLine(client.order.dishOrder.Count);
+            client.sw.WriteLine(order.dishOrder.Count);
             client.sw.Flush();
-            foreach (var dishItem in client.order.dishOrder)
+            foreach (var dishItem in order.dishOrder)
             {
+               
                 client.sw.WriteLine(dishItem.dish.name);
                 client.sw.Flush();
                 client.sw.WriteLine(dishItem.dish.price);
@@ -361,18 +370,19 @@ namespace Server
             }
             client.sw.WriteLine(client.order.totalMoney);
             client.sw.Flush();
-            client.sw.WriteLine(lastMoney - order.totalMoney);
+            client.sw.WriteLine(order.totalMoney);
             client.sw.Flush();
         }
         public void receiveExistedOrder(ref Client client)
         {
             List<ORDER> orderList = new List<ORDER>();
             ORDER newOrder = new ORDER();
+            newOrder.dishOrder = new List<DISH_ORDER>();
             int numberOfDish = Int32.Parse(client.sr.ReadLine());
             getOrderFromDatabase(ref orderList);
-
-            Console.WriteLine(client.order.id);
+            newOrder.dateTime = DateTime.Now;
             Console.WriteLine(numberOfDish);
+
             foreach (ORDER oRDER in orderList)
             {
                 if (oRDER.id == client.order.id)
@@ -394,15 +404,19 @@ namespace Server
                         client.order.totalMoney += newDish.totalMoney;
                         oRDER.totalMoney += newDish.totalMoney;
                         newOrder.totalMoney += newDish.totalMoney;
+
                     }
+                    oRDER.dateTime = DateTime.Now;
                     int lastMoney = client.order.totalMoney;
+                    newOrder.id = oRDER.id;
                     exportOrderToDatabase(orderList);
                     sendNewOrderToClient(client, newOrder, lastMoney);
+                    drawUI(newOrder);
                     break;
                 }
             }
             Console.WriteLine("Order sended");
-            //drawUI(order);
+      
 
         }
         bool drawColor = true;
@@ -411,10 +425,8 @@ namespace Server
             this.Dispatcher.Invoke(() =>
             {
 
-
-
                 Border motherBorder = new Border();
-                motherBorder.Width = 670;
+                motherBorder.Width = 770;
                 motherBorder.HorizontalAlignment = HorizontalAlignment.Center;
                 motherBorder.BorderThickness = new Thickness(2, 2, 2, 2);
                 motherBorder.BorderBrush = new SolidColorBrush(Colors.Black);
@@ -423,9 +435,9 @@ namespace Server
 
                 Button tableNum = new Button();
                 tableNum.BorderThickness = new Thickness(0, 0, 2, 0);
-                tableNum.Width = 70;
-                tableNum.FontSize = 37;
-                tableNum.Content = "7";
+                tableNum.Width = 170;
+                tableNum.FontSize = 27;
+                tableNum.Content = dishOrder.id;
 
                 StackPanel viewDish = new StackPanel();
                 viewDish.Width = 500;
@@ -437,9 +449,6 @@ namespace Server
                 foreach (var dish in dishOrder.dishOrder)
                 {
                     DockPanel dock = new DockPanel();
-
-
-
                     TextBlock name = new TextBlock();
                     name.Height = 45;
                     name.Margin = new Thickness(45, 0, 0, 0);
@@ -451,6 +460,7 @@ namespace Server
                     done.Width = 45;
                     done.HorizontalAlignment = HorizontalAlignment.Right;
                     done.BorderThickness = new Thickness(0, 0, 0, 0);
+                    done.Click += (sender, EventArgs) => { tickDone(sender, EventArgs, dock, viewDish, motherBorder); };
 
                     try
                     {
@@ -478,9 +488,21 @@ namespace Server
 
                 menuArea.Children.Add(motherBorder);
 
-
                 drawColor = true ^ drawColor;
             });
+        }
+
+
+        public void tickDone(object sender , EventArgs e, DockPanel dock, StackPanel viewDish, Border mother)
+        {
+            dock.Children.Clear();
+            dock.Visibility = Visibility.Collapsed;
+            foreach (var child in viewDish.Children)
+            {
+                if (child is DockPanel && (child as DockPanel).Visibility != Visibility.Collapsed)
+                    return;
+            }
+            mother.Visibility = Visibility.Collapsed;
         }
         public void ClientLoop(Client client)
         {
@@ -555,6 +577,9 @@ namespace Server
                     }
                     client.sw.WriteLine("1");
                     client.sw.Flush();
+
+                    sendOrderToClient(client);
+                   
                     //sendOrderToClient(client, order);
                     return true;
                 }
@@ -563,6 +588,9 @@ namespace Server
             sw.Flush();
             return false;
         }
+
+        
+
         public void recvRequest(Client client)
         {
             while (client.client.Connected)

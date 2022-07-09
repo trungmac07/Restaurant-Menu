@@ -29,7 +29,7 @@ namespace ClientUI
 
             InitializeComponent();  //Vay thi chay bth
             client = new Client.Client();
-           // client.order = new Client.ORDER();
+            // client.order = new Client.ORDER();
             //client.recvPic();
             haveBill = false;
 
@@ -631,10 +631,20 @@ namespace ClientUI
         }
         private void selectMenu(object sender, RoutedEventArgs e)
         {
+            if (listViewMenu.SelectedIndex == -1)
+                return;
 
             backToMenu(null, null);
             menuArea.Children.Clear();
 
+            for (int i = 1; i <= 5; ++i)
+            {
+                var grid = this.FindName("select" + i.ToString());
+                if (i == listViewMenu.SelectedIndex + 1)
+                    (grid as Grid).Visibility = Visibility.Visible;
+                else
+                    (grid as Grid).Visibility = Visibility.Collapsed;
+            }
 
             int index = 1 + listViewMenu.SelectedIndex;
             MoveCursorMenu(index - 1);
@@ -655,7 +665,7 @@ namespace ClientUI
                 client.sendRequest(index, 0);
                 chooseMenuLayout(index);
             }
-
+            listViewMenu.SelectedIndex = -1;
         }
 
         private void showMyList(double offSet)
@@ -824,7 +834,7 @@ namespace ClientUI
                 buttonMinus.FontSize = 30;
                 buttonMinus.Tag = dishName + " " + dishPrice;
                 buttonMinus.Click += (sender, EventArgs) => { removeDish(sender, EventArgs, scrollViewer.VerticalOffset); };
-   ;
+                ;
                 buttonMinus.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans MS");
                 buttonMinus.Resources.Add(buttonStyle.TargetType, buttonStyle);
                 buttonMinus.Background = new SolidColorBrush(Colors.Gold);
@@ -944,16 +954,25 @@ namespace ClientUI
 
             else
             {
-                if (MessageBox.Show("Do you have a bill before ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (client.id == "")
                 {
-
-                    string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please type in your bill ID", "Bill ID", "HKT#");
-                    if (UserAnswer != null && UserAnswer != "")
+                    if (MessageBox.Show("Do you have a bill before ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        client.sendBillID(UserAnswer);
-                        if (client.recvBillID() == false)
-                        {
+
+                        string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please type in your bill ID", "Bill ID", "HKT#");
+                        if (UserAnswer == null || UserAnswer == "")
                             return;
+                        if (UserAnswer != null && UserAnswer != "")
+                        {
+                            client.sendBillID(UserAnswer);
+                            if (client.recvBillID() == false)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                client.recvBill();
+                            }
                         }
                     }
                 }
@@ -995,11 +1014,13 @@ namespace ClientUI
 
             bool pink = true;
             bool lastBillDishes = false;
-            foreach (var order in client.order)
+            for (int i = client.order.Count - 1; i >= 0; --i)
             {
-                if (sender == null && order == client.order[^1])
+                if (sender == null && i == client.order.Count - 1)
                     lastBillDishes = true;
-                foreach (var dish in order.dishOrder)
+                else
+                    lastBillDishes = false;
+                foreach (var dish in client.order[i].dishOrder)
                 {
 
                     StackPanel info = new StackPanel();
@@ -1019,7 +1040,7 @@ namespace ClientUI
                     name.Text = dish.dish.name;
                     name.HorizontalAlignment = HorizontalAlignment.Left;
                     name.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans MS");
-                    
+
 
 
                     TextBlock isNew = new TextBlock();
@@ -1077,7 +1098,7 @@ namespace ClientUI
                     total.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans MS");
 
                     TextBlock time = new TextBlock();
-                    time.Text = order.dateTime;
+                    time.Text = client.order[i].dateTime;
                     time.Margin = new Thickness(35, 0, 0, 20);
                     time.Height = 25;
                     time.Width = 300;
@@ -1087,7 +1108,7 @@ namespace ClientUI
 
                     totalPanel.Children.Add(amount);
                     totalPanel.Children.Add(total);
-                   
+
 
                     info.Children.Add(dishName);
                     info.Children.Add(price);
@@ -1143,8 +1164,8 @@ namespace ClientUI
             totalBill.TextAlignment = TextAlignment.Left;
             totalBill.FontFamily = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/#comic sans ms");
             totalBill.FontWeight = FontWeights.Bold;
-            totalBill.Text = "            TOTAL: " + client.totalMoneyAllBill().ToString() + "vnd\n"
-                            + "Need to pay more: " + client.order[^1].totalMoney.ToString() + "vnd";
+            totalBill.Text = "        TOTAL: " + client.totalAll + "vnd\n"
+                            + (sender == null ? "  Need to pay: " + client.order[^1].totalMoney + "vnd" : "");
 
             Button line2 = new Button();
             line2.Margin = new Thickness(0, 0, 0, 0);
@@ -1200,8 +1221,6 @@ namespace ClientUI
             }
 
             TextBox bankId = new TextBox();
-
-
             bankId.Name = "stk";
             bankId.Background = new SolidColorBrush(Colors.Pink);
             bankId.Width = 350;
@@ -1212,11 +1231,16 @@ namespace ClientUI
             bankId.Resources.Add(style.TargetType, style);
             bankId.FontSize = 27;
             bankId.TextAlignment = TextAlignment.Center;
-            bankId.Visibility = Visibility.Collapsed;
+            bankId.Visibility = Visibility.Hidden;
             bankId.KeyDown += new KeyEventHandler(typeBankingId);
 
             if (this.FindName("stk") == null)
                 this.RegisterName(bankId.Name, bankId);
+            else
+            {
+                this.UnregisterName(bankId.Name);
+                this.RegisterName(bankId.Name, bankId);
+            }
 
 
             stackPanel1.Children.Add(restaurantName);
@@ -1232,16 +1256,16 @@ namespace ClientUI
 
             menuArea.Children.Add(stackPanel1);
             //hien bill
-         /*   Console.WriteLine(client.order.dateTime);
-            Console.WriteLine(client.order.numofDishOrders);
-            for (int i = 0; i < client.order.numofDishOrders; i++)
-            {
-                Console.WriteLine(client.order.dishOrder[i].dish.name);
-                Console.WriteLine(client.order.dishOrder[i].dish.price);
-                Console.WriteLine(client.order.dishOrder[i].numberOfDishes);
+            /*   Console.WriteLine(client.order.dateTime);
+               Console.WriteLine(client.order.numofDishOrders);
+               for (int i = 0; i < client.order.numofDishOrders; i++)
+               {
+                   Console.WriteLine(client.order.dishOrder[i].dish.name);
+                   Console.WriteLine(client.order.dishOrder[i].dish.price);
+                   Console.WriteLine(client.order.dishOrder[i].numberOfDishes);
 
-            }
-            Console.WriteLine(client.order.totalMoney);*/
+               }
+               Console.WriteLine(client.order.totalMoney);*/
         }
         void banking(object sender, RoutedEventArgs e)
         {
@@ -1259,23 +1283,21 @@ namespace ClientUI
             if (e.Key == Key.Enter)
             {
                 string bankId = (sender as TextBox).Text;
-                client.sendPayMent("0", bankId);
 
-
-                if (this.FindName("stk") != null)
-                    this.UnregisterName("stk");
+                if (client.sendPayMent("0", bankId))
+                {
+                    listViewMenu.IsEnabled = true;
+                    listViewMenu.Visibility = Visibility.Visible;
+                    bill(sender, null);
+                }
 
             }
         }
         void cashPay(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Cam on nha cuc cung <3");
             client.sendPayMent("1", "");
             listViewMenu.IsEnabled = true;
-
             listViewMenu.Visibility = Visibility.Visible;
-            if (this.FindName("stk") != null)
-                this.UnregisterName("stk");
             bill(sender, null);
 
         }

@@ -6,7 +6,10 @@
     <Application.Resources>
         
         <ResourceDictionary>
-            
+            <LinearGradientBrush x:Key="listViewBorder" StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Offset="0" Color="Black"/>
+                <GradientStop Offset="0" Color="Transparent"/>
+            </LinearGradientBrush>
             <FontFamily x:Key="svn">pack://application:,,,/Fonts/#SVN-Bali Script</FontFamily>
             <FontFamily x:Key="comic">pack://application:,,,/Fonts/#Comic Sans MS</FontFamily>
         </ResourceDictionary>

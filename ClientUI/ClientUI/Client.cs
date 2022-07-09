@@ -27,7 +27,9 @@ namespace Client
         StreamReader sr;
         StreamWriter sw;
         List<DISH> list;
-       
+
+        public int totalAll = 0;
+        public string id;
         public Dictionary<KeyValuePair<string, int>, int> dic;
         public Dictionary<KeyValuePair<string, int>, ImageBrush> pic;
         public List <ORDER> order;
@@ -35,6 +37,7 @@ namespace Client
         public
         Client()
         {
+            id = "";
             client = new TcpClient("127.0.0.1", 6969);
             stream = client.GetStream();
             sr = new StreamReader(stream);
@@ -197,8 +200,12 @@ namespace Client
         {
             ORDER newOrder = new ORDER();
             newOrder.id = sr.ReadLine();
+            if (id == "")
+                id = newOrder.id;
             newOrder.dateTime = sr.ReadLine();
-            newOrder.numofDishOrders = Int32.Parse(sr.ReadLine());
+            var x = sr.ReadLine();
+            
+            newOrder.numofDishOrders = Int32.Parse(x);
             for (int i = 0; i < newOrder.numofDishOrders; i++)
             {
                 DISH_ORDER a = new DISH_ORDER();
@@ -211,8 +218,17 @@ namespace Client
                     newOrder.dishOrder = new List<DISH_ORDER>();
                 newOrder.dishOrder.Add(a);
             }
+
+            totalAll = Int32.Parse(sr.ReadLine());
             newOrder.totalMoney = Int32.Parse(sr.ReadLine());
+            
+            
             order.Add(newOrder);
+        }
+
+        public void updateOrder()
+        {
+            
         }
 
         public int totalMoneyAllBill()
@@ -223,7 +239,7 @@ namespace Client
             return sum;
         }
 
-        public void sendPayMent(string type, string bankID)
+        public bool sendPayMent(string type, string bankID)
         {
             sw.WriteLine("6 " + type);
             sw.Flush();
@@ -232,22 +248,24 @@ namespace Client
                 sw.WriteLine(bankID);
                 sw.Flush();
             }
-            afterPayment();
+            return afterPayment();
             
         }
-        public void afterPayment()
+        public bool afterPayment()
         {
          
             string recv = sr.ReadLine();
 
-            MessageBox.Show(recv);
+        
             if (recv == "1")
             {
                 MessageBox.Show("Successfully paid your bill");
+                return true;
             }
             else
             {
                 MessageBox.Show("Fail to pay your bill");
+                return false;
             }
         }
         public void sendBillID(string str)
