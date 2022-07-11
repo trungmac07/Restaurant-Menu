@@ -4,47 +4,47 @@
     "foodList": [
       {
         "name": "Orange Juice",
-        "price": 120000,
+        "price": 20000,
         "description": "Orange juice - a nutrition powerhouse with naturally occurring vitamins and minerals and many antioxidants."
       },
       {
         "name": "Grape Juice",
-        "price": 200000,
+        "price": 20000,
         "description": "Made from the whole grape, including the skin, flesh, and seeds. It contains most of the vitamins and minerals found in table grapes, plus the health benefits of the nutrient-rich seeds."
       },
       {
         "name": "Apple Juice",
-        "price": 200000,
+        "price": 20000,
         "description": "A type of fruit juice that is made from the pulp of apples processed for their juice. It is a very clear liquid from which the pulp has been removed. This juice is often used to flavor meats, or as an ingredient in dressings and sauces, adding a sweet apple flavor."
       },
       {
         "name": "Strawberry Juice",
-        "price": 180000,
+        "price": 18000,
         "description": "Strawberry juice is the fruit juice from strawberries. It is rich with Vitamin C and ranges from sweet to sweet tart in taste. The fragrantly sweet juiciness and deep red color of strawberries can brighten up both the taste and aesthetics of any meal."
       },
       {
         "name": "Guava Juice",
-        "price": 120000,
+        "price": 18000,
         "description": "Guava juice is a fruit juice obtained by squeezing, pressing or otherwise crushing the interior of an guava. Alternatively you can cut guava into cubes and blend it in a mixer with water and strain it."
       },
       {
         "name": "Blueberry Juice",
-        "price": 200000,
+        "price": 20000,
         "description": "Blueberry juice is an antioxidant-rich drink that provides vitamins C and K."
       },
       {
         "name": "Lemon Juice",
-        "price": 200000,
+        "price": 20000,
         "description": "The juice extracted by crushing the pulp of lemon fruit. Lemon juice is most commonly used in a drink called lemonade."
       },
       {
         "name": "Watermelon Juice",
-        "price": 180000,
+        "price": 18000,
         "description": "As you would expect, watermelon juice is good for you. It’s high in vitamin A, vitamin C and potassium. It’s about 92% water, so it’s plenty hydrating, too."
       },
       {
         "name": "Pineapple Juice",
-        "price": 180000,
+        "price": 18000,
         "description": "Pineapple juice is a liquid made from pressing the natural liquid from the pulp of the pineapple (a fruit from a tropical plant). Numerous pineapple varieties may be used to manufacture commercial pineapple juice, the most common of which are Smooth Cayenne, Red Spanish, Queen, and Abacaxi."
       }
     ]
@@ -54,22 +54,22 @@
     "foodList": [
       {
         "name": "Cocacola",
-        "price": 120000,
+        "price": 12000,
         "description": "Coca-Cola, or Coke, is a carbonated soft drink manufactured by the Coca-Cola Company."
       },
       {
         "name": "Pepsi",
-        "price": 200000,
+        "price": 120000,
         "description": "PepsiCo, Inc., American food and beverage company that is one of the largest in the world, with products available in more than 200 countries."
       },
       {
         "name": "Mirinda",
-        "price": 200000,
+        "price": 120000,
         "description": "Mirinda is one of the leading Soft drink brand in Thailand and come into four great taste flavors; Orange, Strawberry, Green Cream and Rootbeer. With its bold fruity taste and vibrant fizz, Mirinda brings in laughter and bold fun parties."
       },
       {
         "name": "7-up",
-        "price": 180000,
+        "price": 120000,
         "description": "7 Up (stylized as 7up outside the U.S.) is an American brand of lemon-lime-flavored non-caffeinated soft drink. The rights to the brand are held by Keurig Dr Pepper in the United States and by PepsiCo in the rest of the world."
       },
       {
@@ -79,12 +79,12 @@
       },
       {
         "name": "Fanta",
-        "price": 200000,
+        "price": 120000,
         "description": "Bright, bubbly and popular, Fanta is the soft drink that intensifies fun. Introduced in 1940, Fanta is the second oldest brand of The Coca-Cola Company. Bright, bubbly and popular, Fanta is the soft drink that intensifies fun. Introduced in 1940, Fanta is the second oldest brand of The Coca-Cola Company."
       },
       {
         "name": "Lavie",
-        "price": 200000,
+        "price": 7000,
         "description": "La Vie's all-natural, probiotic wellness drinks are made with an infusion of fresh juices and superfood ingredients."
       }
     ]
@@ -94,32 +94,32 @@
     "foodList": [
       {
         "name": "Strawberry",
-        "price": 120000,
+        "price": 25000,
         "description": "Strawberry smoothies are made of frozen strawberries, frozen bananas, yogurt, and a liquid such as almond milk or orange juice."
       },
       {
         "name": "Avocado",
-        "price": 200000,
+        "price": 25000,
         "description": "Combine the pineapple, spinach, avocado, banana, coconut milk, lime juice, maple syrup, salt, ice, and protein powder, if using, in a blender. Blend until creamy. Taste and adjust the sweetness to your liking. If you prefer a sweeter smoothie, add more maple syrup."
       },
       {
         "name": "Banana",
-        "price": 200000,
+        "price": 22000,
         "description": "Nutrient-rich. Weight gain support. Weight loss aid. Workout boost. Healthy skin fuel."
       },
       {
         "name": "Tomato",
-        "price": 180000,
+        "price": 18000,
         "description": "Put the frozen tomato cubes in a blender or in a smoothie maker and blend. Toss in the frozen carrot cubes and blend again. Add celery pieces, salt and pepper and blend. Add ice cubes and lemon juice and blend again. Pour juice into a long stemmed glass and serve chilled."
       },
       {
         "name": "Centella",
-        "price": 120000,
+        "price": 18000,
         "description": "Consumption of a smoothie containing Centella asiatica improves alertness and contentedness after one hour. No effect was observed on cognitive performance. Clear-headedness was significantly enhanced even with a low dose smoothie."
       },
       {
         "name": "Mango",
-        "price": 200000,
+        "price": 20000,
         "description": "You'll need a mango, your favorite Greek yogurt, and some milk! Mango: For the mango portion of this recipe, you'll need 1 cup of diced fruit, either fresh or frozen. Any mango variety will work well! Greek Yogurt: Greek yogurt will add thickness and protein to the smoothie."
       }
     ]

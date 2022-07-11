@@ -285,9 +285,9 @@ namespace ClientUI
                             case 1:
                                 return (new Thickness(120, 105, 0, 30));
                             case 2:
-                                return (new Thickness(125, 270, 0, 30));
+                                return (new Thickness(125, 260, 0, 30));
                             default:
-                                return (new Thickness(90, 168, 0, 30));
+                                return (new Thickness(90, 158, 0, 30));
 
                         }
                         break;

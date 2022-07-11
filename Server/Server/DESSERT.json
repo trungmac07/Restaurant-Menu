@@ -4,42 +4,42 @@
     "foodList": [
       {
         "name": "Banana",
-        "price": 120000,
+        "price": 20000,
         "description": "Fresh banana with full of nutrients. A good choice for your dessert."
       },
       {
         "name": "Apple",
-        "price": 200000,
+        "price": 30000,
         "description": "Apple from one of the best farm in Viet Nam , really sweet and tasty."
       },
       {
         "name": "Watermelon",
-        "price": 200000,
+        "price": 30000,
         "description": "Fresh watermelon with full of nutrients. A good choice for your dessert."
       },
       {
         "name": "Papaya",
-        "price": 180000,
+        "price": 30000,
         "description": "Fresh papaya with full of nutrients. A good choice for your dessert."
       },
       {
         "name": "Grape",
-        "price": 120000,
+        "price": 30000,
         "description": "Grape from one of the best farm in Viet Nam , really sweet and tasty."
       },
       {
         "name": "Peach",
-        "price": 200000,
+        "price": 35000,
         "description": "Peach with full of nutrients. A good choice for your dessert."
       },
       {
         "name": "Papaya",
-        "price": 200000,
+        "price": 30000,
         "description": "Fresh papaya with full of nutrients. A good choice for your dessert."
       },
       {
         "name": "Fruit Salad",
-        "price": 180000,
+        "price": 50000,
         "description": "Dish with full type of fruit, all are from the best farm in Viet Nam. This will bring you the freshness and sweetness of Vietnamese fruit."
       }
     ]
@@ -49,32 +49,32 @@
     "foodList": [
       {
         "name": "Blueberry Cake",
-        "price": 120000,
+        "price": 50000,
         "description": "While it may be rustic looking, the combination of a soft and fluffy white butter cake, fresh blueberries, and a crunchy cinnamon flavored streusel, are simply irresistible. Serve this cake warm from the oven or at room temperature, with or without a scoop of vanilla ice cream."
       },
       {
         "name": "Stawberry Cake",
-        "price": 200000,
+        "price": 50000,
         "description": "The cake is light, springy, soft, and fluffy. The reduced strawberry puree will tint the cake batter a lovely pastel pink and, if you want, you can add a small drop of pink or red food coloring to brighten that hue."
       },
       {
         "name": "Vanilla Cake",
-        "price": 200000,
+        "price": 45000,
         "description": "Vanilla cake is a basic sponge which is enriched with vanilla flavoring and typically covered in a plain buttercream."
       },
       {
         "name": "Chocolate Crepe",
-        "price": 180000,
+        "price": 55000,
         "description": "French pancake made of a thin batter with chocolate flavour. It's just getting the right balance of flour, eggs, milk, water, cocoa powder, sugar, and butter."
       },
       {
         "name": "Fruit Crepe",
-        "price": 120000,
+        "price": 45000,
         "description": "These berries and cream crepes are light and simple crepes filled with a creamy, cheesecake like filling, and juicy berries. They're perfect for a decadent breakfast or brunch! These berries and cream crepes are my favorite to eat for breakfast, brunch, or dessert. "
       },
       {
         "name": "Cheese Crepe",
-        "price": 200000,
+        "price": 55000,
         "description": "French pancake made of a thin batter with cheese. Thin and delicate filled with farmer's cheese filling that melts when you cook in butter or oil. This dish can be made ahead of time, either in full or in part. It's one of the major dishes at weddings, holidays and major events."
       }
     ]
@@ -84,42 +84,42 @@
     "foodList": [
       {
         "name": "Vanilla",
-        "price": 120000,
+        "price": 30000,
         "description": "Vanilla ice cream is the most common and basic flavour of ice cream which is favorite among all. The vanilla essence added gives the ice cream a very natural aroma and vanilla flavour."
       },
       {
         "name": "Coconut",
-        "price": 200000,
+        "price": 35000,
         "description": "Ice cream with coconut favour and some snack along."
       },
       {
         "name": "Mint",
-        "price": 200000,
+        "price": 35000,
         "description": "An ice cream flavor composed of mint ice cream with small chocolate chips."
       },
       {
         "name": "Durian",
-        "price": 180000,
+        "price": 40000,
         "description": "Durian flesh – This is the soft, yellow interior of the durian. Whole milk & Heavy Cream – Adds creaminess and richness to the ice cream. Vanilla extract – Adds more flavor to the ice cream."
       },
       {
         "name": "Strawberry",
-        "price": 120000,
+        "price": 42000,
         "description": "Strawberry ice cream is a flavor of ice cream made with strawberry or strawberry flavoring. Most strawberry ice cream is colored pink or light red."
       },
       {
         "name": "Chocolate",
-        "price": 200000,
+        "price": 50000,
         "description": "Chocolate ice cream is a flavour of ice cream which is the second most common flavour of ice cream, after vanilla. The cocoa powder gives the ice cream a brown colour."
       },
       {
         "name": "Green Tea",
-        "price": 120000,
+        "price": 33000,
         "description": "Ice cream with green tea falour - a Japanese dessert made with matcha, an earthy, grassy green tea powder. The popular dish combines savory matcha flavor with the sweetness of chilled cream."
       },
       {
         "name": "Banana",
-        "price": 200000,
+        "price": 32000,
         "description": "Banana ice cream with some snack along . It is a low-fat, no added-sugar, vegan, all-natural, quick and convenient dessert craze."
       }
     ]
